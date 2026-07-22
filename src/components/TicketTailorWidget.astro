@@ -1,0 +1,26 @@
+---
+interface Props {
+  embedUrl: string;
+}
+
+const { embedUrl } = Astro.props;
+---
+
+<div class="ticket-tailor-widget">
+  <script
+    is:inline
+    async
+    defer
+    src="https://cdn.tickettailor.com/js/widgets/ticketTailorWidget.js"
+    data-url={embedUrl}
+    data-minimal="false"
+    data-bg-fill="false"
+    data-show-logo="false"
+  ></script>
+</div>
+
+<style>
+  .ticket-tailor-widget {
+    min-height: 420px;
+  }
+</style>

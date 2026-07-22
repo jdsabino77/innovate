@@ -1,0 +1,35 @@
+{
+  "page": {
+    "introOpen": "Select your pass below. Secure checkout is powered by Ticket Tailor — you'll receive a confirmation email with a QR code ticket for fast check-in at The Quay.",
+    "introClosed": "Conference passes will go on sale here soon. Ticket types and pricing will be published when registration opens.",
+    "footnote": "All sales are processed securely through Ticket Tailor. Need a group booking or have questions? Email events@yasalaser.com."
+  },
+  "tiers": [
+    {
+      "id": "early-bird",
+      "name": "Early bird",
+      "priceDisplay": "TBD",
+      "description": "Limited early-rate pass for the full Innovate program — clinical sessions, sponsor showcase, lunch, and networking reception.",
+      "includes": ["Full-day program access", "Lunch & sponsor showcase", "Closing reception"],
+      "highlight": true,
+      "badge": "Best value"
+    },
+    {
+      "id": "conference-pass",
+      "name": "Conference pass",
+      "priceDisplay": "TBD",
+      "description": "Standard admission to Innovate 2027 — one focused day of clinical education and networking at The Quay.",
+      "includes": ["Full-day program access", "Lunch & sponsor showcase", "Closing reception"],
+      "highlight": false
+    },
+    {
+      "id": "vip",
+      "name": "VIP pass",
+      "priceDisplay": "TBD",
+      "description": "Premium access with reserved seating and exclusive networking opportunities. Details announced at launch.",
+      "includes": ["Everything in Conference pass", "Reserved seating", "VIP networking session"],
+      "highlight": false,
+      "badge": "Limited"
+    }
+  ]
+}

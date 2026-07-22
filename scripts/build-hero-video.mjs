@@ -28,17 +28,22 @@ function run(command) {
 
 function zoomFilter(motion, duration) {
   const frames = Math.round(duration * fps);
-  const base = `scale=${width}:${height}:force_original_aspect_ratio=increase,crop=${width}:${height},format=yuv420p`;
+  // zoompan rounds x/y to whole pixels — upscale first so motion stays smooth at output size.
+  const upscaleWidth = width * 4;
+  const base = `scale=${upscaleWidth}:-2:flags=lanczos,format=yuv420p`;
+  const zoompan = (expression) =>
+    `${base},zoompan=${expression}:d=${frames}:s=${width}x${height}:fps=${fps}`;
 
   if (motion === "pan-right") {
-    return `${base},zoompan=z='1.08':x='(iw-iw/zoom)*on/${frames}':y='(ih-ih/zoom)/2':d=${frames}:s=${width}x${height}:fps=${fps}`;
+    return zoompan("z='1.06':x='(iw-iw/zoom)*on/" + frames + "':y='(ih-ih/zoom)/2'");
   }
 
   if (motion === "pan-left") {
-    return `${base},zoompan=z='1.08':x='(iw-iw/zoom)*(1-on/${frames})':y='(ih-ih/zoom)/2':d=${frames}:s=${width}x${height}:fps=${fps}`;
+    return zoompan("z='1.06':x='(iw-iw/zoom)*(1-on/" + frames + ")':y='(ih-ih/zoom)/2'");
   }
 
-  return `${base},zoompan=z='min(zoom+0.0009,1.18)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=${frames}:s=${width}x${height}:fps=${fps}`;
+  // Gentle zoom-in — smaller per-frame step avoids stepped scaling artifacts.
+  return zoompan("z='min(zoom+0.00045,1.1)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'");
 }
 
 async function assertFfmpeg() {
@@ -120,7 +125,7 @@ async function buildSegment(scene, index, tempDir) {
   const filter = zoomFilter(scene.motion, scene.duration);
 
   run(
-    `ffmpeg -y -loop 1 -i "${input}" -vf "${filter}" -t ${scene.duration} -an -c:v libx264 -pix_fmt yuv420p -preset slow -crf 28 "${output}"`,
+    `ffmpeg -y -loop 1 -i "${input}" -vf "${filter}" -t ${scene.duration} -an -c:v libx264 -pix_fmt yuv420p -preset slow -crf 28 -tune stillimage "${output}"`,
   );
 
   return output;

@@ -8,5 +8,11 @@
   "hostUrl": "https://yasalaser.com",
   "typeformUrl": "",
   "contactEmail": "events@yasalaser.com",
-  "siteUrl": "https://innovate.jdsabino.workers.dev"
+  "siteUrl": "https://innovate.jdsabino.workers.dev",
+  "ticketing": {
+    "provider": "ticket-tailor",
+    "enabled": false,
+    "embedUrl": "",
+    "checkoutUrl": ""
+  }
 }

@@ -4,12 +4,14 @@ type Variant = "primary" | "secondary" | "inverse" | "outline-inverse";
 interface Props {
   href: string;
   variant?: Variant;
+  target?: string;
+  rel?: string;
 }
 
-const { href, variant = "primary" } = Astro.props;
+const { href, variant = "primary", target, rel } = Astro.props;
 ---
 
-<a class:list={["button", `button-${variant}`]} href={href}>
+<a class:list={["button", `button-${variant}`]} href={href} target={target} rel={rel}>
   <slot />
 </a>
 

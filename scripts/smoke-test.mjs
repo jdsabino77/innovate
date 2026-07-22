@@ -87,6 +87,9 @@ await assertContains("contact/index.html", "events@yasalaser.com");
 await assertContains("hotel-information/index.html", "Hotel information");
 await assertContains("hotel-information/index.html", "Room blocks");
 await assertContains("index.html", "Resources");
+await assertContains("register/index.html", "Conference passes");
+await assertContains("register/index.html", "Ticket Tailor");
+await assertContains("register/index.html", "Registration opens soon");
 
 if (failures.length > 0) {
   console.error("Smoke test failed:\n");

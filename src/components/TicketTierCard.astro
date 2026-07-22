@@ -1,0 +1,82 @@
+---
+interface Props {
+  name: string;
+  priceDisplay: string;
+  description: string;
+  includes: string[];
+  highlight?: boolean;
+  badge?: string;
+}
+
+const { name, priceDisplay, description, includes, highlight = false, badge } = Astro.props;
+---
+
+<article class:list={["ticket-tier card", { "ticket-tier-highlight": highlight }]}>
+  {badge && <p class="ticket-tier-badge">{badge}</p>}
+  <h3 class="ticket-tier-name">{name}</h3>
+  <p class="ticket-tier-price">{priceDisplay}</p>
+  <p class="ticket-tier-description">{description}</p>
+  {
+    includes.length > 0 && (
+      <ul class="ticket-tier-includes">
+        {includes.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    )
+  }
+</article>
+
+<style>
+  .ticket-tier {
+    display: grid;
+    gap: 12px;
+    align-content: start;
+    padding: 24px;
+  }
+
+  .ticket-tier-highlight {
+    border-color: rgb(201 169 98 / 45%);
+    box-shadow: var(--shadow-card);
+  }
+
+  .ticket-tier-badge {
+    margin: 0;
+    color: var(--color-brand);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .ticket-tier-name {
+    margin: 0;
+    color: var(--color-navy);
+    font-size: 1.25rem;
+  }
+
+  .ticket-tier-price {
+    margin: 0;
+    color: var(--color-navy);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .ticket-tier-description {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+
+  .ticket-tier-includes {
+    margin: 0;
+    padding-left: 1.15rem;
+    color: var(--color-muted);
+    font-size: 0.88rem;
+  }
+
+  .ticket-tier-includes li + li {
+    margin-top: 6px;
+  }
+</style>
