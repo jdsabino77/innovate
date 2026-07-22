@@ -1,0 +1,67 @@
+---
+import HeroBackground from "./HeroBackground.astro";
+import StatGrid from "./StatGrid.astro";
+import EventFactsBar from "./EventFactsBar.astro";
+import home from "../data/home.json";
+
+const { hero, stats } = home;
+---
+
+<section class="hero">
+  <HeroBackground />
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <img
+        class="hero-logo"
+        src="/images/branding/Innovate_Logo_WhiteOnBlack.svg"
+        alt="Innovate"
+        width="216"
+        height="58"
+        loading="eager"
+        decoding="async"
+      />
+      <p class="display-eyebrow">{hero.eyebrow}</p>
+      <h1 class="display-title">{hero.title}</h1>
+      <p class="display-subtitle">{hero.subtitle}</p>
+      <StatGrid stats={stats} />
+    </div>
+    <EventFactsBar />
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: grid;
+    align-items: end;
+    min-height: var(--hero-min-height);
+    padding: 120px 0 56px;
+    color: var(--color-hero-text);
+    background: var(--color-hero-bg);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 34px;
+  }
+
+  .hero-content {
+    display: grid;
+    gap: 18px;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .hero-logo {
+    width: min(100%, 280px);
+    height: auto;
+    margin-bottom: 8px;
+  }
+
+  .hero-content .stat-grid {
+    width: min(100%, 720px);
+    margin-top: 8px;
+  }
+</style>

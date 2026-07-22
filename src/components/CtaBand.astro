@@ -1,0 +1,73 @@
+---
+import Button from "./Button.astro";
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  body: string;
+  primaryHref?: string;
+  primaryLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  body,
+  primaryHref = "/register",
+  primaryLabel = "Register",
+  secondaryHref = "/contact",
+  secondaryLabel = "Contact the team",
+} = Astro.props;
+---
+
+<section class="cta-band">
+  <div class="container cta-band-inner">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h2>{title}</h2>
+    <p>{body}</p>
+    <div class="cta-band-actions">
+      <Button href={primaryHref} variant="inverse">{primaryLabel}</Button>
+      <Button href={secondaryHref} variant="outline-inverse">{secondaryLabel}</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-band {
+    padding: 84px 0;
+    background: var(--color-navy);
+    color: #fff;
+  }
+
+  .cta-band-inner {
+    display: grid;
+    gap: 18px;
+    max-width: 760px;
+  }
+
+  .cta-band .eyebrow {
+    color: var(--color-brand);
+  }
+
+  .cta-band h2 {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .cta-band p {
+    margin: 0;
+    color: rgb(255 255 255 / 72%);
+    font-size: 1.08rem;
+  }
+
+  .cta-band-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+</style>

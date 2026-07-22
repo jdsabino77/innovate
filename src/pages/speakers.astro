@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import Section from "../components/Section.astro";
+import SpeakerCard from "../components/SpeakerCard.astro";
+import speakersData from "../data/speakers.json";
+import { eventConfig } from "../lib/event-config";
+
+const { page, speakers } = speakersData;
+const featuredSpeakers = speakers
+  .filter((speaker) => speaker.featured !== false)
+  .sort((a, b) => a.order - b.order);
+---
+
+<BaseLayout
+  title="Speakers"
+  description={`Keynote faculty for ${eventConfig.eventName} — Dr. Arjang Yazdani and Nadine Sabino, RN. More speakers to be announced.`}
+  canonicalPath="/speakers"
+>
+  <PageHero eyebrow={page.eyebrow} title={page.title} intro={page.intro} />
+  <Section>
+    <div class="speaker-grid">
+      {featuredSpeakers.map((speaker) => <SpeakerCard {...speaker} />)}
+    </div>
+    {page.moreComingNote && <p class="more-coming">{page.moreComingNote}</p>}
+  </Section>
+</BaseLayout>
+
+<style>
+  .speaker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 18px;
+  }
+
+  .more-coming {
+    margin: 28px 0 0;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  @media (max-width: 820px) {
+    .speaker-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

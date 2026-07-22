@@ -1,0 +1,210 @@
+---
+import NavDropdown from "./NavDropdown.astro";
+import { mainNavItems, resourcesNavItems } from "../lib/navigation";
+
+const isHome = Astro.url.pathname === "/";
+---
+
+<header class:list={["site-header", isHome && "site-header-overlay"]} data-site-header>
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Innovate home">
+      <img
+        class="brand-logo brand-logo-dark"
+        src="/images/branding/Innovate_Logo_BlackOnWhite.svg"
+        alt="Innovate"
+        width="216"
+        height="58"
+        decoding="async"
+      />
+      <img
+        class="brand-logo brand-logo-light"
+        src="/images/branding/Innovate_Logo_WhiteOnBlack.svg"
+        alt=""
+        width="216"
+        height="58"
+        decoding="async"
+        aria-hidden="true"
+      />
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      Menu
+    </button>
+    <nav id="site-nav" class="nav" aria-label="Main navigation">
+      {mainNavItems.map((item) => <a href={item.href}>{item.label}</a>)}
+      <NavDropdown label="Resources" items={[...resourcesNavItems]} />
+      <a class="nav-register" href="/register">Register</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>("[data-site-header]");
+  const toggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+  const nav = document.querySelector<HTMLElement>("#site-nav");
+
+  const setScrolled = () => {
+    if (!header) return;
+    header.classList.toggle("site-header-scrolled", window.scrollY > 24);
+  };
+
+  setScrolled();
+  window.addEventListener("scroll", setScrolled, { passive: true });
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!isOpen));
+    nav?.classList.toggle("nav-open", !isOpen);
+    document.body.classList.toggle("menu-open", !isOpen);
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 1px solid rgb(221 214 204 / 70%);
+    background: rgb(250 248 244 / 90%);
+    backdrop-filter: blur(18px);
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .site-header-overlay {
+    position: absolute;
+    inset: 0 0 auto;
+    border-bottom-color: transparent;
+    background: transparent;
+    backdrop-filter: none;
+  }
+
+  .site-header-overlay.site-header-scrolled,
+  .site-header-overlay:has(.nav-open) {
+    position: sticky;
+    border-bottom-color: rgb(221 214 204 / 70%);
+    background: rgb(250 248 244 / 94%);
+    backdrop-filter: blur(18px);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 84px;
+    gap: 22px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-navy);
+    text-decoration: none;
+  }
+
+  .brand-logo {
+    width: auto;
+    height: 44px;
+    object-fit: contain;
+  }
+
+  .brand-logo-light {
+    display: none;
+  }
+
+  .site-header-overlay:not(.site-header-scrolled):not(:has(.nav-open)) .brand-logo-dark {
+    display: none;
+  }
+
+  .site-header-overlay:not(.site-header-scrolled):not(:has(.nav-open)) .brand-logo-light {
+    display: block;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .nav a {
+    padding: 10px 12px;
+    border-radius: 999px;
+    color: var(--color-navy);
+    font-size: 0.9rem;
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .site-header-overlay:not(.site-header-scrolled):not(:has(.nav-open)) .nav a:not(.nav-register),
+  .site-header-overlay:not(.site-header-scrolled):not(:has(.nav-open)) .nav-dropdown-toggle {
+    color: #fff;
+  }
+
+  .nav a:hover,
+  .nav a:focus-visible {
+    background: var(--color-brand-muted);
+  }
+
+  .site-header-overlay:not(.site-header-scrolled):not(:has(.nav-open)) .nav a:hover,
+  .site-header-overlay:not(.site-header-scrolled):not(:has(.nav-open)) .nav a:focus-visible {
+    background: rgb(255 255 255 / 12%);
+  }
+
+  .nav-register {
+    margin-left: 4px;
+    background: var(--color-brand) !important;
+    color: var(--color-navy) !important;
+    box-shadow: 0 10px 24px rgb(201 169 98 / 24%);
+  }
+
+  .menu-toggle {
+    display: none;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: var(--color-surface);
+    color: var(--color-navy);
+    padding: 8px 12px;
+    font: inherit;
+    font-weight: 800;
+  }
+
+  .site-header-overlay:not(.site-header-scrolled):not(:has(.nav-open)) .menu-toggle {
+    border-color: rgb(255 255 255 / 24%);
+    background: rgb(255 255 255 / 8%);
+    color: #fff;
+  }
+
+  @media (max-width: 900px) {
+    .menu-toggle {
+      display: inline-flex;
+    }
+
+    .nav {
+      position: fixed;
+      inset: 84px 14px auto;
+      display: none;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 14px;
+      border: 1px solid var(--color-border);
+      border-radius: 22px;
+      background: #faf8f4;
+      box-shadow: var(--shadow-card);
+    }
+
+    .nav.nav-open {
+      display: flex;
+    }
+
+    .nav a {
+      padding: 14px;
+    }
+
+    .nav-register {
+      margin-left: 0;
+      text-align: center;
+    }
+  }
+</style>

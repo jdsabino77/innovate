@@ -1,0 +1,61 @@
+---
+type Variant = "primary" | "secondary" | "inverse" | "outline-inverse";
+
+interface Props {
+  href: string;
+  variant?: Variant;
+}
+
+const { href, variant = "primary" } = Astro.props;
+---
+
+<a class:list={["button", `button-${variant}`]} href={href}>
+  <slot />
+</a>
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 20px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+    transition:
+      transform 160ms ease,
+      box-shadow 160ms ease,
+      background-color 160ms ease;
+  }
+
+  .button:hover,
+  .button:focus-visible {
+    transform: translateY(-1px);
+  }
+
+  .button-primary {
+    background: var(--color-brand);
+    color: var(--color-navy);
+    box-shadow: 0 14px 32px rgb(201 169 98 / 28%);
+  }
+
+  .button-secondary {
+    border-color: var(--color-border);
+    background: rgb(255 255 255 / 78%);
+    color: var(--color-navy);
+  }
+
+  .button-inverse {
+    background: var(--color-brand);
+    color: var(--color-navy);
+    box-shadow: 0 14px 32px rgb(201 169 98 / 28%);
+  }
+
+  .button-outline-inverse {
+    border-color: rgb(255 255 255 / 28%);
+    background: transparent;
+    color: #fff;
+  }
+</style>

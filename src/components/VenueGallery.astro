@@ -1,0 +1,132 @@
+---
+import { venue } from "../lib/venue";
+
+const { photos, categories } = venue;
+---
+
+<div class="venue-gallery" data-venue-gallery>
+  <div class="venue-gallery-filters" role="tablist" aria-label="Venue photo categories">
+    <button class="venue-filter is-active" type="button" data-filter="all" role="tab" aria-selected="true">
+      All
+    </button>
+    {
+      categories.map((category) => (
+        <button
+          class="venue-filter"
+          type="button"
+          data-filter={category.id}
+          role="tab"
+          aria-selected="false"
+        >
+          {category.label}
+        </button>
+      ))
+    }
+  </div>
+  <div class="venue-gallery-grid">
+    {
+      photos.map((photo) => (
+        <figure class="venue-gallery-item" data-category={photo.category}>
+          <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
+          <figcaption>{photo.caption}</figcaption>
+        </figure>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  const galleries = document.querySelectorAll("[data-venue-gallery]");
+
+  for (const gallery of galleries) {
+    const filters = gallery.querySelectorAll<HTMLButtonElement>(".venue-filter");
+    const items = gallery.querySelectorAll<HTMLElement>(".venue-gallery-item");
+
+    filters.forEach((filter) => {
+      filter.addEventListener("click", () => {
+        const category = filter.dataset.filter ?? "all";
+
+        filters.forEach((button) => {
+          const isActive = button === filter;
+          button.classList.toggle("is-active", isActive);
+          button.setAttribute("aria-selected", String(isActive));
+        });
+
+        items.forEach((item) => {
+          const matches = category === "all" || item.dataset.category === category;
+          item.hidden = !matches;
+        });
+      });
+    });
+  }
+</script>
+
+<style>
+  .venue-gallery {
+    display: grid;
+    gap: 20px;
+  }
+
+  .venue-gallery-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .venue-filter {
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--color-navy);
+    padding: 8px 14px;
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .venue-filter.is-active {
+    border-color: var(--color-brand);
+    background: var(--color-brand-soft);
+  }
+
+  .venue-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .venue-gallery-item {
+    overflow: hidden;
+    margin: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: #fff;
+  }
+
+  .venue-gallery-item img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .venue-gallery-item figcaption {
+    padding: 12px 14px;
+    color: var(--color-muted);
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 820px) {
+    .venue-gallery-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .venue-gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

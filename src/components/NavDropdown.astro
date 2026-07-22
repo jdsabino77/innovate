@@ -1,0 +1,199 @@
+---
+interface NavLink {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  label: string;
+  items: NavLink[];
+}
+
+const { label, items } = Astro.props;
+const dropdownId = `nav-dropdown-${label.toLowerCase().replace(/\s+/g, "-")}`;
+---
+
+<div class="nav-dropdown" data-nav-dropdown>
+  <button
+    class="nav-dropdown-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls={dropdownId}
+    aria-haspopup="true"
+  >
+    {label}
+    <span class="nav-dropdown-chevron" aria-hidden="true"></span>
+  </button>
+  <ul class="nav-dropdown-menu" id={dropdownId} role="menu">
+    {
+      items.map((item) => (
+        <li role="none">
+          <a href={item.href} role="menuitem">
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<script>
+  const dropdowns = document.querySelectorAll<HTMLElement>("[data-nav-dropdown]");
+
+  dropdowns.forEach((dropdown) => {
+    const toggle = dropdown.querySelector<HTMLButtonElement>(".nav-dropdown-toggle");
+    const menu = dropdown.querySelector<HTMLElement>(".nav-dropdown-menu");
+
+    const close = () => {
+      dropdown.classList.remove("nav-dropdown-open");
+      toggle?.setAttribute("aria-expanded", "false");
+    };
+
+    toggle?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const isOpen = dropdown.classList.contains("nav-dropdown-open");
+
+      dropdowns.forEach((other) => {
+        if (other !== dropdown) {
+          other.classList.remove("nav-dropdown-open");
+          other.querySelector(".nav-dropdown-toggle")?.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      dropdown.classList.toggle("nav-dropdown-open", !isOpen);
+      toggle.setAttribute("aria-expanded", String(!isOpen));
+    });
+
+    menu?.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", close);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Node)) return;
+
+    dropdowns.forEach((dropdown) => {
+      if (!dropdown.contains(target)) {
+        dropdown.classList.remove("nav-dropdown-open");
+        dropdown.querySelector(".nav-dropdown-toggle")?.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+</script>
+
+<style>
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .nav-dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--color-navy);
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 750;
+    cursor: pointer;
+  }
+
+  .nav-dropdown-toggle:hover,
+  .nav-dropdown-toggle:focus-visible,
+  .nav-dropdown-open .nav-dropdown-toggle {
+    background: var(--color-brand-muted);
+  }
+
+  .nav-dropdown-chevron {
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 160ms ease;
+  }
+
+  .nav-dropdown-open .nav-dropdown-chevron {
+    transform: rotate(225deg) translateY(1px);
+  }
+
+  .nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 30;
+    display: none;
+    min-width: 220px;
+    margin: 0;
+    padding: 8px;
+    list-style: none;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    background: #faf8f4;
+    box-shadow: var(--shadow-card);
+  }
+
+  .nav-dropdown-open .nav-dropdown-menu {
+    display: block;
+  }
+
+  .nav-dropdown-menu a {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 10px;
+    color: var(--color-navy);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .nav-dropdown-menu a:hover,
+  .nav-dropdown-menu a:focus-visible {
+    background: var(--color-brand-muted);
+  }
+
+  :global(.site-header-overlay:not(.site-header-scrolled):not(:has(.nav-open))) .nav-dropdown-toggle {
+    color: #fff;
+  }
+
+  :global(.site-header-overlay:not(.site-header-scrolled):not(:has(.nav-open)))
+    .nav-dropdown-toggle:hover,
+  :global(.site-header-overlay:not(.site-header-scrolled):not(:has(.nav-open)))
+    .nav-dropdown-toggle:focus-visible,
+  :global(.site-header-overlay:not(.site-header-scrolled):not(:has(.nav-open)))
+    .nav-dropdown-open
+    .nav-dropdown-toggle {
+    background: rgb(255 255 255 / 12%);
+  }
+
+  @media (max-width: 900px) {
+    .nav-dropdown {
+      width: 100%;
+    }
+
+    .nav-dropdown-toggle {
+      width: 100%;
+      justify-content: space-between;
+      padding: 14px;
+    }
+
+    .nav-dropdown-menu {
+      position: static;
+      display: none;
+      min-width: 0;
+      margin-top: 4px;
+      border: 0;
+      border-radius: 12px;
+      background: rgb(255 255 255 / 72%);
+      box-shadow: none;
+    }
+
+    .nav-dropdown-open .nav-dropdown-menu {
+      display: block;
+    }
+  }
+</style>

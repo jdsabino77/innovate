@@ -1,0 +1,45 @@
+{
+  "description": "Badge / conference pass mockups. Canonical design: badge-hands-woman.png. Flat mockup updated to match.",
+  "settings": {
+    "siteUrl": "https://innovate.jdsabino.workers.dev",
+    "sourceDir": "public/images/hero-source/badge",
+    "canonicalDesign": "badge-hands-woman.png"
+  },
+  "badgeDesign": {
+    "eventName": "Innovate",
+    "eventDate": "February 27, 2027",
+    "venue": "The Quay — Gala room",
+    "host": "Yasa Laser",
+    "colors": {
+      "navy": "#0f0f0f",
+      "gold": "#c9a962",
+      "cream": "#f5f3ef"
+    }
+  },
+  "assets": [
+    {
+      "id": "badge-mockup-flat",
+      "label": "Badge design — flat mockup (no hands)",
+      "file": "public/images/hero-source/badge/badge-mockup-flat.png",
+      "assetUrl": "https://innovate.jdsabino.workers.dev/images/hero-source/badge/badge-mockup-flat.png",
+      "purpose": "Reference for pass artwork — matches woman.png design",
+      "status": "approved"
+    },
+    {
+      "id": "badge-hands-woman",
+      "label": "Badge held by woman — hands only, no head/body",
+      "file": "public/images/hero-source/badge/badge-hands-woman.png",
+      "assetUrl": "https://innovate.jdsabino.workers.dev/images/hero-source/badge/badge-hands-woman.png",
+      "purpose": "Canonical badge design + hero video scene",
+      "status": "in-video"
+    },
+    {
+      "id": "badge-hands-man",
+      "label": "Badge held by man — hands only, no head/body",
+      "file": "public/images/hero-source/badge/badge-hands-man.png",
+      "assetUrl": "https://innovate.jdsabino.workers.dev/images/hero-source/badge/badge-hands-man.png",
+      "purpose": "Hero video — same badge design, masculine hands",
+      "status": "in-video"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "manifest": "src/data/hero-video-sources.json",
+  "toronto": [
+    {
+      "id": "toronto-skyline-dusk",
+      "file": "cn-tower-skyline.jpg",
+      "label": "Toronto skyline at dusk with CN Tower",
+      "assetUrl": "https://innovate.jdsabino.workers.dev/images/hero-source/toronto/cn-tower-skyline.jpg",
+      "photographer": "Mauricio Noronha",
+      "source": "Unsplash",
+      "url": "https://unsplash.com/photos/toronto-skyline-at-dusk-with-the-cn-tower-xnOpEMoOv3w"
+    },
+    {
+      "id": "cn-tower-close",
+      "file": "cn-tower-close.jpg",
+      "label": "CN Tower, Toronto",
+      "assetUrl": "https://innovate.jdsabino.workers.dev/images/hero-source/toronto/cn-tower-close.jpg",
+      "photographer": "Unsplash contributor",
+      "source": "Unsplash",
+      "url": "https://unsplash.com/photos/cn-tower-toronto-yOUX5QUjagI"
+    }
+  ],
+  "quay": [
+    {
+      "id": "quay-gala-room",
+      "file": "gala-room-01.jpg",
+      "label": "The Quay — Gala room setup",
+      "assetUrl": "https://innovate.jdsabino.workers.dev/images/venue/gala-room-01.jpg",
+      "source": "Google Photos",
+      "url": "https://photos.app.goo.gl/7x7BeLn3NoWhYUPj8"
+    },
+    {
+      "id": "quay-gala-room-02",
+      "file": "gala-room-02.jpg",
+      "label": "The Quay — Gala room interior",
+      "assetUrl": "https://innovate.jdsabino.workers.dev/images/venue/gala-room-02.jpg",
+      "source": "Google Photos",
+      "url": "https://photos.app.goo.gl/7x7BeLn3NoWhYUPj8"
+    },
+    {
+      "id": "quay-seated-dinner-02",
+      "file": "seated-dinner-02.jpg",
+      "label": "The Quay — Seated dinner",
+      "assetUrl": "https://innovate.jdsabino.workers.dev/images/venue/seated-dinner-02.jpg",
+      "source": "Google Photos",
+      "url": "https://photos.app.goo.gl/U7joAmSpG6UBc5QB9"
+    }
+  ],
+  "badge": [
+    {
+      "id": "badge-hands-woman",
+      "file": "badge-hands-woman.png",
+      "label": "Innovate conference pass",
+      "assetUrl": "https://innovate.jdsabino.workers.dev/images/hero-source/badge/badge-hands-woman.png",
+      "source": "Generated mockup"
+    },
+    {
+      "id": "badge-hands-man",
+      "file": "badge-hands-man.png",
+      "label": "Innovate conference pass",
+      "assetUrl": "https://innovate.jdsabino.workers.dev/images/hero-source/badge/badge-hands-man.png",
+      "source": "Generated mockup"
+    }
+  ],
+  "quaySourceAlbums": [
+    {
+      "label": "Gala foyer",
+      "url": "https://photos.app.goo.gl/6UujjHUUt7y11KTcA"
+    },
+    {
+      "label": "Gala foyer & food stations",
+      "url": "https://photos.app.goo.gl/jgWDnjcaY8MURrQH8"
+    },
+    {
+      "label": "Gala photos",
+      "url": "https://photos.app.goo.gl/7x7BeLn3NoWhYUPj8"
+    },
+    {
+      "label": "Bar & food stations",
+      "url": "https://photos.app.goo.gl/8WNW8VrL6cdgq4f78"
+    },
+    {
+      "label": "Seated dinner",
+      "url": "https://photos.app.goo.gl/U7joAmSpG6UBc5QB9"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+---
+import Button from "./Button.astro";
+import { eventConfig } from "../lib/event-config";
+
+interface Props {
+  registerHref?: string;
+}
+
+const { registerHref = "/register" } = Astro.props;
+---
+
+<div class="facts-bar">
+  <div>
+    <dt>Date</dt>
+    <dd>{eventConfig.eventDateDisplay}</dd>
+  </div>
+  <div>
+    <dt>Venue</dt>
+    <dd>{eventConfig.venue}</dd>
+  </div>
+  <div>
+    <dt>Host</dt>
+    <dd>{eventConfig.host}</dd>
+  </div>
+  <div class="facts-bar-action">
+    <Button href={registerHref}>Register</Button>
+  </div>
+</div>
+
+<style>
+  .facts-bar-action {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 820px) {
+    .facts-bar-action {
+      justify-content: stretch;
+    }
+
+    .facts-bar-action :global(.button) {
+      width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,36 @@
+{
+  "page": {
+    "eyebrow": "Speakers",
+    "title": "Meet our keynote faculty",
+    "intro": "Innovate 2027 opens with confirmed keynote faculty from Yazdani Aesthetics — Dr. Arjang Yazdani and Nadine Sabino, RN. Additional speakers will be announced as the program is finalized.",
+    "moreComingNote": "Additional keynote speakers will be announced as the program is confirmed."
+  },
+  "speakers": [
+    {
+      "id": "arjang-yazdani",
+      "name": "Dr. Arjang Yazdani",
+      "credentials": "BSc, MD, FRCSC",
+      "role": "Keynote Speaker",
+      "bio": "Royal College-certified plastic surgeon specializing in reconstructive and cosmetic surgery. Dr. Yazdani is Chief of Plastic Surgery at London Health Sciences Centre and Chairman of Plastic Surgery at Western University, with a practice spanning surgical and non-surgical aesthetic care.",
+      "photo": "/images/speakers/arjang-yazdani.jpg",
+      "photoAlt": "Dr. Arjang Yazdani",
+      "photoSource": "Yazdani Aesthetics",
+      "sourceUrl": "https://yazdaniaesthetics.com/about/dr-arjang-yazdani/",
+      "order": 1,
+      "featured": true
+    },
+    {
+      "id": "nadine-sabino",
+      "name": "Nadine Sabino, RN",
+      "credentials": "BScN",
+      "role": "Keynote Speaker",
+      "bio": "Partner at Yazdani Aesthetics and one of Canada's most experienced aesthetic nurses, with deep expertise in lasers, injectables, and non-surgical treatments. Nadine is an in-demand national speaker and trainer, with a background in surgical nursing and provider education.",
+      "photo": "/images/speakers/nadine-sabino.jpg",
+      "photoAlt": "Nadine Sabino, RN",
+      "photoSource": "Yazdani Aesthetics",
+      "sourceUrl": "https://yazdaniaesthetics.com/about/nadine-sabino/",
+      "order": 2,
+      "featured": true
+    }
+  ]
+}

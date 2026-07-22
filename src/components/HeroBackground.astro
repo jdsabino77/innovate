@@ -1,0 +1,109 @@
+---
+import home from "../data/home.json";
+
+const { video, poster } = home.hero;
+---
+
+<div class="hero-background" aria-hidden="true">
+  <video
+    class="hero-background-video"
+    poster={poster}
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+  >
+    <source src={video} type="video/mp4" />
+  </video>
+  <img class="hero-background-poster" src={poster} alt="" loading="eager" decoding="async" fetchpriority="high" />
+  <div class="hero-background-overlay"></div>
+  <div class="hero-background-gradient"></div>
+  <div class="hero-background-glow hero-background-glow-a"></div>
+  <div class="hero-background-glow hero-background-glow-b"></div>
+  <svg class="hero-background-lines" viewBox="0 0 1200 800" preserveAspectRatio="none">
+    <path d="M0 620 C 260 520, 420 760, 720 640 S 980 420, 1200 520" fill="none" stroke="currentColor" stroke-width="1.2"></path>
+    <path d="M0 180 C 320 80, 520 320, 840 180 S 1040 60, 1200 140" fill="none" stroke="currentColor" stroke-width="1"></path>
+    <circle cx="980" cy="180" r="120" fill="none" stroke="currentColor" stroke-width="1"></circle>
+    <circle cx="180" cy="620" r="90" fill="none" stroke="currentColor" stroke-width="1"></circle>
+  </svg>
+</div>
+
+<style>
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .hero-background-video,
+  .hero-background-poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-background-poster {
+    display: none;
+  }
+
+  .hero-background-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgb(15 15 15 / 72%) 0%, rgb(15 15 15 / 58%) 42%, rgb(15 15 15 / 78%) 100%),
+      radial-gradient(circle at 50% 20%, rgb(201 169 98 / 12%), transparent 42%);
+  }
+
+  .hero-background-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 15% 20%, rgb(201 169 98 / 14%), transparent 34%),
+      radial-gradient(circle at 85% 10%, rgb(201 169 98 / 8%), transparent 28%);
+  }
+
+  .hero-background-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.45;
+  }
+
+  .hero-background-glow-a {
+    top: -80px;
+    right: -40px;
+    width: 320px;
+    height: 320px;
+    background: rgb(201 169 98 / 24%);
+  }
+
+  .hero-background-glow-b {
+    bottom: -120px;
+    left: -60px;
+    width: 360px;
+    height: 360px;
+    background: rgb(201 169 98 / 14%);
+  }
+
+  .hero-background-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    color: rgb(201 169 98 / 18%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-background-video {
+      display: none;
+    }
+
+    .hero-background-poster {
+      display: block;
+    }
+  }
+</style>

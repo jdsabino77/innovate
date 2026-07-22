@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import Button from "../components/Button.astro";
+import Section from "../components/Section.astro";
+import { eventConfig } from "../lib/event-config";
+
+const hasContactEmail = Boolean(eventConfig.contactEmail);
+---
+
+<BaseLayout
+  title="Contact"
+  description={`Contact the ${eventConfig.eventName} team for registration, sponsorship, or program questions.`}
+  canonicalPath="/contact"
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Reach the Innovate team"
+    intro="Questions about registration, sponsorship, or the program? We will route your message to the right person."
+  />
+  <Section>
+    <div class="surface contact-card">
+      <div>
+        <h2>General inquiries</h2>
+        <p>
+          {
+            hasContactEmail
+              ? "Email is the fastest way to reach us for registration, sponsorship, or program questions."
+              : "A dedicated conference inbox will be published here soon. In the meantime, contact Yasa Laser for urgent questions."
+          }
+        </p>
+        {
+          hasContactEmail && (
+            <p class="sponsorship-note">
+              For sponsorship packages and partner opportunities, email{" "}
+              <a href={`mailto:${eventConfig.contactEmail}`}>{eventConfig.contactEmail}</a>.
+            </p>
+          )
+        }
+      </div>
+      {
+        hasContactEmail ? (
+          <Button href={`mailto:${eventConfig.contactEmail}`}>{eventConfig.contactEmail}</Button>
+        ) : (
+          <Button href={eventConfig.hostUrl} variant="secondary">
+            Visit {eventConfig.host}
+          </Button>
+        )
+      }
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .contact-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 24px;
+    align-items: center;
+    padding: 32px;
+  }
+
+  .contact-card h2 {
+    margin: 0 0 8px;
+    color: var(--color-navy);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1.1;
+  }
+
+  .contact-card p {
+    margin: 0;
+    color: var(--color-muted);
+  }
+
+  .sponsorship-note {
+    margin-top: 12px !important;
+  }
+
+  .sponsorship-note a {
+    color: var(--color-brand);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .sponsorship-note a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 720px) {
+    .contact-card {
+      grid-template-columns: 1fr;
+      padding: 24px;
+    }
+  }
+</style>

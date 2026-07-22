@@ -1,0 +1,154 @@
+{
+  "description": "Source images for the homepage hero video. Click assetUrl to preview each image. Edit scenes, then run npm run build:hero-video.",
+  "settings": {
+    "siteUrl": "https://innovate.jdsabino.workers.dev",
+    "fadeDuration": 0.8,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "outputVideo": "public/video/hero.mp4",
+    "outputPoster": "public/video/hero-poster.webp"
+  },
+  "scenes": [
+    {
+      "id": "toronto-skyline-dusk",
+      "order": 1,
+      "enabled": true,
+      "label": "Toronto skyline at dusk with CN Tower",
+      "assetUrl": "https://innovate.jdsabino.workers.dev/images/hero-source/toronto/cn-tower-skyline.jpg",
+      "file": "public/images/hero-source/toronto/cn-tower-skyline.jpg",
+      "sourceUrl": "https://unsplash.com/photos/toronto-skyline-at-dusk-with-the-cn-tower-xnOpEMoOv3w",
+      "downloadUrl": "https://images.unsplash.com/photo-1753567048249-1b3648e87c81?auto=format&w=1920&q=85",
+      "category": "toronto",
+      "photographer": "Mauricio Noronha",
+      "source": "Unsplash",
+      "duration": 4,
+      "motion": "zoom-in",
+      "notes": ""
+    },
+    {
+      "id": "cn-tower-close",
+      "order": 2,
+      "enabled": true,
+      "label": "CN Tower, Toronto",
+      "assetUrl": "https://innovate.jdsabino.workers.dev/images/hero-source/toronto/cn-tower-close.jpg",
+      "file": "public/images/hero-source/toronto/cn-tower-close.jpg",
+      "sourceUrl": "https://unsplash.com/photos/cn-tower-toronto-yOUX5QUjagI",
+      "downloadUrl": "https://images.unsplash.com/photo-1533150026753-c04ad024faa8?auto=format&w=1920&q=85",
+      "category": "toronto",
+      "photographer": "Unsplash contributor",
+      "source": "Unsplash",
+      "duration": 3,
+      "motion": "zoom-in",
+      "notes": ""
+    },
+    {
+      "id": "quay-gala-room",
+      "order": 3,
+      "enabled": true,
+      "label": "The Quay — Gala room setup",
+      "assetUrl": "https://innovate.jdsabino.workers.dev/images/venue/gala-room-01.jpg",
+      "file": "public/images/venue/gala-room-01.jpg",
+      "sourceUrl": "https://photos.app.goo.gl/7x7BeLn3NoWhYUPj8",
+      "category": "quay",
+      "photographer": "The Quay",
+      "source": "Google Photos",
+      "duration": 3,
+      "motion": "pan-left",
+      "notes": "Album: Gala photos"
+    },
+    {
+      "id": "quay-gala-room-02",
+      "order": 4,
+      "enabled": true,
+      "label": "The Quay — Gala room interior",
+      "assetUrl": "https://innovate.jdsabino.workers.dev/images/venue/gala-room-02.jpg",
+      "file": "public/images/venue/gala-room-02.jpg",
+      "sourceUrl": "https://photos.app.goo.gl/7x7BeLn3NoWhYUPj8",
+      "category": "quay",
+      "photographer": "The Quay",
+      "source": "Google Photos",
+      "duration": 3,
+      "motion": "zoom-in",
+      "notes": "Album: Gala photos"
+    },
+    {
+      "id": "quay-seated-dinner-02",
+      "order": 5,
+      "enabled": true,
+      "label": "The Quay — Seated dinner",
+      "assetUrl": "https://innovate.jdsabino.workers.dev/images/venue/seated-dinner-02.jpg",
+      "file": "public/images/venue/seated-dinner-02.jpg",
+      "sourceUrl": "https://photos.app.goo.gl/U7joAmSpG6UBc5QB9",
+      "category": "quay",
+      "photographer": "The Quay",
+      "source": "Google Photos",
+      "duration": 3,
+      "motion": "pan-left",
+      "notes": "Album: Seated dinner"
+    },
+    {
+      "id": "badge-hands-woman",
+      "order": 6,
+      "enabled": true,
+      "label": "Innovate conference pass",
+      "assetUrl": "https://innovate.jdsabino.workers.dev/images/hero-source/badge/badge-hands-woman.png",
+      "file": "public/images/hero-source/badge/badge-hands-woman.png",
+      "sourceUrl": "",
+      "category": "badge",
+      "source": "Generated mockup",
+      "duration": 3,
+      "motion": "zoom-in",
+      "notes": "Approved badge design — hands only, no head/body"
+    },
+    {
+      "id": "badge-hands-man",
+      "order": 7,
+      "enabled": true,
+      "label": "Innovate conference pass",
+      "assetUrl": "https://innovate.jdsabino.workers.dev/images/hero-source/badge/badge-hands-man.png",
+      "file": "public/images/hero-source/badge/badge-hands-man.png",
+      "sourceUrl": "",
+      "category": "badge",
+      "source": "Generated mockup",
+      "duration": 3,
+      "motion": "zoom-in",
+      "notes": "Same badge design as woman shot — hands only, no head/body"
+    }
+  ],
+  "alternates": [
+    {
+      "id": "toronto-placeholder",
+      "enabled": false,
+      "label": "Add a Toronto landmark here (e.g. CN Tower day, Union Station, Distillery)",
+      "assetUrl": "",
+      "file": "public/images/hero-source/toronto/ADD-FILENAME.jpg",
+      "sourceUrl": "",
+      "downloadUrl": "",
+      "category": "toronto",
+      "notes": "Set downloadUrl, save image to public/images/hero-source/toronto/, update assetUrl + file, then move into scenes[]."
+    }
+  ],
+  "quaySourceAlbums": [
+    {
+      "label": "Gala foyer",
+      "url": "https://photos.app.goo.gl/6UujjHUUt7y11KTcA"
+    },
+    {
+      "label": "Gala foyer & food stations",
+      "url": "https://photos.app.goo.gl/jgWDnjcaY8MURrQH8"
+    },
+    {
+      "label": "Gala photos",
+      "url": "https://photos.app.goo.gl/7x7BeLn3NoWhYUPj8"
+    },
+    {
+      "label": "Bar & food stations",
+      "url": "https://photos.app.goo.gl/8WNW8VrL6cdgq4f78"
+    },
+    {
+      "label": "Seated dinner",
+      "url": "https://photos.app.goo.gl/U7joAmSpG6UBc5QB9"
+    }
+  ]
+}

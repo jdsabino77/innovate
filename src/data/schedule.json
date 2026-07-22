@@ -1,0 +1,36 @@
+{
+  "status": "draft",
+  "note": "Session times and faculty are subject to change. A finalized schedule will be published before registration closes.",
+  "sessions": [
+    {
+      "time": "8:30 AM",
+      "title": "Registration & welcome coffee",
+      "detail": "Check in at The Quay — Gala room."
+    },
+    {
+      "time": "9:30 AM",
+      "title": "Opening remarks",
+      "detail": "Welcome from Yasa Laser and conference chairs."
+    },
+    {
+      "time": "10:00 AM",
+      "title": "Morning clinical sessions",
+      "detail": "Injectables, assessment frameworks, and treatment planning."
+    },
+    {
+      "time": "12:30 PM",
+      "title": "Lunch & sponsor showcase",
+      "detail": "Networking with faculty, sponsors, and attendees."
+    },
+    {
+      "time": "1:45 PM",
+      "title": "Afternoon workshops",
+      "detail": "Device-based treatments, complications management, and team workflows."
+    },
+    {
+      "time": "4:30 PM",
+      "title": "Closing panel & reception",
+      "detail": "Q&A, takeaways, and informal networking."
+    }
+  ]
+}

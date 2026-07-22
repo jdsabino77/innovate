@@ -1,0 +1,104 @@
+{
+  "page": {
+    "eyebrow": "Exhibitors & Sponsors",
+    "title": "Meet our 2027 partners",
+    "intro": "Hosted by Yasa Laser and founded by Dr. Arjang Yazdani and Nadine Sabino, RN, Innovate advances medical aesthetics through innovation, science, and personalized patient care. Our confirmed industry partners will showcase emerging trends, Spring 2027 technology launches, and regenerative skincare solutions.",
+    "exhibitorsHeading": "Confirmed partners",
+    "moreComingNote": "Additional partners may still be announced as the program is finalized.",
+    "tiersHeading": "Sponsorship opportunities",
+    "tiersIntro": "Interested in partnering with Innovate 2027? Email us to discuss sponsorship packages and how we can align with your goals.",
+    "contactEmail": "events@yasalaser.com"
+  },
+  "host": {
+    "name": "Yasa Laser",
+    "logo": "/images/sponsors/yasa-laser.svg",
+    "logoAlt": "Yasa Laser",
+    "url": "https://yasalaser.com",
+    "label": "Presented by"
+  },
+  "exhibitors": [
+    {
+      "id": "sciton",
+      "name": "Sciton",
+      "logo": "/images/sponsors/sciton.svg",
+      "logoAlt": "Sciton",
+      "url": "https://sciton.com/",
+      "tier": "Confirmed partner",
+      "order": 1,
+      "featured": true,
+      "status": "soft-confirmed"
+    },
+    {
+      "id": "co2-lift",
+      "name": "CO2 Lift",
+      "logo": "/images/sponsors/co2-lift.png",
+      "logoAlt": "CO2 Lift",
+      "url": "https://co2lift.com/",
+      "tier": "Confirmed partner",
+      "order": 2,
+      "featured": true,
+      "status": "soft-confirmed"
+    },
+    {
+      "id": "alastin",
+      "name": "Alastin Skincare",
+      "logo": "/images/sponsors/alastin.svg",
+      "logoAlt": "Alastin Skincare",
+      "url": "https://alastin.com/",
+      "tier": "Confirmed partner",
+      "order": 3,
+      "featured": true,
+      "status": "soft-confirmed"
+    },
+    {
+      "id": "loreal-brands",
+      "name": "Skinbetter Science & SkinCeuticals",
+      "logo": "/images/sponsors/loreal-brands.svg",
+      "logoAlt": "Skinbetter Science and SkinCeuticals",
+      "url": "https://www.skinbetter.com/",
+      "tier": "Confirmed partner",
+      "order": 4,
+      "featured": true,
+      "status": "soft-confirmed"
+    },
+    {
+      "id": "cynosure",
+      "name": "Cynosure Lutronic",
+      "logo": "/images/sponsors/cynosure.svg",
+      "logoAlt": "Cynosure Lutronic",
+      "url": "https://www.cynosure.com/",
+      "tier": "Confirmed partner",
+      "order": 5,
+      "featured": true,
+      "status": "soft-confirmed"
+    },
+    {
+      "id": "allergan",
+      "name": "Allergan Aesthetics",
+      "logo": "/images/sponsors/allergan.svg",
+      "logoAlt": "Allergan Aesthetics",
+      "url": "https://www.allerganaesthetics.com/",
+      "tier": "Confirmed partner",
+      "order": 6,
+      "featured": true,
+      "status": "soft-confirmed"
+    }
+  ],
+  "tiers": [
+    {
+      "name": "Presenting partner",
+      "description": "Premier visibility across the program, stage, and attendee materials.",
+      "available": 1
+    },
+    {
+      "name": "Gold",
+      "description": "Prominent branding in session breaks and the sponsor showcase.",
+      "available": 2
+    },
+    {
+      "name": "Supporting",
+      "description": "Recognition across the venue and digital program guide.",
+      "available": 3
+    }
+  ]
+}

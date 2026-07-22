@@ -1,0 +1,125 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import Button from "../components/Button.astro";
+import Section from "../components/Section.astro";
+import VenueGallery from "../components/VenueGallery.astro";
+import { eventConfig } from "../lib/event-config";
+import { venue, getVenuePhoto } from "../lib/venue";
+
+const heroPhoto = getVenuePhoto(venue.aboutFeatured);
+---
+
+<BaseLayout
+  title="Venue"
+  description={`${eventConfig.venue} — host venue for ${eventConfig.eventName} on ${eventConfig.eventDateDisplay}.`}
+  canonicalPath="/venue"
+>
+  <PageHero
+    eyebrow="Venue"
+    title={venue.name}
+    intro={venue.description}
+    photoSrc={heroPhoto?.src}
+  />
+  <Section>
+    <div class="split">
+      <div class="content">
+        <h2>Location & arrival</h2>
+        <p>{venue.directionsNote}</p>
+        <h3>On-site experience</h3>
+        <ul>
+          {venue.onSite.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <aside class="surface venue-card">
+        <h2>Event details</h2>
+        <dl class="venue-details">
+          <div>
+            <dt>Date</dt>
+            <dd>{eventConfig.eventDateDisplay}</dd>
+          </div>
+          <div>
+            <dt>Venue</dt>
+            <dd>{eventConfig.venue}</dd>
+          </div>
+          <div>
+            <dt>Host</dt>
+            <dd>
+              <a href={eventConfig.hostUrl} target="_blank" rel="noopener noreferrer">
+                {eventConfig.host}
+              </a>
+            </dd>
+          </div>
+        </dl>
+        <Button href="/register">Register</Button>
+      </aside>
+    </div>
+  </Section>
+
+  <Section variant="soft" eyebrow="Gallery" title="Inside The Quay Gala room" intro="Photos from The Quay event space.">
+    <VenueGallery />
+    <p class="venue-credit">
+      Photos: The Quay. Source albums:
+      {
+        venue.sourceAlbums.map((album, index) => (
+          <>
+            {index > 0 && ", "}
+            <a href={album.url} target="_blank" rel="noopener noreferrer">
+              {album.label}
+            </a>
+          </>
+        ))
+      }
+    </p>
+  </Section>
+</BaseLayout>
+
+<style>
+  .venue-card {
+    display: grid;
+    gap: 20px;
+    padding: 28px;
+  }
+
+  .venue-card h2 {
+    margin: 0;
+    color: var(--color-navy);
+    font-size: 1.35rem;
+  }
+
+  .venue-details {
+    display: grid;
+    gap: 16px;
+    margin: 0;
+  }
+
+  .venue-details div {
+    display: grid;
+    gap: 4px;
+  }
+
+  .venue-details dt {
+    color: var(--color-brand);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .venue-details dd {
+    margin: 0;
+    color: var(--color-navy);
+    font-weight: 700;
+  }
+
+  .venue-credit {
+    margin: 24px 0 0;
+    color: var(--color-muted);
+    font-size: 0.92rem;
+  }
+
+  .venue-credit a {
+    color: var(--color-navy);
+    font-weight: 700;
+  }
+</style>

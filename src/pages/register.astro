@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import Button from "../components/Button.astro";
+import Section from "../components/Section.astro";
+import { eventConfig } from "../lib/event-config";
+
+const registrationOpen = Boolean(eventConfig.typeformUrl);
+---
+
+<BaseLayout
+  title="Register"
+  description={`Register for ${eventConfig.eventName} on ${eventConfig.eventDateDisplay}.`}
+  canonicalPath="/register"
+>
+  <PageHero
+    eyebrow="Register"
+    title="Reserve your seat at Innovate"
+    intro={`Join us on ${eventConfig.eventDateDisplay} at ${eventConfig.venue}. Registration details and pricing will be published here.`}
+  />
+  <Section>
+    {
+      registrationOpen ? (
+        <div class="registration-frame surface">
+          <iframe
+            title="Innovate registration form"
+            src={eventConfig.typeformUrl}
+            width="100%"
+            height="720"
+            loading="lazy"
+          />
+        </div>
+      ) : (
+        <div class="registration-placeholder surface">
+          <h2>Registration opens soon</h2>
+          <p>
+            The registration form is being finalized. Check back here for ticket types, pricing, and the official
+            sign-up link.
+          </p>
+          <div class="registration-actions">
+            <Button href="/contact">Contact the team</Button>
+            <Button href="/schedule" variant="secondary">Review the schedule</Button>
+          </div>
+        </div>
+      )
+    }
+  </Section>
+</BaseLayout>
+
+<style>
+  .registration-frame,
+  .registration-placeholder {
+    padding: 24px;
+  }
+
+  .registration-frame iframe {
+    display: block;
+    border: 0;
+    border-radius: var(--radius-md);
+    min-height: 720px;
+  }
+
+  .registration-placeholder h2 {
+    margin: 0 0 10px;
+    color: var(--color-navy);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+  }
+
+  .registration-placeholder p {
+    margin: 0;
+    color: var(--color-muted);
+    max-width: 640px;
+  }
+
+  .registration-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+  }
+</style>

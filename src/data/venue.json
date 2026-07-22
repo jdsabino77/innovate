@@ -1,0 +1,111 @@
+{
+  "name": "The Quay — Gala room",
+  "description": "Innovate takes place in the Gala room at The Quay on Toronto's East waterfront—a contemporary event space with large windows, natural wood accents, and room for focused programming and networking.",
+  "directionsNote": "Detailed directions, parking guidance, and arrival instructions will be shared with registered attendees closer to the event.",
+  "onSite": [
+    "Single-room program flow for easy navigation between sessions",
+    "Registration desk opens at 8:30 AM",
+    "Lunch and sponsor showcase included for registered attendees"
+  ],
+  "featured": ["gala-foyer-01", "seated-dinner-01"],
+  "aboutFeatured": "gala-foyer-01",
+  "sourceAlbums": [
+    {
+      "label": "Gala foyer",
+      "url": "https://photos.app.goo.gl/6UujjHUUt7y11KTcA"
+    },
+    {
+      "label": "Gala foyer & food stations",
+      "url": "https://photos.app.goo.gl/jgWDnjcaY8MURrQH8"
+    },
+    {
+      "label": "Gala photos",
+      "url": "https://photos.app.goo.gl/7x7BeLn3NoWhYUPj8"
+    },
+    {
+      "label": "Bar & food stations",
+      "url": "https://photos.app.goo.gl/8WNW8VrL6cdgq4f78"
+    },
+    {
+      "label": "Seated dinner",
+      "url": "https://photos.app.goo.gl/U7joAmSpG6UBc5QB9"
+    }
+  ],
+  "photos": [
+    {
+      "id": "gala-foyer-01",
+      "src": "/images/venue/gala-foyer-01.jpg",
+      "alt": "The Quay Gala room foyer with warm lighting and wood accents",
+      "caption": "Gala room foyer",
+      "category": "foyer"
+    },
+    {
+      "id": "gala-foyer-02",
+      "src": "/images/venue/gala-foyer-02.jpg",
+      "alt": "Entry and lounge area at The Quay Gala room",
+      "caption": "Entry and lounge",
+      "category": "foyer"
+    },
+    {
+      "id": "gala-foyer-03",
+      "src": "/images/venue/gala-foyer-03.jpg",
+      "alt": "Wide view of The Quay Gala room entrance",
+      "caption": "Gala room entrance",
+      "category": "foyer"
+    },
+    {
+      "id": "foyer-food-01",
+      "src": "/images/venue/foyer-food-01.jpg",
+      "alt": "Gala foyer with food stations set up for an event",
+      "caption": "Foyer reception setup",
+      "category": "foyer"
+    },
+    {
+      "id": "gala-room-01",
+      "src": "/images/venue/gala-room-01.jpg",
+      "alt": "The Quay Gala room set for a conference or presentation",
+      "caption": "Gala room presentation setup",
+      "category": "foyer"
+    },
+    {
+      "id": "gala-room-02",
+      "src": "/images/venue/gala-room-02.jpg",
+      "alt": "Spacious Gala room interior at The Quay",
+      "caption": "Gala room interior",
+      "category": "foyer"
+    },
+    {
+      "id": "seated-dinner-01",
+      "src": "/images/venue/seated-dinner-01.jpg",
+      "alt": "Seated dinner setup in The Quay Gala room",
+      "caption": "Seated dinner arrangement",
+      "category": "dining"
+    },
+    {
+      "id": "seated-dinner-02",
+      "src": "/images/venue/seated-dinner-02.jpg",
+      "alt": "Tables set for a formal dinner in the Gala room",
+      "caption": "Formal dinner setup",
+      "category": "dining"
+    },
+    {
+      "id": "bar-food-01",
+      "src": "/images/venue/bar-food-01.jpg",
+      "alt": "Bar and food station at The Quay event space",
+      "caption": "Bar and food station",
+      "category": "catering"
+    },
+    {
+      "id": "bar-food-02",
+      "src": "/images/venue/bar-food-02.jpg",
+      "alt": "Catering stations set up for a gala event at The Quay",
+      "caption": "Catering stations",
+      "category": "catering"
+    }
+  ],
+  "categories": [
+    { "id": "foyer", "label": "Gala foyer" },
+    { "id": "dining", "label": "Seated dinner" },
+    { "id": "catering", "label": "Bar & food stations" }
+  ]
+}

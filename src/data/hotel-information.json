@@ -1,0 +1,34 @@
+{
+  "page": {
+    "eyebrow": "Resources",
+    "title": "Hotel information",
+    "intro": "Innovate is a single-day conference at The Quay on Toronto's East waterfront. If you're travelling from out of town, these nearby hotels are a convenient base — official room blocks and rates will be posted here when available."
+  },
+  "venueNote": "The Quay — Gala room is located on Queens Quay East. Most downtown Toronto hotels are a short rideshare or transit ride away.",
+  "roomBlockNote": "Negotiated room blocks for Innovate 2027 are in progress. Registered attendees will receive preferred-rate details by email when partnerships are confirmed.",
+  "hotels": [
+    {
+      "name": "Westin Harbour Castle",
+      "distance": "~5 min by car",
+      "note": "Waterfront hotel with harbour views and easy access to Queens Quay.",
+      "url": "https://www.marriott.com/"
+    },
+    {
+      "name": "Fairmont Royal York",
+      "distance": "~10 min by transit",
+      "note": "Historic downtown property connected to Union Station — convenient for out-of-town guests.",
+      "url": "https://www.fairmont.com/"
+    },
+    {
+      "name": "Hotel X Toronto",
+      "distance": "~8 min by car",
+      "note": "Modern lakeside hotel on the Exhibition Place grounds with skyline views.",
+      "url": "https://www.hotelxtoronto.com/"
+    }
+  ],
+  "tips": [
+    "Book early — February is a busy season for Toronto events.",
+    "Check cancellation policies before confirming travel.",
+    "The venue page includes arrival and on-site details for event day."
+  ]
+}

@@ -1,0 +1,80 @@
+---
+interface Props {
+  name: string;
+  logo: string;
+  logoAlt: string;
+  url?: string;
+  tier?: string;
+}
+
+const { name, logo, logoAlt, url, tier } = Astro.props;
+const Tag = url ? "a" : "div";
+---
+
+<Tag
+  class="exhibitor-logo-card card"
+  href={url}
+  target={url ? "_blank" : undefined}
+  rel={url ? "noopener noreferrer" : undefined}
+>
+  {tier && <p class="exhibitor-tier">{tier}</p>}
+  <div class="exhibitor-logo-frame">
+    <img src={logo} alt={logoAlt} loading="lazy" decoding="async" />
+  </div>
+  <p class="exhibitor-name">{name}</p>
+</Tag>
+
+<style>
+  .exhibitor-logo-card {
+    display: grid;
+    gap: 12px;
+    align-content: start;
+    padding: 20px 22px 22px;
+    text-decoration: none;
+    color: inherit;
+    transition:
+      border-color 160ms ease,
+      box-shadow 160ms ease,
+      transform 160ms ease;
+  }
+
+  .exhibitor-logo-card:hover,
+  .exhibitor-logo-card:focus-visible {
+    border-color: rgb(201 169 98 / 45%);
+    box-shadow: var(--shadow-card);
+    transform: translateY(-2px);
+  }
+
+  .exhibitor-tier {
+    margin: 0;
+    color: var(--color-brand);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .exhibitor-logo-frame {
+    display: grid;
+    place-items: center;
+    min-height: 96px;
+    padding: 12px 8px;
+  }
+
+  .exhibitor-logo-frame img {
+    display: block;
+    max-width: 100%;
+    max-height: 72px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .exhibitor-name {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-align: center;
+  }
+</style>

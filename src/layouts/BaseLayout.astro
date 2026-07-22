@@ -1,0 +1,53 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { eventConfig, siteDescription } from "../lib/event-config";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  overlayHeader?: boolean;
+}
+
+const {
+  title = eventConfig.eventName,
+  description = siteDescription,
+  canonicalPath = "/",
+  overlayHeader = false,
+} = Astro.props;
+
+const siteName = eventConfig.eventName;
+const pageTitle = title === siteName ? title : `${title} | ${siteName}`;
+const siteUrl = Astro.site ?? new URL(eventConfig.siteUrl);
+const canonical = new URL(canonicalPath, siteUrl).toString();
+const ogImage = new URL("/images/branding/Innovate_Logo_BlackOnWhite.svg", siteUrl).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0f0f0f" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>{pageTitle}</title>
+  </head>
+  <body class:list={[{ "has-overlay-header": overlayHeader }]}>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

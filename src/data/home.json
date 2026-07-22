@@ -1,0 +1,72 @@
+{
+  "hero": {
+    "eyebrow": "February 27, 2027",
+    "title": "Where clinical craft meets practical innovation.",
+    "subtitle": "A single-day aesthetic medicine conference by Yasa Laser at The Quay — Gala room.",
+    "video": "/video/hero.mp4",
+    "poster": "/video/hero-poster.webp"
+  },
+  "stats": [
+    { "value": "1 Day", "label": "Focused program" },
+    { "value": "6+ Sessions", "label": "Clinical & ops" },
+    { "value": "1 Venue", "label": "The Quay Gala room" }
+  ],
+  "about": {
+    "eyebrow": "About Innovate",
+    "title": "Founded by leaders. Focused on what works.",
+    "lead": "Presented by Yasa Laser — a conference built by Canadian R&D and clinical leaders who prioritize outcomes over hype.",
+    "body": "Innovate is founded by Dr. Arjang Yazdani, FRCSC, and Nadine Sabino, RN — pioneers in aesthetic laser medicine, provider training, and clinical innovation across Canada. Their work spans advanced energy-based treatments, surgical and non-surgical care, and national education for aesthetic teams.",
+    "bodySecondary": "Every session at Innovate reflects a results-first philosophy: procedures and protocols that work, taught through case-based learning and practical insight you can apply immediately. No filler — just focused education for clinicians and operators who care about measurable outcomes.",
+    "highlights": [
+      "Physician-led clinical rigor",
+      "Proven protocols and case-based learning",
+      "Built for teams who care about outcomes"
+    ],
+    "image": "/images/home/about-innovate.png",
+    "imageAlt": "Clinician reviewing laser treatment outcomes on a tablet in a modern aesthetic clinic"
+  },
+  "experience": {
+    "eyebrow": "The Innovate experience",
+    "title": "Explore the program",
+    "intro": "Review the draft schedule, meet the faculty, and connect with sponsors.",
+    "items": [
+      {
+        "title": "Schedule",
+        "description": "A full day of clinical sessions, workshops, and networking—from registration to closing reception.",
+        "href": "/schedule",
+        "cta": "View schedule"
+      },
+      {
+        "title": "Speakers",
+        "description": "Meet confirmed keynote faculty — Dr. Arjang Yazdani and Nadine Sabino, RN — with more announcements coming soon.",
+        "href": "/speakers",
+        "cta": "Meet the speakers"
+      },
+      {
+        "title": "Sponsors",
+        "description": "Six confirmed industry partners — including Sciton, Cynosure, Allergan, and Alastin — with additional sponsorship packages available.",
+        "href": "/sponsors",
+        "cta": "View exhibitors & sponsors"
+      }
+    ]
+  },
+  "agenda": {
+    "eyebrow": "2027 Schedule",
+    "title": "Draft agenda",
+    "intro": "Session times and faculty are subject to change. A finalized schedule will be published before registration closes.",
+    "cta": "View full schedule"
+  },
+  "venue": {
+    "eyebrow": "Location",
+    "title": "The Quay — Gala room",
+    "intro": "Innovate takes place in the Gala room at The Quay—a waterfront venue with expansive windows, natural wood accents, and room for focused programming and networking.",
+    "cta": "Explore the venue"
+  },
+  "cta": {
+    "eyebrow": "Innovate 2027",
+    "title": "Don't miss the experience",
+    "body": "Reserve your seat for a focused day of clinical education, operational insight, and networking at The Quay.",
+    "primaryCta": "Register",
+    "secondaryCta": "Contact the team"
+  }
+}

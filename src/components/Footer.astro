@@ -1,0 +1,103 @@
+---
+import { eventConfig } from "../lib/event-config";
+
+const year = new Date().getFullYear();
+const links = [
+  { href: "/schedule", label: "Schedule" },
+  { href: "/speakers", label: "Speakers" },
+  { href: "/sponsors", label: "Sponsors" },
+  { href: "/register", label: "Register" },
+  { href: "/venue", label: "Venue" },
+  { href: "/contact", label: "Contact" },
+];
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <a class="footer-brand" href="/">{eventConfig.eventName}</a>
+      <p>
+        An aesthetic medicine conference presented by{" "}
+        <a href={eventConfig.hostUrl} target="_blank" rel="noopener noreferrer">
+          {eventConfig.host}
+        </a>.
+      </p>
+    </div>
+    <nav aria-label="Footer navigation">
+      {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <span>&copy; {year} Yasa Laser Clinic. All rights reserved.</span>
+    <span>{eventConfig.eventDateDisplay} &middot; {eventConfig.venue}</span>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding: 48px 0 28px;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-navy);
+    color: #fff;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 40px;
+  }
+
+  .footer-brand {
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .site-footer p {
+    max-width: 440px;
+    margin: 10px 0 0;
+    color: rgb(255 255 255 / 68%);
+  }
+
+  .site-footer nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px 16px;
+  }
+
+  .site-footer a {
+    color: #fff;
+    font-weight: 750;
+    text-decoration-color: rgb(201 169 98 / 70%);
+    text-underline-offset: 3px;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    margin-top: 38px;
+    padding-top: 22px;
+    border-top: 1px solid rgb(255 255 255 / 14%);
+    color: rgb(255 255 255 / 62%);
+    font-size: 0.94rem;
+  }
+
+  @media (max-width: 780px) {
+    .footer-inner,
+    .footer-bottom {
+      grid-template-columns: 1fr;
+    }
+
+    .site-footer nav {
+      justify-content: flex-start;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+    }
+  }
+</style>
