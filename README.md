@@ -41,4 +41,7 @@ npm run smoke-test
 npm run deploy
 ```
 
-Pushes to `main` also deploy via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) when Cloudflare secrets are configured.
+Pushes to `main` also deploy via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) when these GitHub Actions secrets are set:
+
+- `CLOUDFLARE_API_TOKEN` — token with **Edit Cloudflare Workers** ([create one](https://dash.cloudflare.com/profile/api-tokens))
+- `CLOUDFLARE_ACCOUNT_ID` — Cloudflare account ID for Worker `innovate`
