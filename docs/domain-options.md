@@ -1,5 +1,7 @@
 # Innovate Conference — Available Domain Options
 
+**Chosen / purchased:** [`innovateconference.ca`](https://innovateconference.ca) (Cloudflare Registrar, account that deploys Worker `innovate`). Cutover notes: [issue #2](https://github.com/jdsabino77/innovate/issues/2).
+
 Ranked list of domain names for the **Innovate Medical Aesthetics Conference 2027** (Yasa Laser, Toronto).
 
 Availability was checked via WHOIS and DNS on **July 22, 2026**. Domains can be registered by someone else at any time — confirm at checkout with your registrar (Namecheap, Google Domains/Squarespace, Hover, etc.) before purchasing.
@@ -67,14 +69,15 @@ These domains are registered or have active DNS and are not available at standar
 
 ## Suggested pick
 
-- **Primary:** `innovate2027.com` — best fit for the 2027 event site
-- **Optional second:** `innovateconf.com` or `innovateaesthetics.ca` — if you want a reusable or Canada-first domain
+- **Chosen:** `innovateconference.ca` — purchased on Cloudflare Registrar (was rank 5 in the list above).
+- Earlier recommendation was `innovate2027.com`, with `innovateconf.com` or `innovateaesthetics.ca` as optional seconds.
 
 ---
 
 ## Next steps
 
-1. Confirm availability at your registrar.
-2. Register the chosen domain.
-3. Point DNS to Cloudflare and connect the custom domain to the Workers deployment (`innovate.jdsabino.workers.dev`).
-4. Update `siteUrl` in `event-config.json` and `public/sitemap.xml` once the domain is live.
+1. ~~Confirm availability at your registrar.~~ Purchased on Cloudflare Registrar.
+2. ~~Register the chosen domain.~~ Zone is Active; Worker `innovate` is on the same account.
+3. ~~Update public site URLs to `https://innovateconference.ca`.~~ Canonicals, sitemap, robots, and `siteUrl` now use the production host.
+4. Re-attach Workers Custom Domain `innovateconference.ca` to Worker `innovate` at go-live (do not add `custom_domain` in `wrangler.jsonc` until then — deploy would attach it immediately).
+5. Add `www` → apex redirect (proxied dummy `www` A record `192.0.2.0` + Redirect Rule). Keep `https://innovate.jdsabino.workers.dev` as fallback until cutover.

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://innovate.jdsabino.workers.dev/sitemap.xml
+Sitemap: https://innovateconference.ca/sitemap.xml

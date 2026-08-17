@@ -5,7 +5,7 @@
       "id": "toronto-skyline-dusk",
       "file": "cn-tower-skyline.jpg",
       "label": "Toronto skyline at dusk with CN Tower",
-      "assetUrl": "https://innovate.jdsabino.workers.dev/images/hero-source/toronto/cn-tower-skyline.jpg",
+      "assetUrl": "https://innovateconference.ca/images/hero-source/toronto/cn-tower-skyline.jpg",
       "photographer": "Mauricio Noronha",
       "source": "Unsplash",
       "url": "https://unsplash.com/photos/toronto-skyline-at-dusk-with-the-cn-tower-xnOpEMoOv3w"
@@ -14,7 +14,7 @@
       "id": "cn-tower-close",
       "file": "cn-tower-close.jpg",
       "label": "CN Tower, Toronto",
-      "assetUrl": "https://innovate.jdsabino.workers.dev/images/hero-source/toronto/cn-tower-close.jpg",
+      "assetUrl": "https://innovateconference.ca/images/hero-source/toronto/cn-tower-close.jpg",
       "photographer": "Unsplash contributor",
       "source": "Unsplash",
       "url": "https://unsplash.com/photos/cn-tower-toronto-yOUX5QUjagI"
@@ -25,7 +25,7 @@
       "id": "quay-gala-room",
       "file": "gala-room-01.jpg",
       "label": "The Quay — Gala room setup",
-      "assetUrl": "https://innovate.jdsabino.workers.dev/images/venue/gala-room-01.jpg",
+      "assetUrl": "https://innovateconference.ca/images/venue/gala-room-01.jpg",
       "source": "Google Photos",
       "url": "https://photos.app.goo.gl/7x7BeLn3NoWhYUPj8"
     },
@@ -33,7 +33,7 @@
       "id": "quay-gala-room-02",
       "file": "gala-room-02.jpg",
       "label": "The Quay — Gala room interior",
-      "assetUrl": "https://innovate.jdsabino.workers.dev/images/venue/gala-room-02.jpg",
+      "assetUrl": "https://innovateconference.ca/images/venue/gala-room-02.jpg",
       "source": "Google Photos",
       "url": "https://photos.app.goo.gl/7x7BeLn3NoWhYUPj8"
     },
@@ -41,7 +41,7 @@
       "id": "quay-seated-dinner-02",
       "file": "seated-dinner-02.jpg",
       "label": "The Quay — Seated dinner",
-      "assetUrl": "https://innovate.jdsabino.workers.dev/images/venue/seated-dinner-02.jpg",
+      "assetUrl": "https://innovateconference.ca/images/venue/seated-dinner-02.jpg",
       "source": "Google Photos",
       "url": "https://photos.app.goo.gl/U7joAmSpG6UBc5QB9"
     }
@@ -51,14 +51,14 @@
       "id": "badge-hands-woman",
       "file": "badge-hands-woman.png",
       "label": "Innovate conference pass",
-      "assetUrl": "https://innovate.jdsabino.workers.dev/images/hero-source/badge/badge-hands-woman.png",
+      "assetUrl": "https://innovateconference.ca/images/hero-source/badge/badge-hands-woman.png",
       "source": "Generated mockup"
     },
     {
       "id": "badge-hands-man",
       "file": "badge-hands-man.png",
       "label": "Innovate conference pass",
-      "assetUrl": "https://innovate.jdsabino.workers.dev/images/hero-source/badge/badge-hands-man.png",
+      "assetUrl": "https://innovateconference.ca/images/hero-source/badge/badge-hands-man.png",
       "source": "Generated mockup"
     }
   ],
