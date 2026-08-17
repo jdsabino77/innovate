@@ -32,7 +32,7 @@
     "items": [
       {
         "title": "Schedule",
-        "description": "A full day of clinical sessions, workshops, and networking—from registration to closing reception.",
+        "description": "A full day of clinical sessions, workshops, and networking—from 7:30 AM registration to a 4:00 PM cocktail hour.",
         "href": "/schedule",
         "cta": "View schedule"
       },
@@ -65,7 +65,7 @@
   "cta": {
     "eyebrow": "Innovate 2027",
     "title": "Don't miss the experience",
-    "body": "Reserve your conference pass online — secure checkout with QR code tickets for fast check-in at The Quay.",
+    "body": "Reserve your C$99 conference pass — secure Eventbrite checkout with QR tickets for fast check-in at The Quay.",
     "primaryCta": "Register",
     "secondaryCta": "Contact the team"
   }

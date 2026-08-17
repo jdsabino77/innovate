@@ -1,41 +1,55 @@
 # Ticket Purchasing — Innovate 2027
 
-Online pass sales for the **Innovate Medical Aesthetics Conference** (February 27, 2027, Toronto).
+Online pass sales for **Innovate: What's New in Medical Aesthetics** (February 27, 2027, Toronto).
 
-## Decision: Ticket Tailor (primary)
+## Decision: Eventbrite (primary)
 
-We use **[Ticket Tailor](https://www.tickettailor.com/)** for checkout, QR code tickets, and door check-in. The Innovate site embeds Ticket Tailor’s box-office widget on [`/register`](../src/pages/register.astro) so attendees purchase passes without leaving the conference website.
+We use **[Eventbrite Canada](https://www.eventbrite.ca/)** for checkout, QR code tickets, and door check-in. The Innovate site embeds Eventbrite checkout on [`/register`](../src/pages/register.astro) so attendees purchase passes without leaving the conference website.
 
-**Alternative considered:** [Eventbrite Canada](https://www.eventbrite.ca/) — more familiar to Canadian attendees, but materially higher fees (see comparison below). Eventbrite remains a viable fallback if brand recognition outweighs cost savings.
+**Widget wiring** (provider switch, embed component) is tracked in GitHub issue #1. This document is the **product spec**: one C$99 pass, custom questions, confirmation email, and no-refund policy.
+
+**Alternative considered:** [Ticket Tailor](https://www.tickettailor.com/) — lower fees (see comparison below). Ticket Tailor remains historical comparison only.
 
 ---
 
-## Fee comparison (Canada, C$499 pass example)
+## Fee comparison (Canada, C$99 pass)
 
 Sources: [Eventbrite Canada fees](https://www.eventbrite.ca/help/en-ca/articles/755615/eventbrite-fees/), [Ticket Tailor pricing](https://www.tickettailor.com/pricing), [Stripe Canada](https://stripe.com/en-ca/pricing).
 
-| | **Ticket Tailor** (chosen) | **Eventbrite** (alternative) |
+| | **Eventbrite** (chosen) | **Ticket Tailor** (not used) |
 |---|---|---|
-| Platform fee | ~C$1.00 flat per ticket (pay-as-you-go) | 3.5% + C$1.29 = **C$18.76** |
-| Payment processing | 2.9% + C$0.30 = **C$15.07** (your Stripe account) | 2.9% of order ≈ **C$15.02** |
-| **Total per C$499 pass** | **~C$16 (~3.2%)** | **~C$34 (~6.8%)** |
-| **150 passes sold** | **~C$2,400 in fees** | **~C$5,100 in fees** |
-| **Delta (Eventbrite vs TT)** | — | **~C$2,700 more** on 150 passes |
+| Platform fee | 3.5% + C$1.29 = **C$4.76** | ~C$1.00 flat per ticket (pay-as-you-go) |
+| Payment processing | 2.9% of order = **C$2.87** | 2.9% + C$0.30 = **C$3.17** (Stripe) |
+| **Total per C$99 pass** | **~C$8 (~7.7%)** | **~C$4 (~4.2%)** |
+| **150 passes sold** | **~C$1,150 in fees** | **~C$630 in fees** |
+| **Delta (Eventbrite vs TT)** | **~C$520 more** on 150 passes | — |
 
-Fees can be passed to the buyer (default) or absorbed by the organizer on either platform.
+Fees can be passed to the buyer (default) or absorbed by the organizer.
 
-### What Ticket Tailor includes
+### What Eventbrite includes
 
 - Branded checkout (embed on innovate site)
 - Confirmation email with **QR code** ticket
-- Check-in mobile app for registration desk
-- Multiple ticket tiers, promo codes, waitlists, refunds
-- CAD sales via **Stripe** payout to Yasa Laser’s bank account
+- Organizer app for registration-desk check-in
+- Custom order questions (credentials, dietary needs, consents)
+- CAD sales and Canadian payouts
 - Attendee export (CSV)
 
-### Ticket Tailor in Canada
+---
 
-Ticket Tailor is a UK-based platform (since 2010) used in 120+ countries. It is **not** a Canadian company like Eventbrite.ca, but it fully supports **CAD**, Canadian Stripe payouts, and HST collection. For a host-driven professional conference, the checkout experience matters more than platform name recognition.
+## Pass offering
+
+**One ticket type:** Conference pass **C$99**.
+
+Includes:
+
+- Full access to all keynote and breakout sessions
+- Breakfast, lunch, and light snack
+- Official conference swag bag
+
+**Policy:** No refunds or substitutions. Attendee information is used to manage attendance and, if the attendee opts in, to share limited details with sponsors/exhibitors for relevant follow-up.
+
+Marketing copy on `/register` lives in [`src/data/tickets.json`](../src/data/tickets.json). **Price and inventory are controlled in Eventbrite** — keep `tickets.json` in sync when the event is live.
 
 ---
 
@@ -45,45 +59,90 @@ Ticket Tailor is a UK-based platform (since 2010) used in 120+ countries. It is 
 
 ```json
 "ticketing": {
-  "provider": "ticket-tailor",
+  "provider": "eventbrite",
   "enabled": false,
   "embedUrl": "",
   "checkoutUrl": ""
 }
 ```
 
+`provider` is still `"ticket-tailor"` in the repo until issue #1 lands. Attendee-facing copy already names Eventbrite.
+
 | Field | Purpose |
 |---|---|
-| `enabled` | Set `true` when Ticket Tailor event is live |
-| `embedUrl` | Box office widget URL from Ticket Tailor → **Promote → Website embed codes** (e.g. `https://www.tickettailor.com/all-tickets/your-event-id`) |
+| `enabled` | Set `true` when the Eventbrite event is live |
+| `embedUrl` | Eventbrite checkout widget URL / event page used by the embed |
 | `checkoutUrl` | Fallback direct checkout link if embed is not used |
-
-### Ticket tier display — [`src/data/tickets.json`](../src/data/tickets.json)
-
-Marketing copy and tier cards on `/register` (Early bird, Conference pass, VIP). **Prices and inventory are controlled in Ticket Tailor** — keep `tickets.json` in sync when tiers go live.
 
 ### Register page — [`src/pages/register.astro`](../src/pages/register.astro)
 
-- **Closed:** “Registration opens soon” + contact CTA
-- **Open:** Tier summary cards + embedded Ticket Tailor widget
-- Footnote: secure checkout, QR tickets emailed after purchase
+- **Closed:** “Registration opens soon” + C$99 pass summary + contact CTA
+- **Open:** Pass card + Eventbrite checkout (embed when #1 ships; checkout URL fallback)
+- Footnote: Eventbrite, no refunds or substitutions, optional sponsor sharing, `events@yasalaser.com`
 
 ---
 
-## Ticket Tailor setup checklist
+## Eventbrite setup checklist
 
-1. **Create account** at [tickettailor.com](https://www.tickettailor.com/) (organizer: Yasa Laser)
-2. **Connect Stripe** (Canadian account, CAD settlement)
-3. **Create event:** Innovate 2027 — Feb 27, 2027, The Quay — Gala room, Toronto
-4. **Define ticket types** matching [`src/data/tickets.json`](../src/data/tickets.json):
-   - Early bird (limited quantity + end date)
-   - Conference pass (standard)
-   - VIP / premium (if applicable)
-5. **Tax:** Enable HST (13% Ontario) if required — consult accountant
-6. **Branding:** Box Office Design Studio — match Innovate navy/gold palette
-7. **Embed:** Promote → Website embed codes → copy widget URL → paste into `event-config.json` `embedUrl`
-8. **Test purchase:** Buy a C$1 test ticket; verify QR email + check-in app scan
-9. **Go live:** Set `ticketing.enabled` to `true`, deploy site
+1. **Create or confirm organizer account** on [eventbrite.ca](https://www.eventbrite.ca/) (organizer: Yasa Laser)
+2. **Create event:** Innovate: What's New in Medical Aesthetics — Saturday, February 27, 2027, The Quay — Gala room, Toronto
+3. **Ticket type:** one Conference pass at **C$99** matching [`src/data/tickets.json`](../src/data/tickets.json)
+4. **Tax:** Enable HST (13% Ontario) if required — consult accountant
+5. **Refunds:** Disable refunds / state no refunds or substitutions on the event
+6. **Custom questions:** add every field in the list below
+7. **Confirmation email:** paste the copy below; schedule a week-before reminder
+8. **Branding:** match Innovate navy/gold as closely as Eventbrite allows
+9. **Embed:** capture event ID, widget URL, and public checkout URL for issue #1
+10. **Test purchase:** buy a C$1 or complimentary test ticket; verify QR email + Organizer app scan
+11. **Go live:** set `ticketing.enabled` to `true` after #1, deploy site
+
+### Custom questions (order form)
+
+Collect on the Eventbrite order — not on this static site.
+
+**Attendee information**
+
+- First name
+- Last name
+- Professional credentials (e.g. MD, DO, FRCSC, RN, NP, PA, RPN, DDS, Aesthetician)
+- Role / title
+- Organization / clinic
+- Email
+- Mobile phone
+- Primary focus areas (e.g. lasers/devices, injectables, energy-based body contouring, skin regeneration)
+- Interest in hands-on / product demos (Yes/No)
+
+**Mailing address**
+
+- Street address
+- City
+- Province / state
+- Postal / ZIP code
+- Country
+
+**Participation and preferences**
+
+- Dietary needs (None / Vegetarian / Vegan / Gluten-free / Kosher / Halal / Other)
+
+**Communications and directory**
+
+- Conference updates (email important updates and materials: Yes/No)
+- Attendee directory opt-in (share name, role, clinic, and email with attendees and sponsors: Yes/No)
+- Photo / video consent (I consent to be photographed/recorded: Yes/No)
+
+**Payment and invoicing**
+
+- Billing contact name and email
+- Billing organization (if different)
+- Billing address
+
+### Confirmation email
+
+> Thank you for registering for Innovate! We are excited to see you on February 27, 2027 at The Quay in Downtown Toronto. We will send you a reminder email a week before the conference with all the details you will need.
+>
+> If you have any questions, please contact us at events@yasalaser.com.
+
+Also include accessibility / registration assistance via `events@yasalaser.com`.
 
 ---
 
@@ -91,30 +150,21 @@ Marketing copy and tier cards on `/register` (Early bird, Conference pass, VIP).
 
 | Task | Tool |
 |---|---|
-| Scan tickets at registration | Ticket Tailor Check-in app (iOS/Android) |
-| Attendee list / badges | Export CSV from Ticket Tailor dashboard |
-| Refunds / transfers | Ticket Tailor dashboard |
-| Walk-up sales | Ticket Tailor box office or manual check-in |
+| Scan tickets at registration | Eventbrite Organizer app (iOS/Android) |
+| Attendee list / badges | Export CSV from Eventbrite dashboard |
+| Exceptions (policy is no refunds/substitutions) | Eventbrite dashboard, case-by-case |
+| Walk-up sales | Eventbrite box office or on-site order |
 | Support questions | `events@yasalaser.com` |
 
----
-
-## Switching to Eventbrite (if needed)
-
-1. Create event on [eventbrite.ca](https://www.eventbrite.ca/)
-2. Set `ticketing.provider` to `eventbrite`, replace `embedUrl` with Eventbrite widget URL or checkout link
-3. Update register page footnote copy
-4. Expect **~2× higher fees** per ticket (see table above)
-
-No site architecture changes required — both platforms embed on a static Astro page.
+Doors / light breakfast **7:30–8:30 AM**; program **8:30 AM–4:00 PM**; cocktail hour **4:00–5:00 PM**.
 
 ---
 
 ## Open items
 
-- [ ] Final ticket tier names and CAD pricing
-- [ ] Early bird end date and capacity limits
 - [ ] Fee pass-through vs absorb decision
 - [ ] HST registration / tax line on checkout
-- [ ] Ticket Tailor account + Stripe connection
-- [ ] Test purchase + embed URL in `event-config.json`
+- [ ] Eventbrite account + event ID + embed URL (issue #1)
+- [ ] Custom questions configured on the Eventbrite event
+- [ ] Confirmation email + week-before reminder in Eventbrite
+- [ ] Test purchase + `ticketing.enabled` in `event-config.json`
