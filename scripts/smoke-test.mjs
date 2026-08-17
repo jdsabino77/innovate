@@ -2,7 +2,7 @@ import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 
 const distDir = path.resolve("dist");
-const siteUrl = "https://innovate.jdsabino.workers.dev";
+const siteUrl = "https://innovateconference.ca";
 const requiredPages = [
   "index.html",
   "schedule/index.html",
