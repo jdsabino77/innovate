@@ -25,7 +25,7 @@ const heroIntro = registrationOpen ? page.introOpen : page.introClosed;
     intro={`Join us on ${eventConfig.eventDateDisplay} at ${eventConfig.venue}. ${heroIntro}`}
   />
   <Section>
-    <h2 class="section-heading">Conference passes</h2>
+    <h2 class="section-heading">Conference pass</h2>
     <div class="ticket-tier-grid">
       {tiers.map((tier) => <TicketTierCard {...tier} />)}
     </div>
@@ -38,9 +38,9 @@ const heroIntro = registrationOpen ? page.introOpen : page.introClosed;
             <TicketTailorWidget embedUrl={ticketing.embedUrl} />
           ) : (
             <div class="checkout-fallback">
-              <p>Select your pass and check out securely on Ticket Tailor.</p>
+              <p>Select your pass and check out securely on Eventbrite.</p>
               <Button href={ticketing.checkoutUrl} target="_blank" rel="noopener noreferrer">
-                Buy passes on Ticket Tailor
+                Buy a pass on Eventbrite
               </Button>
             </div>
           )}
@@ -50,9 +50,10 @@ const heroIntro = registrationOpen ? page.introOpen : page.introClosed;
         <div class="registration-placeholder surface">
           <h3>Registration opens soon</h3>
           <p>
-            Passes will be sold through Ticket Tailor with QR code check-in. Pricing and early-bird
-            windows will be announced here when sales go live.
+            Passes will be sold through Eventbrite with QR code check-in. The C$99 conference pass
+            includes sessions, meals, and an official swag bag.
           </p>
+          <p class="registration-footnote">{page.footnote}</p>
           <div class="registration-actions">
             <Button href={`mailto:${eventConfig.contactEmail}?subject=${encodeURIComponent(`${eventConfig.eventName} 2027 — registration inquiry`)}`}>
               Email {eventConfig.contactEmail}
@@ -75,7 +76,7 @@ const heroIntro = registrationOpen ? page.introOpen : page.introClosed;
 
   .ticket-tier-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    grid-template-columns: minmax(0, 420px);
     gap: 16px;
     margin-bottom: 24px;
   }
@@ -116,11 +117,5 @@ const heroIntro = registrationOpen ? page.introOpen : page.introClosed;
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 24px;
-  }
-
-  @media (max-width: 820px) {
-    .ticket-tier-grid {
-      grid-template-columns: 1fr;
-    }
   }
 </style>

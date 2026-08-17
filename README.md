@@ -1,6 +1,6 @@
 # Innovate Conference Website
 
-Static website for **Innovate**, an aesthetic medicine conference by Yasa Laser. Deployed to Cloudflare Workers at `https://innovate.jdsabino.workers.dev`.
+Static website for **Innovate: What's New in Medical Aesthetics**, a conference by Yasa Laser. Deployed to Cloudflare Workers at `https://innovate.jdsabino.workers.dev`.
 
 ## Pages
 
@@ -9,7 +9,7 @@ Static website for **Innovate**, an aesthetic medicine conference by Yasa Laser.
 - `/speakers` — faculty placeholders
 - `/sponsors` — sponsorship tiers
 - `/venue` — venue details
-- `/register` — conference pass sales (Ticket Tailor embed when configured)
+- `/register` — conference pass sales (C$99 Eventbrite checkout when configured)
 - `/contact` — conference inquiries
 
 ## Configuration
