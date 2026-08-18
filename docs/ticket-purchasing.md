@@ -84,7 +84,7 @@ Marketing copy on `/register` lives in [`src/data/tickets.json`](../src/data/tic
 
 ## Eventbrite setup checklist
 
-1. **Create or confirm organizer account** on [eventbrite.ca](https://www.eventbrite.ca/) (organizer: Yasa Laser)
+1. **Create or confirm organizer account** on [eventbrite.ca](https://www.eventbrite.ca/) (organizer: YASA Laser)
 2. **Create event:** Innovate: What's New in Medical Aesthetics — Saturday, February 27, 2027, The Quay — Gala room, Toronto
 3. **Ticket type:** one Conference pass at **C$99** matching [`src/data/tickets.json`](../src/data/tickets.json)
 4. **Tax:** Enable HST (13% Ontario) if required — consult accountant
