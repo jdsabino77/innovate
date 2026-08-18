@@ -2,7 +2,7 @@
   "hero": {
     "eyebrow": "February 27, 2027",
     "title": "Where clinical craft meets practical innovation.",
-    "subtitle": "A single-day aesthetic medicine conference by Yasa Laser at The Quay — Gala room.",
+    "subtitle": "A single-day aesthetic medicine conference by YASA Laser at The Quay — Gala room.",
     "video": "/video/hero.mp4",
     "poster": "/video/hero-poster.webp"
   },
@@ -14,12 +14,12 @@
   "about": {
     "eyebrow": "About Innovate",
     "title": "Founded by leaders. Focused on what works.",
-    "lead": "Presented by Yasa Laser — a conference built by Canadian R&D and clinical leaders who prioritize outcomes over hype.",
+    "lead": "Presented by YASA Laser — a conference built by Canadian R&D and clinical leaders who prioritize outcomes over hype.",
     "body": "Innovate is founded by Dr. Arjang Yazdani, FRCSC, and Nadine Sabino, RN — pioneers in aesthetic laser medicine, provider training, and clinical innovation across Canada. Their work spans advanced energy-based treatments, surgical and non-surgical care, and national education for aesthetic teams.",
-    "bodySecondary": "Every session at Innovate reflects a results-first philosophy: procedures and protocols that work, taught through case-based learning and practical insight you can apply immediately. No filler — just focused education for clinicians and operators who care about measurable outcomes.",
+    "bodySecondary": "Innovate brings together diverse speakers and clinical leaders for focused education on procedures, protocols, and practical innovation you can apply in your practice. No filler — just meaningful sessions for clinicians and operators who care about measurable outcomes.",
     "highlights": [
       "Physician-led clinical rigor",
-      "Proven protocols and case-based learning",
+      "Expert speakers across aesthetic medicine",
       "Built for teams who care about outcomes"
     ],
     "image": "/images/home/about-innovate.png",
@@ -28,23 +28,23 @@
   "experience": {
     "eyebrow": "The Innovate experience",
     "title": "Explore the program",
-    "intro": "Review the draft schedule, meet the faculty, and connect with sponsors.",
+    "intro": "Review the schedule, meet the faculty, and connect with sponsors as details are announced.",
     "items": [
       {
         "title": "Schedule",
-        "description": "A full day of clinical sessions, workshops, and networking—from 7:30 AM registration to a 4:00 PM cocktail hour.",
+        "description": "A full day of clinical sessions and networking — program details coming soon.",
         "href": "/schedule",
         "cta": "View schedule"
       },
       {
         "title": "Speakers",
-        "description": "Meet confirmed keynote faculty — Dr. Arjang Yazdani and Nadine Sabino, RN — with more announcements coming soon.",
+        "description": "Faculty announcements coming soon — diverse clinical leaders across aesthetic medicine.",
         "href": "/speakers",
         "cta": "Meet the speakers"
       },
       {
         "title": "Sponsors",
-        "description": "Six confirmed industry partners — including Sciton, Cynosure, Allergan, and Alastin — with additional sponsorship packages available.",
+        "description": "Industry partners will be listed as they're confirmed.",
         "href": "/sponsors",
         "cta": "View exhibitors & sponsors"
       }
