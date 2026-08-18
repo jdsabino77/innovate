@@ -50,6 +50,25 @@
       }
     ]
   },
+  "comingSoon": {
+    "eyebrow": "Program details",
+    "title": "More details coming soon",
+    "intro": "We're finalizing the schedule, faculty, sponsors, and registration. Check back as details are confirmed.",
+    "items": [
+      {
+        "title": "Schedule",
+        "description": "Session times and faculty will be posted when the program is confirmed."
+      },
+      {
+        "title": "Speakers",
+        "description": "Faculty announcements coming soon."
+      },
+      {
+        "title": "Sponsors",
+        "description": "Industry partners will be listed as they're confirmed."
+      }
+    ]
+  },
   "agenda": {
     "eyebrow": "2027 Schedule",
     "title": "Draft agenda",
@@ -63,6 +82,13 @@
     "cta": "Explore the venue"
   },
   "cta": {
+    "eyebrow": "Innovate 2027",
+    "title": "Stay in touch",
+    "body": "Registration and program details are on the way. Contact us with questions about Innovate 2027.",
+    "primaryCta": "Contact the team",
+    "secondaryCta": "Explore the venue"
+  },
+  "ctaFull": {
     "eyebrow": "Innovate 2027",
     "title": "Don't miss the experience",
     "body": "Reserve your C$99 conference pass — secure Eventbrite checkout with QR tickets for fast check-in at The Quay.",

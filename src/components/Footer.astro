@@ -1,15 +1,10 @@
 ---
 import { eventConfig } from "../lib/event-config";
 
+import { footerLinks } from "../lib/navigation";
+
 const year = new Date().getFullYear();
-const links = [
-  { href: "/schedule", label: "Schedule" },
-  { href: "/speakers", label: "Speakers" },
-  { href: "/sponsors", label: "Sponsors" },
-  { href: "/register", label: "Register" },
-  { href: "/venue", label: "Venue" },
-  { href: "/contact", label: "Contact" },
-];
+const links = footerLinks;
 ---
 
 <footer class="site-footer">
