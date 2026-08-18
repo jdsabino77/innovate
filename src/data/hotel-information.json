@@ -2,10 +2,9 @@
   "page": {
     "eyebrow": "Resources",
     "title": "Hotel information",
-    "intro": "Innovate is a single-day conference at The Quay on Toronto's East waterfront. If you're travelling from out of town, these nearby hotels are a convenient base — official room blocks and rates will be posted here when available."
+    "intro": "Innovate is a single-day conference at The Quay on Toronto's East waterfront. If you're travelling from out of town, these nearby hotels are a convenient base."
   },
   "venueNote": "The Quay — Gala room is located on Queens Quay East. Most downtown Toronto hotels are a short rideshare or transit ride away.",
-  "roomBlockNote": "Negotiated room blocks for Innovate 2027 are in progress. Registered attendees will receive preferred-rate details by email when partnerships are confirmed.",
   "hotels": [
     {
       "name": "Westin Harbour Castle",

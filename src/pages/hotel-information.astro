@@ -6,7 +6,7 @@ import Section from "../components/Section.astro";
 import hotelInfo from "../data/hotel-information.json";
 import { eventConfig } from "../lib/event-config";
 
-const { page, venueNote, roomBlockNote, hotels, tips } = hotelInfo;
+const { page, venueNote, hotels, tips } = hotelInfo;
 ---
 
 <BaseLayout
@@ -18,10 +18,6 @@ const { page, venueNote, roomBlockNote, hotels, tips } = hotelInfo;
   <Section>
     <div class="content hotel-content">
       <p class="hotel-note">{venueNote}</p>
-      <div class="surface hotel-block-note">
-        <h2>Room blocks</h2>
-        <p>{roomBlockNote}</p>
-      </div>
       <h2>Suggested hotels</h2>
       <div class="hotel-grid">
         {
@@ -55,23 +51,9 @@ const { page, venueNote, roomBlockNote, hotels, tips } = hotelInfo;
   }
 
   .hotel-note {
-    margin: 0;
+    margin: 0 0 22px;
     color: var(--color-muted);
     font-size: 1.05rem;
-  }
-
-  .hotel-block-note {
-    padding: 22px 24px;
-    margin-top: 22px;
-  }
-
-  .hotel-block-note h2 {
-    margin: 0 0 8px;
-    font-size: 1.2rem;
-  }
-
-  .hotel-block-note p {
-    margin: 0;
   }
 
   .hotel-grid {

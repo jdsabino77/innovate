@@ -54,6 +54,14 @@ async function assertContains(relativePath, needle) {
   }
 }
 
+async function assertNotContains(relativePath, needle) {
+  const fullPath = path.join(distDir, relativePath);
+  const contents = await readFile(fullPath, "utf8");
+  if (contents.includes(needle)) {
+    failures.push(`Did not expect "${needle}" in ${relativePath}`);
+  }
+}
+
 for (const page of requiredPages) {
   await assertExists(page);
 }
@@ -85,7 +93,8 @@ await assertContains("sponsors/index.html", "Allergan Aesthetics");
 await assertContains("sponsors/index.html", "events@yasalaser.com");
 await assertContains("contact/index.html", "events@yasalaser.com");
 await assertContains("hotel-information/index.html", "Hotel information");
-await assertContains("hotel-information/index.html", "Room blocks");
+await assertContains("hotel-information/index.html", "Suggested hotels");
+await assertNotContains("hotel-information/index.html", "Room blocks");
 await assertContains("index.html", "Resources");
 await assertContains("register/index.html", "Conference pass");
 await assertContains("register/index.html", "C$99");
