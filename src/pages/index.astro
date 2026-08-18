@@ -8,6 +8,7 @@ import CtaBand from "../components/CtaBand.astro";
 import VenueCollage from "../components/VenueCollage.astro";
 import home from "../data/home.json";
 import schedule from "../data/schedule.json";
+import { isLandingMode } from "../lib/launch";
 import { siteDescription } from "../lib/event-config";
 import { venue, getFeaturedPhotos, getVenuePhoto } from "../lib/venue";
 
@@ -16,6 +17,7 @@ const aboutImage = home.about.image
   : getVenuePhoto(venue.aboutFeatured);
 const featuredVenuePhotos = getFeaturedPhotos();
 const agendaPreview = schedule.sessions.slice(0, 4);
+const cta = isLandingMode ? home.cta : home.ctaFull;
 ---
 
 <BaseLayout title="Innovate" description={siteDescription} overlayHeader>
@@ -41,8 +43,19 @@ const agendaPreview = schedule.sessions.slice(0, 4);
           )
         }
         <div class="about-actions">
-          <Button href="/register">Register</Button>
-          <Button href="/speakers" variant="secondary">Meet the faculty</Button>
+          {
+            isLandingMode ? (
+              <>
+                <Button href="/contact">Contact the team</Button>
+                <Button href="/venue" variant="secondary">Explore the venue</Button>
+              </>
+            ) : (
+              <>
+                <Button href="/register">Register</Button>
+                <Button href="/speakers" variant="secondary">Meet the faculty</Button>
+              </>
+            )
+          }
         </div>
       </div>
       {
@@ -55,47 +68,83 @@ const agendaPreview = schedule.sessions.slice(0, 4);
     </div>
   </Section>
 
-  <Section
-    variant="soft"
-    eyebrow={home.experience.eyebrow}
-    title={home.experience.title}
-    intro={home.experience.intro}
-  >
-    <div class="grid grid-3">
-      {home.experience.items.map((item) => <ExperienceCard {...item} />)}
-    </div>
-  </Section>
+  {
+    isLandingMode ? (
+      <Section
+        variant="soft"
+        eyebrow={home.comingSoon.eyebrow}
+        title={home.comingSoon.title}
+        intro={home.comingSoon.intro}
+      >
+        <div class="grid grid-3">
+          {home.comingSoon.items.map((item) => (
+            <article class="card coming-soon-card">
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </Section>
+    ) : (
+      <>
+        <Section
+          variant="soft"
+          eyebrow={home.experience.eyebrow}
+          title={home.experience.title}
+          intro={home.experience.intro}
+        >
+          <div class="grid grid-3">
+            {home.experience.items.map((item) => <ExperienceCard {...item} />)}
+          </div>
+        </Section>
 
-  <Section eyebrow={home.agenda.eyebrow} title={home.agenda.title} intro={home.agenda.intro}>
-    <ol class="agenda-preview">
-      {
-        agendaPreview.map((session) => (
-          <li class="agenda-preview-item card">
-            <p class="agenda-time">{session.time}</p>
-            <div>
-              <h3>{session.title}</h3>
-              <p>{session.detail}</p>
-            </div>
-          </li>
-        ))
-      }
-    </ol>
-    <div class="agenda-actions">
-      <Button href="/schedule">{home.agenda.cta}</Button>
-      <Button href="/register" variant="secondary">Register</Button>
-    </div>
-  </Section>
+        <Section eyebrow={home.agenda.eyebrow} title={home.agenda.title} intro={home.agenda.intro}>
+          <ol class="agenda-preview">
+            {
+              agendaPreview.map((session) => (
+                <li class="agenda-preview-item card">
+                  <p class="agenda-time">{session.time}</p>
+                  <div>
+                    <h3>{session.title}</h3>
+                    <p>{session.detail}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+          <div class="agenda-actions">
+            <Button href="/schedule">{home.agenda.cta}</Button>
+            <Button href="/register" variant="secondary">Register</Button>
+          </div>
+        </Section>
+      </>
+    )
+  }
 
   <Section variant="soft" eyebrow={home.venue.eyebrow} title={home.venue.title} intro={home.venue.intro}>
     <div class="split venue-split">
       <VenueCollage photos={featuredVenuePhotos} />
       <div class="content">
-        <h2>On-site experience</h2>
-        <ul>
-          <li>Registration and light breakfast from 7:30 AM in the Gala room foyer</li>
-          <li>Single-room program 8:30 AM–4:00 PM with lunch and sponsor showcase</li>
-          <li>Cocktail hour 4:00–5:00 PM</li>
-        </ul>
+        {
+          isLandingMode ? (
+            <>
+              <h2>Location</h2>
+              <p>
+                Innovate takes place at The Quay on Toronto's East waterfront. Venue details, directions, and arrival
+                information are available on the venue page.
+              </p>
+            </>
+          ) : (
+            <>
+              <h2>On-site experience</h2>
+              <ul>
+                <li>Registration and light breakfast from 7:30 AM in the Gala room foyer</li>
+                <li>Single-room program 8:30 AM–4:00 PM with lunch and sponsor showcase</li>
+                <li>Cocktail hour 4:00–5:00 PM</li>
+              </ul>
+            </>
+          )
+        }
         <div class="about-actions">
           <Button href="/venue">{home.venue.cta}</Button>
         </div>
@@ -104,11 +153,13 @@ const agendaPreview = schedule.sessions.slice(0, 4);
   </Section>
 
   <CtaBand
-    eyebrow={home.cta.eyebrow}
-    title={home.cta.title}
-    body={home.cta.body}
-    primaryLabel={home.cta.primaryCta}
-    secondaryLabel={home.cta.secondaryCta}
+    eyebrow={cta.eyebrow}
+    title={cta.title}
+    body={cta.body}
+    primaryHref={isLandingMode ? "/contact" : "/register"}
+    primaryLabel={cta.primaryCta}
+    secondaryHref={isLandingMode ? "/venue" : "/contact"}
+    secondaryLabel={cta.secondaryCta}
   />
 </BaseLayout>
 
@@ -188,6 +239,18 @@ const agendaPreview = schedule.sessions.slice(0, 4);
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  .coming-soon-card h3 {
+    margin: 0 0 10px;
+    color: var(--color-navy);
+    font-size: 1.15rem;
+  }
+
+  .coming-soon-card p {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.55;
   }
 
   .venue-split {

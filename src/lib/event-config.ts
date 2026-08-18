@@ -7,6 +7,10 @@ export type TicketingConfig = {
   checkoutUrl: string;
 };
 
+export type LaunchConfig = {
+  landingMode: boolean;
+};
+
 export type EventConfig = {
   eventName: string;
   eventNameLong: string;
@@ -19,6 +23,7 @@ export type EventConfig = {
   contactEmail: string;
   siteUrl: string;
   ticketing: TicketingConfig;
+  launch?: LaunchConfig;
 };
 
 export const eventConfig = config as EventConfig;

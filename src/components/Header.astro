@@ -1,5 +1,6 @@
 ---
 import NavDropdown from "./NavDropdown.astro";
+import { isLandingMode } from "../lib/launch";
 import { mainNavItems, resourcesNavItems } from "../lib/navigation";
 
 const isHome = Astro.url.pathname === "/";
@@ -32,7 +33,7 @@ const isHome = Astro.url.pathname === "/";
     <nav id="site-nav" class="nav" aria-label="Main navigation">
       {mainNavItems.map((item) => <a href={item.href}>{item.label}</a>)}
       <NavDropdown label="Resources" items={[...resourcesNavItems]} />
-      <a class="nav-register" href="/register">Register</a>
+      {!isLandingMode && <a class="nav-register" href="/register">Register</a>}
     </nav>
   </div>
 </header>

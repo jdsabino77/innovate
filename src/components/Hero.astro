@@ -2,6 +2,7 @@
 import HeroBackground from "./HeroBackground.astro";
 import StatGrid from "./StatGrid.astro";
 import EventFactsBar from "./EventFactsBar.astro";
+import { isLandingMode } from "../lib/launch";
 import home from "../data/home.json";
 
 const { hero, stats } = home;
@@ -25,7 +26,7 @@ const { hero, stats } = home;
       <p class="display-subtitle">{hero.subtitle}</p>
       <StatGrid stats={stats} />
     </div>
-    <EventFactsBar />
+    <EventFactsBar registerHref={isLandingMode ? "/contact" : "/register"} registerLabel={isLandingMode ? "Contact us" : "Register"} />
   </div>
 </section>
 

@@ -4,9 +4,10 @@ import { eventConfig } from "../lib/event-config";
 
 interface Props {
   registerHref?: string;
+  registerLabel?: string;
 }
 
-const { registerHref = "/register" } = Astro.props;
+const { registerHref = "/register", registerLabel = "Register" } = Astro.props;
 ---
 
 <div class="facts-bar">
@@ -23,7 +24,7 @@ const { registerHref = "/register" } = Astro.props;
     <dd>{eventConfig.host}</dd>
   </div>
   <div class="facts-bar-action">
-    <Button href={registerHref}>Register</Button>
+    <Button href={registerHref}>{registerLabel}</Button>
   </div>
 </div>
 

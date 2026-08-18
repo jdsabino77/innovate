@@ -71,13 +71,19 @@ for (const file of requiredPublicFiles) {
 }
 
 await assertContains("robots.txt", `Sitemap: ${siteUrl}/sitemap.xml`);
-await assertContains("sitemap.xml", `${siteUrl}/schedule`);
+await assertContains("sitemap.xml", `${siteUrl}/venue`);
 await assertContains("index.html", "Innovate");
-await assertContains("index.html", "miss the experience");
+await assertContains("index.html", "More details coming soon");
 await assertContains("index.html", "hero-poster.webp");
 await assertContains("index.html", "Founded by leaders");
 await assertContains("index.html", "about-innovate.png");
-await assertContains("index.html", "Six confirmed industry partners");
+await assertContains("index.html", "Stay in touch");
+await assertContains("index.html", "Contact the team");
+await assertNotContains("sitemap.xml", `${siteUrl}/schedule`);
+await assertNotContains("sitemap.xml", `${siteUrl}/sponsors`);
+await assertNotContains("index.html", "Six confirmed industry partners");
+await assertNotContains("index.html", 'href="/schedule"');
+await assertNotContains("index.html", 'href="/register"');
 await assertContains("venue/index.html", "Inside The Quay Gala room");
 await assertContains("speakers/index.html", "Dr. Arjang Yazdani");
 await assertContains("speakers/index.html", "Nadine Sabino");
@@ -96,12 +102,6 @@ await assertContains("hotel-information/index.html", "Hotel information");
 await assertContains("hotel-information/index.html", "Suggested hotels");
 await assertNotContains("hotel-information/index.html", "Room blocks");
 await assertContains("index.html", "Resources");
-await assertContains("register/index.html", "Conference pass");
-await assertContains("register/index.html", "C$99");
-await assertContains("register/index.html", "Eventbrite");
-await assertContains("register/index.html", "No refunds or substitutions");
-await assertContains("register/index.html", "Registration opens soon");
-await assertContains("index.html", "7:30 AM");
 await assertContains("schedule/index.html", "Cocktail hour");
 await assertContains("venue/index.html", "7:30 AM");
 
