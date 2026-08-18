@@ -2,7 +2,7 @@
 
 **Chosen / purchased:** [`innovateconference.ca`](https://innovateconference.ca) (Cloudflare Registrar, account that deploys Worker `innovate`). Cutover notes: [issue #2](https://github.com/jdsabino77/innovate/issues/2).
 
-Ranked list of domain names for the **Innovate Medical Aesthetics Conference 2027** (YASA Laser, Toronto).
+Ranked list of domain names for the **Innovate Medical Aesthetics Conference 2027** (YASA LASER, Toronto).
 
 Availability was checked via WHOIS and DNS on **July 22, 2026**. Domains can be registered by someone else at any time — confirm at checkout with your registrar (Namecheap, Google Domains/Squarespace, Hover, etc.) before purchasing.
 
@@ -17,7 +17,7 @@ Availability was checked via WHOIS and DNS on **July 22, 2026**. Domains can be 
 | 3 | `innovateaesthetics.ca` | Canadian TLD fits the Toronto venue; clearly signals the industry |
 | 4 | `innovate2027.ca` | Same as #1 with a Canada-first home-market feel |
 | 5 | `innovateconference.ca` | Full “conference” wording; strong for clarity and search |
-| 6 | `yasainnovate.com` | Ties directly to YASA Laser as host and presenting partner |
+| 6 | `yasainnovate.com` | Ties directly to YASA LASER as host and presenting partner |
 | 7 | `innovateevent.com` | Simple and event-focused; easy to say aloud |
 | 8 | `innovatetoronto.ca` | Location-specific — good if Toronto should appear in the URL |
 | 9 | `innovateconf.ca` | Short Canadian alternative to `innovateconf.com` |

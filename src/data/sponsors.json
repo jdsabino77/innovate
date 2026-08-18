@@ -2,7 +2,7 @@
   "page": {
     "eyebrow": "Exhibitors & Sponsors",
     "title": "Meet our 2027 partners",
-    "intro": "Hosted by YASA Laser and founded by Dr. Arjang Yazdani and Nadine Sabino, RN, Innovate advances medical aesthetics through innovation, science, and personalized patient care. Industry partners will be announced as they're confirmed.",
+    "intro": "Hosted by YASA LASER and founded by Dr. Arjang Yazdani and Nadine Sabino, RN, Innovate advances medical aesthetics through innovation, science, and personalized patient care. Industry partners will be announced as they're confirmed.",
     "exhibitorsHeading": "Confirmed partners",
     "moreComingNote": "Additional partners may still be announced as the program is finalized.",
     "tiersHeading": "Sponsorship opportunities",
@@ -10,9 +10,9 @@
     "contactEmail": "events@yasalaser.com"
   },
   "host": {
-    "name": "YASA Laser",
+    "name": "YASA LASER",
     "logo": "/images/sponsors/yasa-laser.svg",
-    "logoAlt": "YASA Laser",
+    "logoAlt": "YASA LASER",
     "url": "https://yasalaser.com",
     "label": "Presented by"
   },
