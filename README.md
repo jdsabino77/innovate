@@ -1,6 +1,6 @@
 # Innovate Conference Website
 
-Static website for **Innovate: What's New in Medical Aesthetics**, a conference by YASA Laser. Production domain is `https://innovateconference.ca` (Workers Custom Domain, attached at go-live). Until then the Worker is public at `https://innovate.jdsabino.workers.dev`.
+Static website for **Innovate: What's New in Medical Aesthetics**, a conference by YASA LASER. Production domain is `https://innovateconference.ca` (Workers Custom Domain, attached at go-live). Until then the Worker is public at `https://innovate.jdsabino.workers.dev`.
 
 ## Pages
 
