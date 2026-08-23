@@ -1,0 +1,233 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  body: string;
+}
+
+const { eyebrow, title, body } = Astro.props;
+---
+
+<section class="newsletter-signup" aria-labelledby="newsletter-heading">
+  <div class="container newsletter-signup-inner">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h2 id="newsletter-heading">{title}</h2>
+    <p class="newsletter-intro">Stay in touch! {body}</p>
+
+    <form class="newsletter-form" data-newsletter-form novalidate>
+      <div class="newsletter-fields">
+        <label class="newsletter-field">
+          <span>First name</span>
+          <input type="text" name="firstName" autocomplete="given-name" required maxlength="80" />
+        </label>
+        <label class="newsletter-field">
+          <span>Last name</span>
+          <input type="text" name="lastName" autocomplete="family-name" required maxlength="80" />
+        </label>
+        <label class="newsletter-field newsletter-field-email">
+          <span>Email address</span>
+          <input type="email" name="email" autocomplete="email" inputmode="email" required maxlength="254" />
+        </label>
+      </div>
+
+      <div class="newsletter-actions">
+        <button class="newsletter-submit" type="submit">Sign up</button>
+        <p class="newsletter-consent">We will use your details to send Innovate updates only.</p>
+      </div>
+
+      <p class="newsletter-status" data-newsletter-status role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("[data-newsletter-form]");
+  const status = document.querySelector<HTMLElement>("[data-newsletter-status]");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form || !status) return;
+
+    const submitButton = form.querySelector<HTMLButtonElement>(".newsletter-submit");
+    const formData = new FormData(form);
+    const payload = {
+      firstName: String(formData.get("firstName") ?? "").trim(),
+      lastName: String(formData.get("lastName") ?? "").trim(),
+      email: String(formData.get("email") ?? "").trim(),
+    };
+
+    status.textContent = "";
+    status.dataset.state = "";
+
+    if (!payload.firstName || !payload.lastName || !payload.email) {
+      status.textContent = "Please complete all fields.";
+      status.dataset.state = "error";
+      return;
+    }
+
+    submitButton?.setAttribute("disabled", "true");
+    status.textContent = "Submitting…";
+
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const result = (await response.json().catch(() => null)) as { message?: string } | null;
+
+      if (!response.ok) {
+        status.textContent = result?.message ?? "Something went wrong. Please try again.";
+        status.dataset.state = "error";
+        return;
+      }
+
+      form.reset();
+      status.textContent = "Thank you — you are on the list. We will notify you when registration opens.";
+      status.dataset.state = "success";
+    } catch {
+      status.textContent = "Unable to submit right now. Please try again in a moment.";
+      status.dataset.state = "error";
+    } finally {
+      submitButton?.removeAttribute("disabled");
+    }
+  });
+</script>
+
+<style>
+  .newsletter-signup {
+    padding: 84px 0;
+    background: var(--color-navy);
+    color: #fff;
+  }
+
+  .newsletter-signup-inner {
+    display: grid;
+    gap: 18px;
+    max-width: 760px;
+  }
+
+  .newsletter-signup .eyebrow {
+    color: var(--color-brand);
+  }
+
+  .newsletter-signup h2 {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .newsletter-intro {
+    margin: 0;
+    color: rgb(255 255 255 / 72%);
+    font-size: 1.08rem;
+  }
+
+  .newsletter-form {
+    display: grid;
+    gap: 18px;
+    margin-top: 8px;
+  }
+
+  .newsletter-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .newsletter-field {
+    display: grid;
+    gap: 8px;
+  }
+
+  .newsletter-field span {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: rgb(255 255 255 / 78%);
+  }
+
+  .newsletter-field input {
+    width: 100%;
+    min-height: 48px;
+    padding: 0 16px;
+    border: 1px solid rgb(255 255 255 / 18%);
+    border-radius: 14px;
+    background: rgb(255 255 255 / 8%);
+    color: #fff;
+    font: inherit;
+  }
+
+  .newsletter-field input::placeholder {
+    color: rgb(255 255 255 / 42%);
+  }
+
+  .newsletter-field input:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+
+  .newsletter-field-email {
+    grid-column: 1 / -1;
+  }
+
+  .newsletter-actions {
+    display: grid;
+    gap: 10px;
+    justify-items: start;
+  }
+
+  .newsletter-submit {
+    min-height: 48px;
+    padding: 0 22px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--color-brand);
+    color: var(--color-navy);
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 14px 32px rgb(201 169 98 / 28%);
+    transition:
+      transform 160ms ease,
+      opacity 160ms ease;
+  }
+
+  .newsletter-submit:hover,
+  .newsletter-submit:focus-visible {
+    transform: translateY(-1px);
+  }
+
+  .newsletter-submit:disabled {
+    opacity: 0.72;
+    cursor: wait;
+    transform: none;
+  }
+
+  .newsletter-consent {
+    margin: 0;
+    color: rgb(255 255 255 / 58%);
+    font-size: 0.88rem;
+  }
+
+  .newsletter-status {
+    margin: 0;
+    min-height: 1.4em;
+    font-size: 0.95rem;
+  }
+
+  .newsletter-status[data-state="success"] {
+    color: #b8e6c1;
+  }
+
+  .newsletter-status[data-state="error"] {
+    color: #ffb4b4;
+  }
+
+  @media (max-width: 720px) {
+    .newsletter-fields {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

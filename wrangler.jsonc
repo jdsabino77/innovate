@@ -5,5 +5,18 @@
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "innovate-newsletter",
+      "database_id": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "migrations_dir": "migrations",
+  "vars": {
+    "NEWSLETTER_NOTIFY_EMAIL": "events@yasalaser.com",
+    "NEWSLETTER_FROM_EMAIL": "events@yasalaser.com",
+    "SITE_URL": "https://innovateconference.ca"
   }
 }

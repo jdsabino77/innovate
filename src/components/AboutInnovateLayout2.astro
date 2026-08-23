@@ -1,0 +1,155 @@
+---
+import Button from "./Button.astro";
+import { isLandingMode } from "../lib/launch";
+import home from "../data/home.json";
+
+interface AboutImage {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  image: AboutImage;
+}
+
+const { image } = Astro.props;
+const { about } = home;
+---
+
+<section class="about-layout-2 section section-soft" aria-labelledby="about-layout-2-title">
+  <div class="container about-layout-2-inner">
+    <header class="about-layout-2-header">
+      <p class="eyebrow">{about.eyebrow}</p>
+      <h2 id="about-layout-2-title">About Innovate — layout option 2</h2>
+      <p class="about-layout-2-lead">{about.lead}</p>
+    </header>
+
+    <figure class="image-frame about-layout-2-media">
+      <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+    </figure>
+
+    <div class="about-layout-2-body">
+      <p class="about-layout-2-copy">{about.body}</p>
+
+      {
+        about.bodySecondary && about.highlights && (
+          <div class="about-layout-2-highlights">
+            <p class="about-layout-2-highlights-label">{about.bodySecondary}</p>
+            <ul>
+              {about.highlights.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+    </div>
+
+    <div class="about-layout-2-actions">
+      {
+        isLandingMode ? (
+          <>
+            <Button href="/contact">Contact the team</Button>
+            <Button href="/register" variant="secondary">Registration</Button>
+          </>
+        ) : (
+          <>
+            <Button href="/register">Register</Button>
+            <Button href="/speakers" variant="secondary">Meet the faculty</Button>
+          </>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-layout-2 {
+    padding: 72px 0;
+  }
+
+  .about-layout-2-inner {
+    display: grid;
+    gap: clamp(28px, 4vw, 40px);
+  }
+
+  .about-layout-2-header {
+    max-width: 760px;
+  }
+
+  .about-layout-2-header h2 {
+    margin: 0;
+    color: var(--color-navy);
+    font-size: clamp(2rem, 4vw, 3.35rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  .about-layout-2-lead {
+    margin: 18px 0 0;
+    max-width: 62ch;
+    color: var(--color-muted);
+    font-size: clamp(1.02rem, 1.8vw, 1.12rem);
+    line-height: 1.55;
+  }
+
+  .about-layout-2-media {
+    margin: 0;
+    aspect-ratio: 3 / 2;
+    width: 100%;
+  }
+
+  .about-layout-2-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .about-layout-2-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 48px);
+    align-items: start;
+  }
+
+  .about-layout-2-copy {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.6;
+  }
+
+  .about-layout-2-highlights-label {
+    margin: 0 0 12px;
+    color: var(--color-navy);
+    font-weight: 700;
+  }
+
+  .about-layout-2-highlights ul {
+    margin: 0;
+    padding-left: 1.15rem;
+    color: var(--color-muted);
+    line-height: 1.55;
+  }
+
+  .about-layout-2-highlights li + li {
+    margin-top: 10px;
+  }
+
+  .about-layout-2-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  @media (max-width: 820px) {
+    .about-layout-2 {
+      padding: 48px 0;
+    }
+
+    .about-layout-2-body {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

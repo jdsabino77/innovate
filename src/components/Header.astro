@@ -31,9 +31,17 @@ const isHome = Astro.url.pathname === "/";
       Menu
     </button>
     <nav id="site-nav" class="nav" aria-label="Main navigation">
-      {mainNavItems.map((item) => <a href={item.href}>{item.label}</a>)}
-      <NavDropdown label="Resources" items={[...resourcesNavItems]} />
-      {!isLandingMode && <a class="nav-register" href="/register">Register</a>}
+      {mainNavItems.map((item) => (
+        <a class:list={[item.href === "/register" && "nav-register"]} href={item.href}>
+          {item.label}
+        </a>
+      ))}
+      {!isLandingMode && (
+        <>
+          <NavDropdown label="Resources" items={[...resourcesNavItems]} />
+          <a class="nav-register" href="/register">Register</a>
+        </>
+      )}
     </nav>
   </div>
 </header>

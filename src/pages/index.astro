@@ -5,6 +5,9 @@ import Section from "../components/Section.astro";
 import Button from "../components/Button.astro";
 import ExperienceCard from "../components/ExperienceCard.astro";
 import CtaBand from "../components/CtaBand.astro";
+import NewsletterSignup from "../components/NewsletterSignup.astro";
+import AboutInnovateLayout2 from "../components/AboutInnovateLayout2.astro";
+import AboutInnovateLayout3 from "../components/AboutInnovateLayout3.astro";
 import VenueCollage from "../components/VenueCollage.astro";
 import home from "../data/home.json";
 import schedule from "../data/schedule.json";
@@ -31,15 +34,17 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
         <p class="about-lead">{home.about.lead}</p>
         <div class="about-body">
           <p>{home.about.body}</p>
-          {home.about.bodySecondary && <p>{home.about.bodySecondary}</p>}
         </div>
         {
-          home.about.highlights && (
-            <ul class="about-highlights">
-              {home.about.highlights.map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
+          home.about.bodySecondary && home.about.highlights && (
+            <div class="about-conference-will">
+              <p class="about-conference-will-label">{home.about.bodySecondary}</p>
+              <ul class="about-highlights">
+                {home.about.highlights.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
           )
         }
         <div class="about-actions">
@@ -47,7 +52,7 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
             isLandingMode ? (
               <>
                 <Button href="/contact">Contact the team</Button>
-                <Button href="/venue" variant="secondary">Explore the venue</Button>
+                <Button href="/register" variant="secondary">Registration</Button>
               </>
             ) : (
               <>
@@ -60,13 +65,16 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
       </div>
       {
         aboutImage && (
-          <figure class="image-frame image-frame-accent about-media">
+          <figure class="image-frame about-media">
             <img src={aboutImage.src} alt={aboutImage.alt} loading="lazy" decoding="async" />
           </figure>
         )
       }
     </div>
   </Section>
+
+  {aboutImage && <AboutInnovateLayout2 image={aboutImage} />}
+  {aboutImage && <AboutInnovateLayout3 image={aboutImage} />}
 
   {
     isLandingMode ? (
@@ -122,53 +130,51 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
   }
 
   <Section variant="soft" eyebrow={home.venue.eyebrow} title={home.venue.title} intro={home.venue.intro}>
-    <div class="split venue-split">
-      <VenueCollage photos={featuredVenuePhotos} />
-      <div class="content">
-        {
-          isLandingMode ? (
-            <>
-              <h2>Location</h2>
-              <p>
-                Innovate takes place at The Quay on Toronto's East waterfront. Venue details, directions, and arrival
-                information are available on the venue page.
-              </p>
-            </>
-          ) : (
-            <>
-              <h2>On-site experience</h2>
-              <ul>
-                <li>Registration and light breakfast from 7:30 AM in the Gala room foyer</li>
-                <li>Single-room program 8:30 AM–4:00 PM with lunch and sponsor showcase</li>
-                <li>Cocktail hour 4:00–5:00 PM</li>
-              </ul>
-            </>
-          )
-        }
-        <div class="about-actions">
-          <Button href="/venue">{home.venue.cta}</Button>
+    {
+      isLandingMode ? (
+        <VenueCollage photos={featuredVenuePhotos} showCaptions={false} equalSize />
+      ) : (
+        <div class="split venue-split">
+          <VenueCollage photos={featuredVenuePhotos} />
+          <div class="content">
+            <h2>On-site experience</h2>
+            <ul>
+              <li>Registration and light breakfast from 7:30 AM</li>
+              <li>Single-room program 8:30 AM–4:00 PM with lunch and sponsor showcase</li>
+              <li>Cocktail hour 4:00–5:00 PM</li>
+            </ul>
+            <div class="about-actions">
+              <Button href="/venue">{home.venue.cta}</Button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )
+    }
   </Section>
 
-  <CtaBand
-    eyebrow={cta.eyebrow}
-    title={cta.title}
-    body={cta.body}
-    primaryHref={isLandingMode ? "/contact" : "/register"}
-    primaryLabel={cta.primaryCta}
-    secondaryHref={isLandingMode ? "/venue" : "/contact"}
-    secondaryLabel={cta.secondaryCta}
-  />
+  {
+    isLandingMode ? (
+      <NewsletterSignup eyebrow={cta.eyebrow} title={cta.title} body={cta.body} />
+    ) : (
+      <CtaBand
+        eyebrow={cta.eyebrow}
+        title={cta.title}
+        body={cta.body}
+        primaryHref="/register"
+        primaryLabel={cta.primaryCta}
+        secondaryHref="/contact"
+        secondaryLabel={cta.secondaryCta}
+      />
+    )
+  }
 </BaseLayout>
 
 <style>
   .about-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+    grid-template-columns: minmax(0, 0.88fr) minmax(340px, 1.12fr);
     gap: clamp(32px, 5vw, 64px);
-    align-items: center;
+    align-items: start;
   }
 
   .about-copy {
@@ -207,8 +213,18 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
     line-height: 1.6;
   }
 
+  .about-conference-will {
+    margin-top: 24px;
+  }
+
+  .about-conference-will-label {
+    margin: 0 0 12px;
+    color: var(--color-navy);
+    font-weight: 700;
+  }
+
   .about-highlights {
-    margin: 22px 0 0;
+    margin: 0;
     padding-left: 1.15rem;
     color: var(--color-muted);
     line-height: 1.5;
@@ -227,10 +243,9 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
 
   .about-media {
     margin: 0;
-    aspect-ratio: 4 / 5;
-    max-height: min(560px, 72vh);
-    justify-self: end;
-    width: min(100%, 440px);
+    aspect-ratio: 3 / 2;
+    width: 100%;
+    justify-self: stretch;
   }
 
   .about-media img {
@@ -317,8 +332,7 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
     .about-media {
       justify-self: stretch;
       width: 100%;
-      max-height: none;
-      aspect-ratio: 5 / 4;
+      aspect-ratio: 3 / 2;
     }
 
     .agenda-preview-item {

@@ -3,9 +3,11 @@ import HeroBackground from "./HeroBackground.astro";
 import StatGrid from "./StatGrid.astro";
 import EventFactsBar from "./EventFactsBar.astro";
 import { isLandingMode } from "../lib/launch";
+import { eventConfig } from "../lib/event-config";
 import home from "../data/home.json";
 
 const { hero, stats } = home;
+const heroDate = eventConfig.eventDateDisplay;
 ---
 
 <section class="hero">
@@ -21,10 +23,10 @@ const { hero, stats } = home;
         loading="eager"
         decoding="async"
       />
-      <p class="display-eyebrow">{hero.eyebrow}</p>
+      <p class="hero-date">{heroDate}</p>
       <h1 class="display-title">{hero.title}</h1>
       <p class="display-subtitle">{hero.subtitle}</p>
-      <StatGrid stats={stats} />
+      {!isLandingMode && <StatGrid stats={stats} />}
     </div>
     <EventFactsBar registerHref={isLandingMode ? "/contact" : "/register"} registerLabel={isLandingMode ? "Contact us" : "Register"} />
   </div>
@@ -61,7 +63,21 @@ const { hero, stats } = home;
     margin-bottom: 8px;
   }
 
-  .hero-content .stat-grid {
+  .hero-date {
+    margin: 0;
+    padding: 14px 28px;
+    border: 1px solid rgb(201 169 98 / 45%);
+    border-radius: 999px;
+    background: rgb(15 15 15 / 42%);
+    color: var(--color-brand);
+    font-size: clamp(1.2rem, 2.8vw, 1.65rem);
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    box-shadow: 0 12px 32px rgb(0 0 0 / 22%);
+  }
+
+  .hero-content :global(.stat-grid) {
     width: min(100%, 720px);
     margin-top: 8px;
   }

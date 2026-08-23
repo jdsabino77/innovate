@@ -3,17 +3,19 @@ import type { VenuePhoto } from "../lib/venue";
 
 interface Props {
   photos: VenuePhoto[];
+  showCaptions?: boolean;
+  equalSize?: boolean;
 }
 
-const { photos } = Astro.props;
+const { photos, showCaptions = true, equalSize = false } = Astro.props;
 ---
 
-<div class="venue-collage">
+<div class:list={["venue-collage", equalSize && "venue-collage-equal"]}>
   {
     photos.map((photo, index) => (
-      <figure class:list={["venue-collage-item", index === 0 && "venue-collage-primary"]}>
+      <figure class:list={["venue-collage-item", !equalSize && index === 0 && "venue-collage-primary"]}>
         <img src={photo.src} alt={photo.alt} loading={index === 0 ? "eager" : "lazy"} decoding="async" />
-        <figcaption>{photo.caption}</figcaption>
+        {showCaptions && photo.caption && <figcaption>{photo.caption}</figcaption>}
       </figure>
     ))
   }
@@ -33,6 +35,15 @@ const { photos } = Astro.props;
     margin: 0;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-card);
+  }
+
+  .venue-collage-equal {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .venue-collage-equal .venue-collage-item {
+    aspect-ratio: 3 / 2;
+    min-height: 0;
   }
 
   .venue-collage-primary {
