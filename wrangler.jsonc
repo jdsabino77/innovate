@@ -18,5 +18,9 @@
     "NEWSLETTER_NOTIFY_EMAIL": "jdsabino@gmail.com,events@yasalaser.com",
     "NEWSLETTER_FROM_EMAIL": "noreply@innovateconference.ca",
     "SITE_URL": "https://innovateconference.ca"
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
   }
 }
