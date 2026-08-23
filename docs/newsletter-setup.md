@@ -12,11 +12,13 @@ The landing page newsletter form posts to `POST /api/newsletter` on the Worker. 
 
    The `d1_databases` entry must use `"binding": "DB"` (the Worker reads `env.DB`) and include `"migrations_dir": "migrations"` on that same object.
 
-2. Apply migrations to the remote database:
+2. Apply migrations to the remote database (one-time; run locally with an authenticated Wrangler session):
 
    ```sh
    npx wrangler d1 migrations apply innovate-newsletter --remote
    ```
+
+   CI does not run migrations automatically — the deploy API token may not include D1 permissions. Re-run this command locally whenever a new file is added under `migrations/`.
 
 3. Configure MailChannels for the sending domain (`yasalaser.com` or `innovateconference.ca`):
    - Add the `_mailchannels` TXT record Cloudflare documents for your From domain.
@@ -27,6 +29,8 @@ The landing page newsletter form posts to `POST /api/newsletter` on the Worker. 
    ```sh
    npm run deploy
    ```
+
+   Merging to `main` also deploys via GitHub Actions. Ensure `CLOUDFLARE_API_TOKEN` has **Workers Scripts Edit** for the `innovate` Worker.
 
 ## Configuration
 
