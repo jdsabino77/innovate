@@ -1,12 +1,12 @@
 # Newsletter signup
 
-The landing page newsletter form posts to `POST /api/newsletter` on the Worker. Signups are stored in Cloudflare D1 and an admin notification email is sent via MailChannels.
+The landing page newsletter form posts to `POST /api/newsletter` on the Worker. Signups are stored in Cloudflare D1 and an admin notification email is sent via [Resend](https://resend.com).
 
 ## Email addresses
 
 | Role | Variable | Value | DNS needed? |
 |------|----------|-------|-------------|
-| **From** (sender) | `NEWSLETTER_FROM_EMAIL` | `noreply@innovateconference.ca` | Yes — on `innovateconference.ca` |
+| **From** (sender) | `NEWSLETTER_FROM_EMAIL` | `noreply@innovateconference.ca` | Yes — verify domain in Resend |
 | **To** (admin alert) | `NEWSLETTER_NOTIFY_EMAIL` | `jdsabino@gmail.com,events@yasalaser.com` | No — any inbox can receive |
 
 The Worker sends **from** `@innovateconference.ca` **to** every address in `NEWSLETTER_NOTIFY_EMAIL` (comma-separated). You do not need DNS access to `yasalaser.com` for notifications to arrive. **Reply-To** on each alert is set to the person who submitted the form.
@@ -33,33 +33,37 @@ npx wrangler d1 migrations apply innovate-newsletter --remote
 
 CI does not run migrations automatically — the deploy API token may not include D1 permissions. Re-run this command locally whenever a new file is added under `migrations/`.
 
-### 3. MailChannels DNS on `innovateconference.ca`
+### 3. Resend domain on `innovateconference.ca`
 
-Add these records in the Cloudflare DNS dashboard for **innovateconference.ca** (the From domain). Do not add them on `yasalaser.com`.
+1. Add **innovateconference.ca** in the [Resend Domains](https://resend.com/domains) dashboard.
+2. Copy the DNS records Resend generates into Cloudflare DNS for **innovateconference.ca**:
+   - **TXT** `resend._domainkey` — DKIM
+   - **TXT** `send` — SPF (`v=spf1 include:amazonses.com ~all`)
+   - **MX** `send` — priority **10**, target from Resend (e.g. `feedback-smtp.us-east-1.amazonses.com`)
+3. Wait until Resend shows the domain as **Verified**.
+4. Leave **Enable receiving** off — only outbound admin alerts are needed.
 
-**SPF** — one TXT record on the root domain `@` (merge with an existing SPF record if you already have one; only one SPF record per domain):
+Optional: add **TXT** `_dmarc` with `v=DMARC1; p=none;` for better deliverability.
 
-```text
-v=spf1 include:relay.mailchannels.net ~all
+Do **not** add MailChannels records (`_mailchannels`, `include:relay.mailchannels.net`); that integration is no longer used.
+
+### 4. Worker secret
+
+Store your Resend API key as a Worker secret (never commit it):
+
+```sh
+npx wrangler secret put RESEND_API_KEY
 ```
 
-If you already have SPF, insert `include:relay.mailchannels.net` before the final `~all` or `-all`.
+You can reuse the same key as other projects on the same Resend account. Confirm it is set:
 
-**Domain lockdown** — TXT record on `_mailchannels`:
-
-For Cloudflare Workers, MailChannels historically used:
-
-```text
-v=mc1 cfid=<your-workers-subdomain>.workers.dev
+```sh
+npx wrangler secret list
 ```
 
-Find `<your-workers-subdomain>` in the Cloudflare dashboard under **Workers & Pages** (e.g. `jdsabino.workers.dev`).
+For local dev, create `.dev.vars` (gitignored) with `RESEND_API_KEY=re_...`.
 
-MailChannels has updated their domain lockdown format for newer Outbound accounts (`v=mc1 auth=<account-id> senderid=<sender-id>`). If the `cfid` record does not work, see [MailChannels domain lockdown](https://docs.mailchannels.com/outbound/domain-lockdown) or their [domain health check](https://dash.mailchannels.com/domain-health).
-
-> **Note:** MailChannels ended free email sending for Cloudflare Workers in 2024. If notifications fail after DNS is correct, you may need a MailChannels Outbound account or an alternative provider (e.g. Resend). The Worker code would need to be updated for a different API.
-
-### 4. Deploy
+### 5. Deploy
 
 ```sh
 npm run deploy
@@ -73,6 +77,7 @@ After changing `NEWSLETTER_FROM_EMAIL` or `NEWSLETTER_NOTIFY_EMAIL` in `wrangler
 
 | Setting | Location | Current value |
 |---------|----------|---------------|
+| Resend API key | Worker secret `RESEND_API_KEY` | set via `wrangler secret put` |
 | Admin notification emails | `wrangler.jsonc` → `NEWSLETTER_NOTIFY_EMAIL` | `jdsabino@gmail.com,events@yasalaser.com` (comma-separated) |
 | From address | `wrangler.jsonc` → `NEWSLETTER_FROM_EMAIL` | `noreply@innovateconference.ca` |
 | Public site URL in emails | `wrangler.jsonc` → `SITE_URL` | `https://innovateconference.ca` |
@@ -101,3 +106,6 @@ Then submit the form at `http://localhost:8787`.
 1. Submit the newsletter form on https://innovateconference.ca
 2. Confirm a row appears in D1 (export command above)
 3. Confirm each address in `NEWSLETTER_NOTIFY_EMAIL` receives an alert **from** `noreply@innovateconference.ca`
+4. Check [Resend → Emails](https://resend.com/emails) for a delivered send
+
+If email fails, check **Workers & Pages → innovate → Observability → Logs** for `Resend notification failed` with the API error body.

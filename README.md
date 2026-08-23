@@ -18,7 +18,7 @@ Event metadata lives in [`event-config.json`](event-config.json). Update dates, 
 
 Ticket purchasing setup and fee comparison: [`docs/ticket-purchasing.md`](docs/ticket-purchasing.md).
 
-Newsletter signup (D1 + MailChannels): [`docs/newsletter-setup.md`](docs/newsletter-setup.md).
+Newsletter signup (D1 + Resend): [`docs/newsletter-setup.md`](docs/newsletter-setup.md).
 
 Content placeholders for the program are in [`src/data/`](src/data/).
 

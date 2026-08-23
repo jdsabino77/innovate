@@ -40,12 +40,18 @@ async function hashIp(ip) {
 }
 
 async function sendAdminNotification(env, signup) {
+  const apiKey = env.RESEND_API_KEY?.trim();
+  if (!apiKey) {
+    throw new Error("notification_not_configured");
+  }
+
   const notifyEmails = parseNotifyEmails(env.NEWSLETTER_NOTIFY_EMAIL, "events@yasalaser.com");
   if (notifyEmails.length === 0) {
     throw new Error("notification_not_configured");
   }
 
-  const fromEmail = env.NEWSLETTER_FROM_EMAIL || "noreply@innovateconference.ca";
+  const fromEmail = env.NEWSLETTER_FROM_EMAIL?.trim() || "noreply@innovateconference.ca";
+  const from = `Innovate Conference <${fromEmail}>`;
   const siteUrl = env.SITE_URL || "https://innovateconference.ca";
 
   const text = [
@@ -59,25 +65,24 @@ async function sendAdminNotification(env, signup) {
     `Site: ${siteUrl}`,
   ].join("\n");
 
-  const response = await fetch("https://api.mailchannels.net/tx/v1/send", {
+  const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
-      personalizations: [
-        {
-          to: notifyEmails.map((email) => ({ email, name: "Innovate Admin" })),
-        },
-      ],
-      from: { email: fromEmail, name: "Innovate Website" },
-      reply_to: { email: signup.email, name: `${signup.firstName} ${signup.lastName}` },
+      from,
+      to: notifyEmails,
+      reply_to: signup.email,
       subject: "Innovate newsletter signup",
-      content: [{ type: "text/plain", value: text }],
+      text,
     }),
   });
 
   if (!response.ok) {
     const detail = await response.text().catch(() => "");
-    console.error("MailChannels notification failed", response.status, detail);
+    console.error("Resend notification failed", response.status, detail);
     throw new Error("notification_failed");
   }
 }
