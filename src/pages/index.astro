@@ -6,8 +6,6 @@ import Button from "../components/Button.astro";
 import ExperienceCard from "../components/ExperienceCard.astro";
 import CtaBand from "../components/CtaBand.astro";
 import NewsletterSignup from "../components/NewsletterSignup.astro";
-import AboutInnovateLayout2 from "../components/AboutInnovateLayout2.astro";
-import AboutInnovateLayout3 from "../components/AboutInnovateLayout3.astro";
 import VenueCollage from "../components/VenueCollage.astro";
 import home from "../data/home.json";
 import schedule from "../data/schedule.json";
@@ -72,9 +70,6 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
       }
     </div>
   </Section>
-
-  {aboutImage && <AboutInnovateLayout2 image={aboutImage} />}
-  {aboutImage && <AboutInnovateLayout3 image={aboutImage} />}
 
   {
     isLandingMode ? (
