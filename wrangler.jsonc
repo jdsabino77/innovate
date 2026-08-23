@@ -10,10 +10,10 @@
     {
       "binding": "DB",
       "database_name": "innovate-newsletter",
-      "database_id": "00000000-0000-0000-0000-000000000000"
+      "database_id": "ab1cf2c9-744a-453e-bb0e-22c83a15bad5",
+      "migrations_dir": "migrations"
     }
   ],
-  "migrations_dir": "migrations",
   "vars": {
     "NEWSLETTER_NOTIFY_EMAIL": "events@yasalaser.com",
     "NEWSLETTER_FROM_EMAIL": "events@yasalaser.com",

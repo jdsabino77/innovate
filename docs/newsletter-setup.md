@@ -4,11 +4,13 @@ The landing page newsletter form posts to `POST /api/newsletter` on the Worker. 
 
 ## One-time setup
 
-1. Create the D1 database and copy the returned `database_id` into [`wrangler.jsonc`](../wrangler.jsonc):
+1. Create the D1 database and copy the returned `database_id` into [`wrangler.jsonc`](../wrangler.jsonc) under the `DB` binding:
 
    ```sh
    npx wrangler d1 create innovate-newsletter
    ```
+
+   The `d1_databases` entry must use `"binding": "DB"` (the Worker reads `env.DB`) and include `"migrations_dir": "migrations"` on that same object.
 
 2. Apply migrations to the remote database:
 
