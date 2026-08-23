@@ -21,6 +21,16 @@ function isValidEmail(email) {
   return email.length <= MAX_EMAIL_LENGTH && EMAIL_PATTERN.test(email);
 }
 
+function parseNotifyEmails(value, fallback) {
+  const raw = typeof value === "string" && value.trim() ? value : fallback;
+  const emails = raw
+    .split(",")
+    .map((email) => email.trim().toLowerCase())
+    .filter(Boolean);
+
+  return [...new Set(emails.filter(isValidEmail))];
+}
+
 async function hashIp(ip) {
   if (!ip) return null;
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(ip));
@@ -30,8 +40,12 @@ async function hashIp(ip) {
 }
 
 async function sendAdminNotification(env, signup) {
-  const notifyEmail = env.NEWSLETTER_NOTIFY_EMAIL || "events@yasalaser.com";
-  const fromEmail = env.NEWSLETTER_FROM_EMAIL || notifyEmail;
+  const notifyEmails = parseNotifyEmails(env.NEWSLETTER_NOTIFY_EMAIL, "events@yasalaser.com");
+  if (notifyEmails.length === 0) {
+    throw new Error("notification_not_configured");
+  }
+
+  const fromEmail = env.NEWSLETTER_FROM_EMAIL || "noreply@innovateconference.ca";
   const siteUrl = env.SITE_URL || "https://innovateconference.ca";
 
   const text = [
@@ -49,7 +63,11 @@ async function sendAdminNotification(env, signup) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      personalizations: [{ to: [{ email: notifyEmail, name: "Innovate Admin" }] }],
+      personalizations: [
+        {
+          to: notifyEmails.map((email) => ({ email, name: "Innovate Admin" })),
+        },
+      ],
       from: { email: fromEmail, name: "Innovate Website" },
       reply_to: { email: signup.email, name: `${signup.firstName} ${signup.lastName}` },
       subject: "Innovate newsletter signup",

@@ -15,7 +15,7 @@
     }
   ],
   "vars": {
-    "NEWSLETTER_NOTIFY_EMAIL": "events@yasalaser.com",
+    "NEWSLETTER_NOTIFY_EMAIL": "jdsabino@gmail.com,events@yasalaser.com",
     "NEWSLETTER_FROM_EMAIL": "noreply@innovateconference.ca",
     "SITE_URL": "https://innovateconference.ca"
   }

@@ -7,9 +7,9 @@ The landing page newsletter form posts to `POST /api/newsletter` on the Worker. 
 | Role | Variable | Value | DNS needed? |
 |------|----------|-------|-------------|
 | **From** (sender) | `NEWSLETTER_FROM_EMAIL` | `noreply@innovateconference.ca` | Yes — on `innovateconference.ca` |
-| **To** (admin alert) | `NEWSLETTER_NOTIFY_EMAIL` | `events@yasalaser.com` | No — any inbox can receive |
+| **To** (admin alert) | `NEWSLETTER_NOTIFY_EMAIL` | `jdsabino@gmail.com,events@yasalaser.com` | No — any inbox can receive |
 
-The Worker sends **from** `@innovateconference.ca` **to** `events@yasalaser.com`. You do not need DNS access to `yasalaser.com` for notifications to arrive. **Reply-To** on each alert is set to the person who submitted the form.
+The Worker sends **from** `@innovateconference.ca` **to** every address in `NEWSLETTER_NOTIFY_EMAIL` (comma-separated). You do not need DNS access to `yasalaser.com` for notifications to arrive. **Reply-To** on each alert is set to the person who submitted the form.
 
 ## One-time setup
 
@@ -73,7 +73,7 @@ After changing `NEWSLETTER_FROM_EMAIL` or `NEWSLETTER_NOTIFY_EMAIL` in `wrangler
 
 | Setting | Location | Current value |
 |---------|----------|---------------|
-| Admin notification email | `wrangler.jsonc` → `NEWSLETTER_NOTIFY_EMAIL` | `events@yasalaser.com` |
+| Admin notification emails | `wrangler.jsonc` → `NEWSLETTER_NOTIFY_EMAIL` | `jdsabino@gmail.com,events@yasalaser.com` (comma-separated) |
 | From address | `wrangler.jsonc` → `NEWSLETTER_FROM_EMAIL` | `noreply@innovateconference.ca` |
 | Public site URL in emails | `wrangler.jsonc` → `SITE_URL` | `https://innovateconference.ca` |
 
@@ -100,4 +100,4 @@ Then submit the form at `http://localhost:8787`.
 
 1. Submit the newsletter form on https://innovateconference.ca
 2. Confirm a row appears in D1 (export command above)
-3. Confirm `events@yasalaser.com` receives an alert **from** `noreply@innovateconference.ca`
+3. Confirm each address in `NEWSLETTER_NOTIFY_EMAIL` receives an alert **from** `noreply@innovateconference.ca`
