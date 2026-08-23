@@ -1,0 +1,148 @@
+---
+import Button from "./Button.astro";
+import { isLandingMode } from "../lib/launch";
+import home from "../data/home.json";
+
+interface AboutImage {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  image: AboutImage;
+}
+
+const { image } = Astro.props;
+const { about } = home;
+---
+
+<section class="about-layout-3 section" aria-labelledby="about-layout-3-title">
+  <div class="container about-layout-3-inner">
+    <header class="about-layout-3-header">
+      <p class="eyebrow">{about.eyebrow}</p>
+      <h2 id="about-layout-3-title">About Innovate — layout option 3</h2>
+      <p class="about-layout-3-lead">{about.lead}</p>
+    </header>
+
+    {
+      about.bodySecondary && about.highlights && (
+        <div class="about-layout-3-highlights">
+          <p class="about-layout-3-highlights-label">{about.bodySecondary}</p>
+          <ul>
+            {about.highlights.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    <figure class="image-frame about-layout-3-media">
+      <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+    </figure>
+
+    <p class="about-layout-3-founders">{about.body}</p>
+
+    <div class="about-layout-3-actions">
+      {
+        isLandingMode ? (
+          <>
+            <Button href="/contact">Contact the team</Button>
+            <Button href="/register" variant="secondary">Registration</Button>
+          </>
+        ) : (
+          <>
+            <Button href="/register">Register</Button>
+            <Button href="/speakers" variant="secondary">Meet the faculty</Button>
+          </>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-layout-3 {
+    padding: 72px 0;
+  }
+
+  .about-layout-3-inner {
+    display: grid;
+    gap: clamp(28px, 4vw, 36px);
+  }
+
+  .about-layout-3-header {
+    max-width: 760px;
+  }
+
+  .about-layout-3-header h2 {
+    margin: 0;
+    color: var(--color-navy);
+    font-size: clamp(2rem, 4vw, 3.35rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  .about-layout-3-lead {
+    margin: 18px 0 0;
+    max-width: 62ch;
+    color: var(--color-muted);
+    font-size: clamp(1.02rem, 1.8vw, 1.12rem);
+    line-height: 1.55;
+  }
+
+  .about-layout-3-highlights {
+    max-width: 72ch;
+  }
+
+  .about-layout-3-highlights-label {
+    margin: 0 0 12px;
+    color: var(--color-navy);
+    font-weight: 700;
+  }
+
+  .about-layout-3-highlights ul {
+    margin: 0;
+    padding-left: 1.15rem;
+    color: var(--color-muted);
+    line-height: 1.55;
+  }
+
+  .about-layout-3-highlights li + li {
+    margin-top: 10px;
+  }
+
+  .about-layout-3-media {
+    margin: 0;
+    aspect-ratio: 3 / 2;
+    width: 100%;
+  }
+
+  .about-layout-3-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .about-layout-3-founders {
+    margin: 0 auto;
+    max-width: 62ch;
+    color: var(--color-muted);
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  .about-layout-3-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  @media (max-width: 820px) {
+    .about-layout-3 {
+      padding: 48px 0;
+    }
+  }
+</style>

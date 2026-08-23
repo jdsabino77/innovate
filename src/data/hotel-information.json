@@ -4,7 +4,7 @@
     "title": "Hotel information",
     "intro": "Innovate is a single-day conference at The Quay on Toronto's East waterfront. If you're travelling from out of town, these nearby hotels are a convenient base."
   },
-  "venueNote": "The Quay — Gala room is located on Queens Quay East. Most downtown Toronto hotels are a short rideshare or transit ride away.",
+  "venueNote": "The Quay is located at 100 Queens Quay East. Most downtown Toronto hotels are a short rideshare or transit ride away.",
   "hotels": [
     {
       "name": "Westin Harbour Castle",
@@ -22,7 +22,7 @@
       "name": "Hotel X Toronto",
       "distance": "~8 min by car",
       "note": "Modern lakeside hotel on the Exhibition Place grounds with skyline views.",
-      "url": "https://www.hotelxtoronto.com/"
+      "url": "https://hotelxtoronto.com/"
     }
   ],
   "tips": [

@@ -1,6 +1,6 @@
 {
-  "name": "The Quay — Gala room",
-  "description": "Innovate takes place in the Gala room at The Quay on Toronto's East waterfront—a contemporary event space with large windows, natural wood accents, and room for focused programming and networking.",
+  "name": "The Quay",
+  "description": "Innovate takes place at The Quay on Toronto's East waterfront—a contemporary event space with large windows, natural wood accents, and room for focused programming and networking.",
   "directionsNote": "Detailed directions, parking guidance, and arrival instructions will be shared with registered attendees closer to the event.",
   "onSite": [
     "Single-room program flow for easy navigation between sessions",
@@ -8,8 +8,8 @@
     "Lunch and sponsor showcase included for registered attendees",
     "Cocktail hour from 4:00–5:00 PM"
   ],
-  "featured": ["gala-foyer-01", "seated-dinner-01"],
-  "aboutFeatured": "gala-foyer-01",
+  "featured": ["the-quay-01", "the-quay-02"],
+  "aboutFeatured": "the-quay-01",
   "sourceAlbums": [
     {
       "label": "Gala foyer",
@@ -34,9 +34,30 @@
   ],
   "photos": [
     {
+      "id": "the-quay-01",
+      "src": "/images/venue/the-quay-01.jpg",
+      "alt": "Event hall at The Quay viewed through open glass doors",
+      "caption": "The Quay event space",
+      "category": "foyer"
+    },
+    {
+      "id": "the-quay-02",
+      "src": "/images/venue/the-quay-02.jpg",
+      "alt": "Modern lounge seating area at The Quay with wood-slat wall art",
+      "caption": "The Quay lounge",
+      "category": "foyer"
+    },
+    {
+      "id": "the-quay-03",
+      "src": "/images/venue/the-quay-03.jpg",
+      "alt": "Wide view of The Quay event hall with contemporary lighting and table settings",
+      "caption": "The Quay main hall",
+      "category": "foyer"
+    },
+    {
       "id": "gala-foyer-01",
       "src": "/images/venue/gala-foyer-01.jpg",
-      "alt": "The Quay Gala room foyer with warm lighting and wood accents",
+      "alt": "The Quay foyer with warm lighting and wood accents",
       "caption": "Gala room foyer",
       "category": "foyer"
     },
@@ -78,7 +99,7 @@
     {
       "id": "seated-dinner-01",
       "src": "/images/venue/seated-dinner-01.jpg",
-      "alt": "Seated dinner setup in The Quay Gala room",
+      "alt": "Seated dinner setup at The Quay",
       "caption": "Seated dinner arrangement",
       "category": "dining"
     },

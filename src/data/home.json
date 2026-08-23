@@ -2,28 +2,28 @@
   "hero": {
     "eyebrow": "February 27, 2027",
     "title": "Where clinical craft meets practical innovation.",
-    "subtitle": "A single-day aesthetic medicine conference by YASA LASER at The Quay — Gala room.",
+    "subtitle": "A single-day aesthetic medicine conference by YASA Laser at The Quay.",
     "video": "/video/hero.mp4",
     "poster": "/video/hero-poster.webp"
   },
   "stats": [
     { "value": "1 Day", "label": "Focused program" },
     { "value": "6+ Sessions", "label": "Clinical & ops" },
-    { "value": "1 Venue", "label": "The Quay Gala room" }
+    { "value": "1 Venue", "label": "The Quay" }
   ],
   "about": {
     "eyebrow": "About Innovate",
     "title": "Founded by leaders. Focused on what works.",
-    "lead": "Presented by YASA LASER — a conference built by Canadian R&D and clinical leaders who prioritize outcomes over hype.",
+    "lead": "Presented by YASA Laser, Innovate is a conference built by Canadian R&D and clinical leaders who prioritize outcomes over hype.",
     "body": "Innovate is founded by Dr. Arjang Yazdani, FRCSC, and Nadine Sabino, RN — pioneers in aesthetic laser medicine, provider training, and clinical innovation across Canada. Their work spans advanced energy-based treatments, surgical and non-surgical care, and national education for aesthetic teams.",
-    "bodySecondary": "Innovate brings together diverse speakers and clinical leaders for focused education on procedures, protocols, and practical innovation you can apply in your practice. No filler — just meaningful sessions for clinicians and operators who care about measurable outcomes.",
+    "bodySecondary": "The conference will:",
     "highlights": [
-      "Physician-led clinical rigor",
-      "Expert speakers across aesthetic medicine",
-      "Built for teams who care about outcomes"
+      "Showcase the latest advancements and innovations shaping the future of medical aesthetics.",
+      "Provide a platform for industry leaders to introduce new technologies and products launching in 2027",
+      "Encourage informed debate and critical evaluation of emerging trends, evolving techniques, and approaches that are challenging conventional thinking in aesthetic medicine."
     ],
-    "image": "/images/home/about-innovate.png",
-    "imageAlt": "Clinician reviewing laser treatment outcomes on a tablet in a modern aesthetic clinic"
+    "image": "/images/home/nadine-with-dr-yazdani.jpg",
+    "imageAlt": "Nadine Sabino and Dr. Arjang Yazdani beside a Sciton Joule laser system at Yazdani Aesthetics"
   },
   "experience": {
     "eyebrow": "The Innovate experience",
@@ -77,14 +77,14 @@
   },
   "venue": {
     "eyebrow": "Location",
-    "title": "The Quay — Gala room",
-    "intro": "Innovate takes place in the Gala room at The Quay—a waterfront venue with expansive windows, natural wood accents, and room for focused programming and networking.",
+    "title": "The Quay",
+    "intro": "Innovate takes place at The Quay — 100 Queens Quay East, on Toronto's East waterfront. Venue details, directions and arrival information coming soon.",
     "cta": "Explore the venue"
   },
   "cta": {
     "eyebrow": "Innovate 2027",
     "title": "Stay in touch",
-    "body": "Registration and program details are on the way. Contact us with questions about Innovate 2027.",
+    "body": "Sign up to be on our newsletter and get notified when registration is open.",
     "primaryCta": "Contact the team",
     "secondaryCta": "Explore the venue"
   },

@@ -1,6 +1,6 @@
 ---
 import Button from "./Button.astro";
-import { eventConfig } from "../lib/event-config";
+import { eventConfig, venueDisplay } from "../lib/event-config";
 
 interface Props {
   registerHref?: string;
@@ -17,7 +17,7 @@ const { registerHref = "/register", registerLabel = "Register" } = Astro.props;
   </div>
   <div>
     <dt>Venue</dt>
-    <dd>{eventConfig.venue}</dd>
+    <dd>{venueDisplay}</dd>
   </div>
   <div>
     <dt>Host</dt>

@@ -1,6 +1,6 @@
 # Innovate Conference Website
 
-Static website for **Innovate: What's New in Medical Aesthetics**, a conference by YASA LASER. Production domain is `https://innovateconference.ca` (Workers Custom Domain, attached at go-live). Until then the Worker is public at `https://innovate.jdsabino.workers.dev`.
+Static website for **Innovate: What's New in Medical Aesthetics**, a conference by YASA Laser. Production domain is `https://innovateconference.ca` (Workers Custom Domain, attached at go-live). Until then the Worker is public at `https://innovate.jdsabino.workers.dev`.
 
 ## Pages
 
@@ -17,6 +17,8 @@ Static website for **Innovate: What's New in Medical Aesthetics**, a conference 
 Event metadata lives in [`event-config.json`](event-config.json). Update dates, venue, contact email, and ticketing (`ticketing.embedUrl`) there; pages read from this file.
 
 Ticket purchasing setup and fee comparison: [`docs/ticket-purchasing.md`](docs/ticket-purchasing.md).
+
+Newsletter signup (D1 + MailChannels): [`docs/newsletter-setup.md`](docs/newsletter-setup.md).
 
 Content placeholders for the program are in [`src/data/`](src/data/).
 

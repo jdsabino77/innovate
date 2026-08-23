@@ -19,8 +19,9 @@ const requiredPublicFiles = [
   "favicon.svg",
   "images/branding/Innovate_Logo_BlackOnWhite.svg",
   "images/branding/Innovate_Logo_WhiteOnBlack.svg",
-  "images/venue/gala-foyer-01.jpg",
-  "images/venue/seated-dinner-01.jpg",
+  "images/venue/the-quay-01.jpg",
+  "images/venue/the-quay-02.jpg",
+  "images/home/nadine-with-dr-yazdani.jpg",
   "images/speakers/arjang-yazdani.jpg",
   "images/speakers/nadine-sabino.jpg",
   "images/sponsors/yasa-laser.svg",
@@ -71,25 +72,33 @@ for (const file of requiredPublicFiles) {
 }
 
 await assertContains("robots.txt", `Sitemap: ${siteUrl}/sitemap.xml`);
+await assertContains("sitemap.xml", `${siteUrl}/register`);
 await assertContains("sitemap.xml", `${siteUrl}/venue`);
 await assertContains("index.html", "Innovate");
 await assertContains("index.html", "More details coming soon");
 await assertContains("index.html", "hero-poster.webp");
 await assertContains("index.html", "Founded by leaders");
-await assertContains("index.html", "about-innovate.png");
+await assertContains("index.html", "nadine-with-dr-yazdani.jpg");
 await assertContains("index.html", "Stay in touch");
-await assertContains("index.html", "Contact the team");
-await assertContains("index.html", "Expert speakers across aesthetic medicine");
-await assertContains("index.html", "YASA LASER");
-await assertContains("index.html", "Presented by YASA LASER");
+await assertContains("index.html", "Presented by YASA Laser, Innovate is a conference");
+await assertContains("index.html", "The conference will:");
+await assertContains("index.html", "Showcase the latest advancements and innovations");
+await assertContains("index.html", "100 Queens Quay East");
+await assertContains("index.html", "YASA Laser");
+await assertContains("index.html", 'href="/register"');
+await assertContains("index.html", "data-newsletter-form");
+await assertContains("index.html", 'name="firstName"');
 await assertNotContains("index.html", "Yasa Laser");
-await assertNotContains("index.html", "YASA Laser");
-await assertNotContains("sitemap.xml", `${siteUrl}/schedule`);
-await assertNotContains("sitemap.xml", `${siteUrl}/sponsors`);
+await assertNotContains("index.html", "YASA LASER");
+await assertNotContains("index.html", "Gala room");
+await assertNotContains("index.html", "Resources");
 await assertNotContains("index.html", "case-based learning");
 await assertNotContains("index.html", "Six confirmed industry partners");
 await assertNotContains("index.html", 'href="/schedule"');
-await assertNotContains("index.html", 'href="/register"');
+await assertNotContains("index.html", "Explore the venue");
+await assertNotContains("sitemap.xml", `${siteUrl}/schedule`);
+await assertNotContains("sitemap.xml", `${siteUrl}/sponsors`);
+await assertContains("register/index.html", "Registration opens soon");
 await assertContains("venue/index.html", "Inside The Quay Gala room");
 await assertContains("speakers/index.html", "Dr. Arjang Yazdani");
 await assertContains("speakers/index.html", "Nadine Sabino");
@@ -107,7 +116,6 @@ await assertContains("contact/index.html", "events@yasalaser.com");
 await assertContains("hotel-information/index.html", "Hotel information");
 await assertContains("hotel-information/index.html", "Suggested hotels");
 await assertNotContains("hotel-information/index.html", "Room blocks");
-await assertContains("index.html", "Resources");
 await assertContains("schedule/index.html", "Cocktail hour");
 await assertContains("venue/index.html", "7:30 AM");
 
