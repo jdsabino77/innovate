@@ -5,9 +5,14 @@ import { eventConfig, venueDisplay } from "../lib/event-config";
 interface Props {
   registerHref?: string;
   registerLabel?: string;
+  showRegisterAction?: boolean;
 }
 
-const { registerHref = "/register", registerLabel = "Register" } = Astro.props;
+const {
+  registerHref = "/register",
+  registerLabel = "Register",
+  showRegisterAction = true,
+} = Astro.props;
 ---
 
 <div class="facts-bar">
@@ -23,9 +28,13 @@ const { registerHref = "/register", registerLabel = "Register" } = Astro.props;
     <dt>Host</dt>
     <dd>{eventConfig.host}</dd>
   </div>
-  <div class="facts-bar-action">
-    <Button href={registerHref}>{registerLabel}</Button>
-  </div>
+  {
+    showRegisterAction && (
+      <div class="facts-bar-action">
+        <Button href={registerHref}>{registerLabel}</Button>
+      </div>
+    )
+  }
 </div>
 
 <style>

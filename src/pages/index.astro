@@ -45,21 +45,14 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
             </div>
           )
         }
-        <div class="about-actions">
-          {
-            isLandingMode ? (
-              <>
-                <Button href="/contact">Contact the team</Button>
-                <Button href="/register" variant="secondary">Registration</Button>
-              </>
-            ) : (
-              <>
-                <Button href="/register">Register</Button>
-                <Button href="/speakers" variant="secondary">Meet the faculty</Button>
-              </>
-            )
-          }
-        </div>
+        {
+          !isLandingMode && (
+            <div class="about-actions">
+              <Button href="/register">Register</Button>
+              <Button href="/speakers" variant="secondary">Meet the faculty</Button>
+            </div>
+          )
+        }
       </div>
       {
         aboutImage && (

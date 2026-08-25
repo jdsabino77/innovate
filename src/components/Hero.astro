@@ -28,7 +28,11 @@ const heroDate = eventConfig.eventDateDisplay;
       <p class="display-subtitle">{hero.subtitle}</p>
       {!isLandingMode && <StatGrid stats={stats} />}
     </div>
-    <EventFactsBar registerHref={isLandingMode ? "/contact" : "/register"} registerLabel={isLandingMode ? "Contact us" : "Register"} />
+    <EventFactsBar
+      showRegisterAction={!isLandingMode}
+      registerHref="/register"
+      registerLabel="Register"
+    />
   </div>
 </section>
 

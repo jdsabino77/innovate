@@ -18,13 +18,16 @@ const links = footerLinks;
         </a>.
       </p>
     </div>
-    <nav aria-label="Footer navigation">
-      {links.map((link) => <a href={link.href}>{link.label}</a>)}
-    </nav>
+    {
+      links.length > 0 && (
+        <nav aria-label="Footer navigation">
+          {links.map((link) => <a href={link.href}>{link.label}</a>)}
+        </nav>
+      )
+    }
   </div>
   <div class="container footer-bottom">
-    <span>&copy; {year} YASA Laser Clinic. All rights reserved.</span>
-    <span>{eventConfig.eventDateDisplay} &middot; {eventConfig.venue}</span>
+    <span>&copy; {year} {eventConfig.host}. All rights reserved.</span>
   </div>
 </footer>
 
