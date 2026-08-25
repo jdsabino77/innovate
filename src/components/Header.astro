@@ -4,6 +4,7 @@ import { isLandingMode } from "../lib/launch";
 import { mainNavItems, resourcesNavItems } from "../lib/navigation";
 
 const isHome = Astro.url.pathname === "/";
+const hasNavItems = mainNavItems.length > 0 || !isLandingMode;
 ---
 
 <header class:list={["site-header", isHome && "site-header-overlay"]} data-site-header>
@@ -27,22 +28,26 @@ const isHome = Astro.url.pathname === "/";
         aria-hidden="true"
       />
     </a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-      Menu
-    </button>
-    <nav id="site-nav" class="nav" aria-label="Main navigation">
-      {mainNavItems.map((item) => (
-        <a class:list={[item.href === "/register" && "nav-register"]} href={item.href}>
-          {item.label}
-        </a>
-      ))}
-      {!isLandingMode && (
+    {
+      hasNavItems && (
         <>
-          <NavDropdown label="Resources" items={[...resourcesNavItems]} />
-          <a class="nav-register" href="/register">Register</a>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+            Menu
+          </button>
+          <nav id="site-nav" class="nav" aria-label="Main navigation">
+            {mainNavItems.map((item) => (
+              <a href={item.href}>{item.label}</a>
+            ))}
+            {!isLandingMode && (
+              <>
+                <NavDropdown label="Resources" items={[...resourcesNavItems]} />
+                <a class="nav-register" href="/register">Register</a>
+              </>
+            )}
+          </nav>
         </>
-      )}
-    </nav>
+      )
+    }
   </div>
 </header>
 
