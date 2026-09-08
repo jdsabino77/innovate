@@ -1,6 +1,11 @@
 # Innovate Conference Website
 
-Static website for **Innovate: What's New in Medical Aesthetics**, a conference by YASA Laser. Production domain is `https://innovateconference.ca` (Workers Custom Domain, attached at go-live). Until then the Worker is public at `https://innovate.jdsabino.workers.dev`.
+Static website for **Innovate: What's New in Medical Aesthetics**, a conference by YASA Laser.
+
+- **Production:** https://innovateconference.ca (Worker `innovate`)
+- **Preview (client review):** https://innovate-preview.jdsabino.workers.dev (Worker `innovate-preview`)
+
+Deploy flow: [`docs/deploy.md`](docs/deploy.md).
 
 ## Pages
 
@@ -40,10 +45,16 @@ npm run smoke-test
 ## Deploy
 
 ```sh
+# Preview only (safe default) — does not update innovateconference.ca
 npm run deploy
+
+# Production — only after client confirmation
+npm run deploy:production
 ```
 
-Pushes to `main` also deploy via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) when these GitHub Actions secrets are set:
+Pushes to `main` deploy **preview** via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). Production requires a manual workflow run with target **production**. Secrets:
 
 - `CLOUDFLARE_API_TOKEN` — token with **Edit Cloudflare Workers** ([create one](https://dash.cloudflare.com/profile/api-tokens))
 - `CLOUDFLARE_ACCOUNT_ID` — Cloudflare account ID for Worker `innovate`
+
+Details: [`docs/deploy.md`](docs/deploy.md).
