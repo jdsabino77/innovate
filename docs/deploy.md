@@ -5,7 +5,11 @@ Use **preview** for client review. Use **production** only after changes are app
 | Target | Worker | URL | How to deploy |
 |--------|--------|-----|----------------|
 | **Preview** | `innovate-preview` | https://innovate-preview.jdsabino.workers.dev | Default: push to `main`, `npm run deploy`, or `npm run deploy:preview` |
-| **Production** | `innovate` | https://innovateconference.ca (also `innovate.jdsabino.workers.dev`) | Explicit only: `npm run deploy:production` or Actions → Run workflow → **production** |
+| **Production** | `innovate` | https://innovateconference.ca | Explicit only: `npm run deploy:production` or Actions → Run workflow → **production** |
+
+**Share with clients for review:** https://innovate-preview.jdsabino.workers.dev only.
+
+**Not for client review:** https://innovate.jdsabino.workers.dev — that is the production Worker’s `workers.dev` subdomain. It serves the **same live content** as https://innovateconference.ca. `npm run deploy` does **not** update it; only a production deploy does.
 
 `innovateconference.ca` is a Workers Custom Domain on the **production** Worker only (dashboard). Do not add it under `env.preview` in [`wrangler.jsonc`](../wrangler.jsonc).
 

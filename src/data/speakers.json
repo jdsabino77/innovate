@@ -1,9 +1,9 @@
 {
   "page": {
     "eyebrow": "Speakers",
-    "title": "Meet our keynote faculty",
-    "intro": "Innovate 2027 opens with confirmed keynote faculty from Yazdani Aesthetics — Dr. Arjang Yazdani and Nadine Sabino, RN. Additional speakers will be announced as the program is finalized.",
-    "moreComingNote": "Additional keynote speakers will be announced as the program is confirmed."
+    "title": "Meet our faculty",
+    "intro": "Innovate 2027 features confirmed faculty including Dr. Arjang Yazdani, Nadine Sabino, RN, and Kimsy Kay, RPN. Additional speakers will be announced as the program is finalized.",
+    "moreComingNote": "Additional speakers will be announced as the program is confirmed."
   },
   "speakers": [
     {
@@ -30,6 +30,18 @@
       "photoSource": "Yazdani Aesthetics",
       "sourceUrl": "https://yazdaniaesthetics.com/about/nadine-sabino/",
       "order": 2,
+      "featured": true
+    },
+    {
+      "id": "kimsy-kay",
+      "name": "Kimsy Kay, RPN",
+      "credentials": "Empower Aesthetic Medicine Collaborative",
+      "role": "Founder + Nurse Injector",
+      "bio": "Founder of Empower Aesthetic Medicine Collaborative (EAMC) and Executive Producer of Nurses & Needles, a Canadian educational conference series advancing clinical preparedness and professional development in aesthetic medicine. With a nursing background across community care, research, education, and aesthetics, Kimsy advocates for education over ego and keeping patient safety at the centre of practice.",
+      "photo": "/images/speakers/kimsy-kay.jpg",
+      "photoAlt": "Kimsy Kay, RPN",
+      "photoSource": "Speaker submission",
+      "order": 3,
       "featured": true
     }
   ]

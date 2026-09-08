@@ -24,6 +24,7 @@ const requiredPublicFiles = [
   "images/home/nadine-with-dr-yazdani.jpg",
   "images/speakers/arjang-yazdani.jpg",
   "images/speakers/nadine-sabino.jpg",
+  "images/speakers/kimsy-kay.jpg",
   "images/sponsors/yasa-laser.svg",
   "images/sponsors/cynosure.svg",
   "images/sponsors/sciton.svg",
@@ -73,6 +74,7 @@ for (const file of requiredPublicFiles) {
 
 await assertContains("robots.txt", `Sitemap: ${siteUrl}/sitemap.xml`);
 await assertContains("sitemap.xml", `${siteUrl}/`);
+await assertContains("sitemap.xml", `${siteUrl}/speakers`);
 await assertNotContains("sitemap.xml", `${siteUrl}/register`);
 await assertNotContains("sitemap.xml", `${siteUrl}/venue`);
 await assertNotContains("sitemap.xml", `${siteUrl}/hotel-information`);
@@ -98,6 +100,8 @@ await assertNotContains("index.html", "Gala room");
 await assertNotContains("index.html", "Resources");
 await assertNotContains("index.html", "case-based learning");
 await assertNotContains("index.html", "Six confirmed industry partners");
+await assertContains("index.html", "Meet the faculty");
+await assertContains("index.html", 'href="/speakers"');
 await assertNotContains("index.html", 'href="/schedule"');
 await assertNotContains("index.html", 'href="/register"');
 await assertNotContains("index.html", 'href="/contact"');
@@ -112,6 +116,8 @@ await assertContains("register/index.html", "Registration opens soon");
 await assertContains("venue/index.html", "Inside The Quay Gala room");
 await assertContains("speakers/index.html", "Dr. Arjang Yazdani");
 await assertContains("speakers/index.html", "Nadine Sabino");
+await assertContains("speakers/index.html", "Kimsy Kay");
+await assertContains("speakers/index.html", "Empower Aesthetic Medicine Collaborative");
 await assertContains("sponsors/index.html", "Presented by");
 await assertContains("sponsors/index.html", "Confirmed partners");
 await assertContains("sponsors/index.html", "YASA LASER");
