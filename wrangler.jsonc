@@ -1,4 +1,7 @@
 {
+  // Production Worker `innovate` — serves https://innovateconference.ca
+  // (Custom Domain attached in the Cloudflare dashboard, not here).
+  // Preview: `npx wrangler deploy --env preview` → innovate-preview.*.workers.dev
   "name": "innovate",
   "compatibility_date": "2026-05-14",
   "main": "./src/worker.js",
@@ -22,5 +25,28 @@
   "observability": {
     "enabled": true,
     "head_sampling_rate": 1
+  },
+  "env": {
+    // Separate Worker `innovate-preview` — does not serve innovateconference.ca
+    "preview": {
+      "workers_dev": true,
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "innovate-newsletter",
+          "database_id": "ab1cf2c9-744a-453e-bb0e-22c83a15bad5",
+          "migrations_dir": "migrations"
+        }
+      ],
+      "vars": {
+        "NEWSLETTER_NOTIFY_EMAIL": "jdsabino@gmail.com,events@yasalaser.com",
+        "NEWSLETTER_FROM_EMAIL": "noreply@innovateconference.ca",
+        "SITE_URL": "https://innovate-preview.jdsabino.workers.dev"
+      },
+      "observability": {
+        "enabled": true,
+        "head_sampling_rate": 1
+      }
+    }
   }
 }

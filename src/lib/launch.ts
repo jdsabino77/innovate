@@ -10,7 +10,9 @@ const fullMainNavItems = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
-const landingMainNavItems = [] as const;
+const landingMainNavItems = [
+  { href: "/speakers", label: "Speakers" },
+] as const;
 
 const fullResourcesNavItems = [
   { href: "/register", label: "Register Now" },
@@ -30,14 +32,16 @@ const fullFooterLinks = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
-const landingFooterLinks = [] as const;
+const landingFooterLinks = [
+  { href: "/speakers", label: "Speakers" },
+] as const;
 
 export const mainNavItems = isLandingMode ? landingMainNavItems : fullMainNavItems;
 export const resourcesNavItems = isLandingMode ? landingResourcesNavItems : fullResourcesNavItems;
 export const footerLinks = isLandingMode ? landingFooterLinks : fullFooterLinks;
 
 export const publishedSitemapPaths = isLandingMode
-  ? ["/"]
+  ? ["/", "/speakers"]
   : [
       "/",
       "/schedule",

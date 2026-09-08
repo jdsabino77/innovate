@@ -66,12 +66,16 @@ For local dev, create `.dev.vars` (gitignored) with `RESEND_API_KEY=re_...`.
 ### 5. Deploy
 
 ```sh
+# Preview (default) — https://innovate-preview.jdsabino.workers.dev
 npm run deploy
+
+# Production — https://innovateconference.ca (after client confirmation)
+npm run deploy:production
 ```
 
-Merging to `main` also deploys via GitHub Actions. Ensure `CLOUDFLARE_API_TOKEN` has **Workers Scripts Edit** for the `innovate` Worker.
+Merging to `main` deploys **preview** via GitHub Actions. Production is a manual workflow target. Ensure `CLOUDFLARE_API_TOKEN` has **Workers Scripts Edit** for `innovate` and `innovate-preview`.
 
-After changing `NEWSLETTER_FROM_EMAIL` or `NEWSLETTER_NOTIFY_EMAIL` in `wrangler.jsonc`, redeploy so production picks up the new values.
+After changing `NEWSLETTER_FROM_EMAIL` or `NEWSLETTER_NOTIFY_EMAIL` in `wrangler.jsonc`, redeploy the environments that should pick up the new values. Preview needs its own secret: `npx wrangler secret put RESEND_API_KEY --env preview`. See [`docs/deploy.md`](deploy.md).
 
 ## Configuration reference
 
