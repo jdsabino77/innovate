@@ -2,7 +2,7 @@
   "page": {
     "eyebrow": "Speakers",
     "title": "Meet our faculty",
-    "intro": "Innovate 2027 features confirmed faculty including Dr. Arjang Yazdani, Nadine Sabino, RN, and Kimsy Kay, RPN. Additional speakers will be announced as the program is finalized.",
+    "intro": "Innovate 2027 features confirmed faculty including Dr. Arjang Yazdani, Nadine Sabino, RN, Kimsy Kay, RPN, and Ario Khoshbin. Additional speakers will be announced as the program is finalized.",
     "moreComingNote": "Additional speakers will be announced as the program is confirmed."
   },
   "speakers": [
@@ -12,6 +12,8 @@
       "credentials": "BSc, MD, FRCSC",
       "role": "Keynote Speaker",
       "bio": "Royal College-certified plastic surgeon specializing in reconstructive and cosmetic surgery. Dr. Yazdani is Chief of Plastic Surgery at London Health Sciences Centre and Chairman of Plastic Surgery at Western University, with a practice spanning surgical and non-surgical aesthetic care.",
+      "talkTitle": "From Bench to Bedside: Advancing Facial Aesthetic Innovation Through Evidence and Expertise",
+      "talkDescription": "As Chairman of Plastic Surgery at Western University and Chief of Plastic Surgery at LHSC, Dr. Yazdani examines how academic research, surgical R&D, and real-world practice must move together. Drawing on published work in facial cosmetic surgery and a practice that spans reconstructive and aesthetic care, this session explores how new techniques, devices, and non-surgical modalities earn a place in responsible clinical decision-making — and how personalized treatment planning keeps innovation grounded in patient outcomes.",
       "photo": "/images/speakers/arjang-yazdani.jpg",
       "photoAlt": "Dr. Arjang Yazdani",
       "photoSource": "Yazdani Aesthetics",
@@ -25,6 +27,8 @@
       "credentials": "BScN",
       "role": "Keynote Speaker",
       "bio": "Partner at Yazdani Aesthetics and one of Canada's most experienced aesthetic nurses, with deep expertise in lasers, injectables, and non-surgical treatments. Nadine is an in-demand national speaker and trainer, with a background in surgical nursing and provider education.",
+      "talkTitle": "Energy, Injectables, and the Next Wave: Translating Aesthetic Innovation into Practice",
+      "talkDescription": "With deep expertise in lasers, injectables, and non-surgical care — and a background as a national Cynosure trainer — Nadine Sabino, RN, looks at how new energy-based systems and treatment protocols actually land in clinic. This session connects innovation to provider readiness: evaluating emerging technologies, building evidence-informed protocols across surgical and non-surgical options, and using education and hands-on training so teams adopt what’s new without sacrificing safety, consistency, or patient trust.",
       "photo": "/images/speakers/nadine-sabino.jpg",
       "photoAlt": "Nadine Sabino, RN",
       "photoSource": "Yazdani Aesthetics",
@@ -38,10 +42,26 @@
       "credentials": "Empower Aesthetic Medicine Collaborative",
       "role": "Founder + Nurse Injector",
       "bio": "Founder of Empower Aesthetic Medicine Collaborative (EAMC) and Executive Producer of Nurses & Needles, a Canadian educational conference series advancing clinical preparedness and professional development in aesthetic medicine. With a nursing background across community care, research, education, and aesthetics, Kimsy advocates for education over ego and keeping patient safety at the centre of practice.",
+      "talkTitle": "Beyond the Treatment: Clinical Preparedness in Modern Aesthetic Medicine",
+      "talkDescription": "As aesthetic medicine rapidly embraces new technologies, products, and regenerative treatments, clinical systems must evolve alongside them. Kimsy Kay, RPN, explores the fundamentals surrounding innovation - from patient assessment, consent and documentation to complication preparedness, interdisciplinary collaboration, and knowing when not to treat. The session asks practitioners to consider a critical question: As our treatments become more advanced, are our clinical systems advancing with them?",
       "photo": "/images/speakers/kimsy-kay.jpg",
       "photoAlt": "Kimsy Kay, RPN",
       "photoSource": "Speaker submission",
       "order": 3,
+      "featured": true
+    },
+    {
+      "id": "ario-khoshbin",
+      "name": "Ario Khoshbin",
+      "credentials": "Prollenium Medical Technologies",
+      "role": "Founder + Innovator",
+      "bio": "Canadian entrepreneur and founder of Prollenium Medical Technologies, the global manufacturer behind the Revanesse® line of dermal fillers distributed in more than 80 countries. He also founded Phiusion Labs, an innovation platform focused on next-generation technologies in aesthetics, biologics, and regenerative medicine.",
+      "talkTitle": "Regenerative Aesthetics and the End of Symptomology",
+      "talkDescription": "Drawing on decades building Prollenium from a startup into a global injectable manufacturer — and on Phiusion Labs’ work in next-generation aesthetics and regenerative medicine — Ario Khoshbin explores how regenerative approaches can move the field beyond treating surface symptoms toward deeper, biology-driven outcomes. The session connects product innovation, R&D, and clinical practice around a central question: what does aesthetic medicine look like when regeneration, not symptom management, sets the agenda?",
+      "photo": "/images/speakers/ario-khoshbin.jpg",
+      "photoAlt": "Ario Khoshbin",
+      "photoSource": "Speaker submission",
+      "order": 4,
       "featured": true
     }
   ]

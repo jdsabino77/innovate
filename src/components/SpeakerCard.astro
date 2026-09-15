@@ -4,23 +4,35 @@ interface Props {
   credentials?: string;
   role: string;
   bio: string;
+  talkTitle?: string;
+  talkDescription?: string;
   photo: string;
   photoAlt: string;
   sourceUrl?: string;
 }
 
-const { name, credentials, role, bio, photo, photoAlt, sourceUrl } = Astro.props;
+const { name, credentials, role, bio, talkTitle, talkDescription, photo, photoAlt, sourceUrl } =
+  Astro.props;
 ---
 
 <article class="card speaker-card">
   <div class="speaker-photo-frame">
-    <img src={photo} alt={photoAlt} loading="lazy" decoding="async" width="320" height="400" />
+    <img src={photo} alt={photoAlt} loading="lazy" decoding="async" width="800" height="1000" />
   </div>
   <div class="speaker-body">
     <h3>{name}</h3>
     {credentials && <p class="speaker-credentials">{credentials}</p>}
     <p class="speaker-role">{role}</p>
     <p class="speaker-bio">{bio}</p>
+    {
+      talkTitle && (
+        <div class="speaker-talk">
+          <p class="speaker-talk-label">Topic</p>
+          <h4 class="speaker-talk-title">{talkTitle}</h4>
+          {talkDescription && <p class="speaker-talk-description">{talkDescription}</p>}
+        </div>
+      )
+    }
     {
       sourceUrl && (
         <a class="speaker-profile" href={sourceUrl} target="_blank" rel="noopener noreferrer">
@@ -33,16 +45,19 @@ const { name, credentials, role, bio, photo, photoAlt, sourceUrl } = Astro.props
 
 <style>
   .speaker-card {
-    display: grid;
-    gap: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     padding: 0;
     overflow: hidden;
   }
 
   .speaker-photo-frame {
+    flex: 0 0 auto;
     aspect-ratio: 4 / 5;
     overflow: hidden;
-    background: var(--color-brand-soft);
+    background: #f0eeea;
+    border-bottom: 1px solid var(--color-border);
   }
 
   .speaker-photo-frame img {
@@ -54,13 +69,16 @@ const { name, credentials, role, bio, photo, photoAlt, sourceUrl } = Astro.props
   }
 
   .speaker-body {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
     gap: 8px;
-    padding: 22px 24px 24px;
+    padding: 20px 24px 24px;
   }
 
   .speaker-body h3 {
     margin: 0;
+    color: var(--color-navy);
     font-size: 1.2rem;
     line-height: 1.2;
   }
@@ -82,12 +100,43 @@ const { name, credentials, role, bio, photo, photoAlt, sourceUrl } = Astro.props
   }
 
   .speaker-bio {
-    margin: 4px 0 0;
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  .speaker-talk {
+    display: grid;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid rgb(201 169 98 / 35%);
+  }
+
+  .speaker-talk-label {
+    margin: 0;
+    color: var(--color-brand);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .speaker-talk-title {
+    margin: 0;
+    color: var(--color-navy);
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .speaker-talk-description {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.92rem;
     line-height: 1.55;
   }
 
   .speaker-profile {
-    margin-top: 6px;
+    margin-top: 4px;
     color: var(--color-navy);
     font-size: 0.88rem;
     font-weight: 700;

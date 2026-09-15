@@ -25,6 +25,7 @@ const requiredPublicFiles = [
   "images/speakers/arjang-yazdani.jpg",
   "images/speakers/nadine-sabino.jpg",
   "images/speakers/kimsy-kay.jpg",
+  "images/speakers/ario-khoshbin.jpg",
   "images/sponsors/yasa-laser.svg",
   "images/sponsors/cynosure.svg",
   "images/sponsors/sciton.svg",
@@ -117,7 +118,25 @@ await assertContains("venue/index.html", "Inside The Quay Gala room");
 await assertContains("speakers/index.html", "Dr. Arjang Yazdani");
 await assertContains("speakers/index.html", "Nadine Sabino");
 await assertContains("speakers/index.html", "Kimsy Kay");
+await assertContains("speakers/index.html", "Ario Khoshbin");
 await assertContains("speakers/index.html", "Empower Aesthetic Medicine Collaborative");
+await assertContains("speakers/index.html", "Prollenium Medical Technologies");
+await assertContains(
+  "speakers/index.html",
+  "From Bench to Bedside: Advancing Facial Aesthetic Innovation Through Evidence and Expertise",
+);
+await assertContains(
+  "speakers/index.html",
+  "Energy, Injectables, and the Next Wave: Translating Aesthetic Innovation into Practice",
+);
+await assertContains(
+  "speakers/index.html",
+  "Beyond the Treatment: Clinical Preparedness in Modern Aesthetic Medicine",
+);
+await assertContains(
+  "speakers/index.html",
+  "Regenerative Aesthetics and the End of Symptomology",
+);
 await assertContains("sponsors/index.html", "Presented by");
 await assertContains("sponsors/index.html", "Confirmed partners");
 await assertContains("sponsors/index.html", "YASA LASER");
