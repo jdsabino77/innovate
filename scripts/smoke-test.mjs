@@ -32,7 +32,8 @@ const requiredPublicFiles = [
   "images/sponsors/co2-lift.png",
   "images/sponsors/alastin.svg",
   "images/sponsors/allergan.svg",
-  "images/sponsors/loreal-brands.svg",
+  "images/sponsors/skinbetter-science.png",
+  "images/sponsors/skinceuticals.png",
   "images/home/about-innovate.png",
   "video/hero.mp4",
   "video/hero-poster.webp",
@@ -76,6 +77,7 @@ for (const file of requiredPublicFiles) {
 await assertContains("robots.txt", `Sitemap: ${siteUrl}/sitemap.xml`);
 await assertContains("sitemap.xml", `${siteUrl}/`);
 await assertContains("sitemap.xml", `${siteUrl}/speakers`);
+await assertContains("sitemap.xml", `${siteUrl}/sponsors`);
 await assertNotContains("sitemap.xml", `${siteUrl}/register`);
 await assertNotContains("sitemap.xml", `${siteUrl}/venue`);
 await assertNotContains("sitemap.xml", `${siteUrl}/hotel-information`);
@@ -103,6 +105,8 @@ await assertNotContains("index.html", "case-based learning");
 await assertNotContains("index.html", "Six confirmed industry partners");
 await assertContains("index.html", "Meet the faculty");
 await assertContains("index.html", 'href="/speakers"');
+await assertContains("index.html", "View sponsors");
+await assertContains("index.html", 'href="/sponsors"');
 await assertNotContains("index.html", 'href="/schedule"');
 await assertNotContains("index.html", 'href="/register"');
 await assertNotContains("index.html", 'href="/contact"');
@@ -112,7 +116,6 @@ await assertNotContains("index.html", "Explore the venue");
 await assertNotContains("index.html", "Contact the team");
 await assertNotContains("index.html", ">Registration<");
 await assertNotContains("sitemap.xml", `${siteUrl}/schedule`);
-await assertNotContains("sitemap.xml", `${siteUrl}/sponsors`);
 await assertContains("register/index.html", "Registration opens soon");
 await assertContains("venue/index.html", "Inside The Quay Gala room");
 await assertContains("speakers/index.html", "Dr. Arjang Yazdani");
@@ -144,6 +147,9 @@ await assertContains("sponsors/index.html", "Sciton");
 await assertContains("sponsors/index.html", "CO2 Lift");
 await assertContains("sponsors/index.html", "Alastin Skincare");
 await assertContains("sponsors/index.html", "Skinbetter Science");
+await assertContains("sponsors/index.html", "SkinCeuticals");
+await assertContains("sponsors/index.html", "skinbetter-science.png");
+await assertContains("sponsors/index.html", "skinceuticals.png");
 await assertContains("sponsors/index.html", "Cynosure Lutronic");
 await assertContains("sponsors/index.html", "Allergan Aesthetics");
 await assertContains("sponsors/index.html", "events@yasalaser.com");
