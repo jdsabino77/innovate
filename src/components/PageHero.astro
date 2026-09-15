@@ -1,20 +1,47 @@
 ---
+interface HostAside {
+  label: string;
+  name: string;
+  logo: string;
+  logoAlt?: string;
+  url: string;
+}
+
 interface Props {
   eyebrow?: string;
   title: string;
   intro?: string;
   photoSrc?: string;
+  host?: HostAside;
 }
 
-const { eyebrow, title, intro, photoSrc } = Astro.props;
+const { eyebrow, title, intro, photoSrc, host } = Astro.props;
 ---
 
-<section class:list={["page-hero", photoSrc && "page-hero-photo"]}>
+<section class:list={["page-hero", photoSrc && "page-hero-photo", host && "page-hero-with-host"]}>
   {photoSrc && <img class="page-hero-bg" src={photoSrc} alt="" loading="eager" decoding="async" />}
   <div class="container page-hero-inner">
-    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-    <h1 class="page-title">{title}</h1>
-    {intro && <p class="page-intro">{intro}</p>}
+    <div class="page-hero-copy">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h1 class="page-title">{title}</h1>
+      {intro && <p class="page-intro">{intro}</p>}
+    </div>
+    {
+      host && (
+        <a class="hero-host" href={host.url} target="_blank" rel="noopener noreferrer">
+          <span class="hero-host-label">{host.label}</span>
+          <img
+            class="hero-host-logo"
+            src={host.logo}
+            alt={host.logoAlt ?? host.name}
+            width="280"
+            height="210"
+            loading="eager"
+            decoding="async"
+          />
+        </a>
+      )
+    }
   </div>
 </section>
 
@@ -49,7 +76,49 @@ const { eyebrow, title, intro, photoSrc } = Astro.props;
     z-index: 1;
   }
 
-  .page-hero-photo .eyebrow {
+  .page-hero-with-host .page-hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 20px 48px;
+    align-items: start;
+  }
+
+  .page-hero-copy .eyebrow {
+    margin: 0 0 12px;
+  }
+
+  .hero-host {
+    display: grid;
+    justify-items: end;
+    align-content: start;
+    gap: 10px;
+    padding-top: 2px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .hero-host-label {
+    margin: 0;
+    color: var(--color-brand);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .hero-host-logo {
+    display: block;
+    width: auto;
+    height: clamp(7rem, 14vw, 11rem);
+    max-height: clamp(7rem, 14vw, 11rem);
+    max-width: min(280px, 34vw);
+    object-fit: contain;
+  }
+
+  .page-hero-photo .eyebrow,
+  .page-hero-photo .hero-host-label {
     color: var(--color-brand);
   }
 
@@ -65,6 +134,22 @@ const { eyebrow, title, intro, photoSrc } = Astro.props;
   @media (max-width: 820px) {
     .page-hero {
       padding: 56px 0 40px;
+    }
+
+    .page-hero-with-host .page-hero-inner {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .hero-host {
+      justify-items: start;
+      justify-self: end;
+    }
+
+    .hero-host-logo {
+      height: clamp(5.5rem, 22vw, 8rem);
+      max-height: clamp(5.5rem, 22vw, 8rem);
+      max-width: 220px;
     }
   }
 </style>
