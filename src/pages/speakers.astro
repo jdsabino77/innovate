@@ -14,7 +14,7 @@ const featuredSpeakers = speakers
 
 <BaseLayout
   title="Speakers"
-  description={`Faculty for ${eventConfig.eventName} — Dr. Arjang Yazdani, Nadine Sabino, RN, and Kimsy Kay, RPN. More speakers to be announced.`}
+  description={`Faculty for ${eventConfig.eventName} — Dr. Arjang Yazdani, Nadine Sabino, RN, Kimsy Kay, RPN, and Ario Khoshbin. More speakers to be announced.`}
   canonicalPath="/speakers"
 >
   <PageHero eyebrow={page.eyebrow} title={page.title} intro={page.intro} />
@@ -31,6 +31,7 @@ const featuredSpeakers = speakers
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: 18px;
+    align-items: stretch;
   }
 
   .more-coming {
