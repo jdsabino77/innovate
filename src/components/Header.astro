@@ -1,7 +1,10 @@
 ---
 import NavDropdown from "./NavDropdown.astro";
+import { eventConfig } from "../lib/event-config";
 import { isLandingMode } from "../lib/launch";
 import { mainNavItems, resourcesNavItems } from "../lib/navigation";
+
+const registerUrl = eventConfig.ticketing.checkoutUrl;
 
 const isHome = Astro.url.pathname === "/";
 const hasNavItems = mainNavItems.length > 0 || !isLandingMode;
@@ -38,6 +41,13 @@ const hasNavItems = mainNavItems.length > 0 || !isLandingMode;
             {mainNavItems.map((item) => (
               <a href={item.href}>{item.label}</a>
             ))}
+            {
+              isLandingMode && registerUrl && (
+                <a class="nav-register" href={registerUrl} target="_blank" rel="noopener noreferrer">
+                  Register
+                </a>
+              )
+            }
             {!isLandingMode && (
               <>
                 <NavDropdown label="Resources" items={[...resourcesNavItems]} />

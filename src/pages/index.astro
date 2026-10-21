@@ -10,9 +10,10 @@ import VenueCollage from "../components/VenueCollage.astro";
 import home from "../data/home.json";
 import schedule from "../data/schedule.json";
 import { isLandingMode } from "../lib/launch";
-import { siteDescription } from "../lib/event-config";
+import { eventConfig, siteDescription } from "../lib/event-config";
 import { venue, getFeaturedPhotos, getVenuePhoto } from "../lib/venue";
 
+const registerUrl = eventConfig.ticketing.checkoutUrl;
 const aboutImage = home.about.image
   ? { src: home.about.image, alt: home.about.imageAlt }
   : getVenuePhoto(venue.aboutFeatured);
@@ -29,7 +30,7 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
       <div class="about-copy">
         <p class="eyebrow">{home.about.eyebrow}</p>
         <h2 class="about-title">{home.about.title}</h2>
-        <p class="about-lead">{home.about.lead}</p>
+        {home.about.lead && <p class="about-lead">{home.about.lead}</p>}
         <div class="about-body">
           <p>{home.about.body}</p>
         </div>
@@ -46,12 +47,7 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
           )
         }
         {
-          isLandingMode ? (
-            <div class="about-actions">
-              <Button href="/speakers" variant="secondary">Meet the faculty</Button>
-              <Button href="/sponsors" variant="secondary">View sponsors</Button>
-            </div>
-          ) : (
+          !isLandingMode && (
             <div class="about-actions">
               <Button href="/register">Register</Button>
               <Button href="/speakers" variant="secondary">Meet the faculty</Button>
@@ -67,6 +63,15 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
         )
       }
     </div>
+    {
+      isLandingMode && registerUrl && (
+        <div class="section-register">
+          <Button href={registerUrl} target="_blank" rel="noopener noreferrer">
+            Register now
+          </Button>
+        </div>
+      )
+    }
   </Section>
 
   {
@@ -85,6 +90,15 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
             </article>
           ))}
         </div>
+        {
+          registerUrl && (
+            <div class="section-register">
+              <Button href={registerUrl} target="_blank" rel="noopener noreferrer">
+                Register now
+              </Button>
+            </div>
+          )
+        }
       </Section>
     ) : (
       <>
@@ -122,10 +136,27 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
     )
   }
 
-  <Section variant="soft" eyebrow={home.venue.eyebrow} title={home.venue.title} intro={home.venue.intro}>
+  <Section
+    variant="soft"
+    eyebrow={home.venue.eyebrow}
+    title={home.venue.title}
+    intro={home.venue.intro}
+    introWide
+  >
     {
       isLandingMode ? (
-        <VenueCollage photos={featuredVenuePhotos} showCaptions={false} equalSize />
+        <>
+          <VenueCollage photos={featuredVenuePhotos} showCaptions={false} equalSize />
+          {
+            registerUrl && (
+              <div class="section-register">
+                <Button href={registerUrl} target="_blank" rel="noopener noreferrer">
+                  Register now
+                </Button>
+              </div>
+            )
+          }
+        </>
       ) : (
         <div class="split venue-split">
           <VenueCollage photos={featuredVenuePhotos} />
@@ -165,7 +196,7 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
 <style>
   .about-grid {
     display: grid;
-    grid-template-columns: minmax(0, 0.88fr) minmax(340px, 1.12fr);
+    grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
     gap: clamp(32px, 5vw, 64px);
     align-items: start;
   }
@@ -178,9 +209,9 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
 
   .about-title {
     margin: 0;
-    max-width: 22ch;
     color: var(--color-navy);
-    font-size: clamp(2rem, 4.2vw, 3.2rem);
+    white-space: pre-line;
+    font-size: clamp(2rem, 3.4vw, 2.85rem);
     line-height: 1.02;
     letter-spacing: -0.045em;
   }
@@ -232,6 +263,12 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 28px;
+  }
+
+  .section-register {
+    display: flex;
+    justify-content: center;
+    margin-top: 36px;
   }
 
   .about-media {

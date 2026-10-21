@@ -291,6 +291,15 @@ svg {
   box-shadow: var(--shadow-card);
 }
 
+.facts-bar-balanced {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  text-align: center;
+}
+
+.facts-line {
+  display: block;
+}
+
 .facts-bar dt {
   color: var(--color-brand);
   font-size: 0.72rem;
@@ -395,7 +404,9 @@ svg {
   }
 
   .stat-grid,
-  .facts-bar {
+  .facts-bar,
+  .facts-bar-balanced {
     grid-template-columns: 1fr;
+    text-align: left;
   }
 }

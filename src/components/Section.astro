@@ -5,15 +5,17 @@ interface Props {
   intro?: string;
   class?: string;
   variant?: "default" | "soft" | "dark";
+  introWide?: boolean;
 }
 
-const { eyebrow, title, intro, class: className = "", variant = "default" } = Astro.props;
+const { eyebrow, title, intro, class: className = "", variant = "default", introWide = false } =
+  Astro.props;
 ---
 
 <section class:list={["section", `section-${variant}`, className]}>
   <div class="container">
     {(eyebrow || title || intro) && (
-      <div class="section-heading">
+      <div class:list={["section-heading", introWide && "section-heading-wide"]}>
         {eyebrow && <p class="eyebrow">{eyebrow}</p>}
         {title && <h2>{title}</h2>}
         {intro && <p>{intro}</p>}
@@ -49,6 +51,10 @@ const { eyebrow, title, intro, class: className = "", variant = "default" } = As
   .section-heading {
     max-width: 760px;
     margin-bottom: 28px;
+  }
+
+  .section-heading-wide {
+    max-width: none;
   }
 
   .section-heading h2 {

@@ -1,8 +1,8 @@
 ---
 interface Props {
   name: string;
-  logo: string;
-  logoAlt: string;
+  logo?: string;
+  logoAlt?: string;
   url?: string;
   tier?: string;
 }
@@ -18,10 +18,20 @@ const Tag = url ? "a" : "div";
   rel={url ? "noopener noreferrer" : undefined}
 >
   {tier && <p class="exhibitor-tier">{tier}</p>}
-  <div class="exhibitor-logo-frame">
-    <img src={logo} alt={logoAlt} loading="lazy" decoding="async" />
-  </div>
-  <p class="exhibitor-name">{name}</p>
+  {
+    logo ? (
+      <>
+        <div class="exhibitor-logo-frame">
+          <img src={logo} alt={logoAlt ?? name} loading="lazy" decoding="async" />
+        </div>
+        <p class="exhibitor-name">{name}</p>
+      </>
+    ) : (
+      <div class="exhibitor-logo-frame">
+        <p class="exhibitor-wordmark">{name}</p>
+      </div>
+    )
+  }
 </Tag>
 
 <style>
@@ -68,6 +78,15 @@ const Tag = url ? "a" : "div";
     width: auto;
     height: auto;
     object-fit: contain;
+  }
+
+  .exhibitor-wordmark {
+    margin: 0;
+    color: var(--color-navy);
+    font-size: 1.35rem;
+    font-weight: 750;
+    letter-spacing: -0.03em;
+    text-align: center;
   }
 
   .exhibitor-name {

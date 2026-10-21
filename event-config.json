@@ -13,10 +13,10 @@
   "newsletterNotifyEmail": "events@yasalaser.com",
   "siteUrl": "https://innovateconference.ca",
   "ticketing": {
-    "provider": "ticket-tailor",
-    "enabled": false,
+    "provider": "eventbrite",
+    "enabled": true,
     "embedUrl": "",
-    "checkoutUrl": ""
+    "checkoutUrl": "https://www.eventbrite.ca/e/innovate-whats-next-in-medical-aesthetics-tickets-2003619736568"
   },
   "launch": {
     "landingMode": true

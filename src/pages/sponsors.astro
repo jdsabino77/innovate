@@ -7,43 +7,46 @@ import ExhibitorLogoCard from "../components/ExhibitorLogoCard.astro";
 import sponsorsData from "../data/sponsors.json";
 import { eventConfig } from "../lib/event-config";
 
-const { page, host, exhibitors, tiers } = sponsorsData;
+const { page, host, groups, exhibitors } = sponsorsData;
 const contactEmail = page.contactEmail || eventConfig.contactEmail;
-const featuredExhibitors = exhibitors
-  .filter((exhibitor) => exhibitor.featured !== false)
-  .sort((a, b) => a.order - b.order);
+const sponsorGroups = groups.map((group) => ({
+  ...group,
+  exhibitors: exhibitors
+    .filter((exhibitor) => exhibitor.featured !== false && exhibitor.tier === group.id)
+    .sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" })),
+}));
 ---
 
 <BaseLayout
   title="Exhibitors & Sponsors"
-  description={`Confirmed industry partners and sponsorship opportunities for ${eventConfig.eventNameLong}, hosted by ${eventConfig.host}.`}
+  description={`Sponsors and exhibitors for ${eventConfig.eventNameLong}, hosted by ${eventConfig.host}.`}
   canonicalPath="/sponsors"
 >
   <PageHero eyebrow={page.eyebrow} title={page.title} intro={page.intro} host={host} />
   <Section>
-    <h2 class="section-heading">{page.exhibitorsHeading}</h2>
-    <div class="exhibitor-grid">
-      {featuredExhibitors.map((exhibitor) => <ExhibitorLogoCard {...exhibitor} />)}
-    </div>
+    {
+      sponsorGroups.map((group) => (
+        <div class="sponsor-group">
+          <h2 class="section-heading">{group.heading}</h2>
+          <div class="exhibitor-grid">
+            {group.exhibitors.map((exhibitor) => (
+              <ExhibitorLogoCard
+                name={exhibitor.name}
+                logo={exhibitor.logo || undefined}
+                logoAlt={exhibitor.logoAlt}
+                url={exhibitor.url}
+              />
+            ))}
+          </div>
+        </div>
+      ))
+    }
     {page.moreComingNote && <p class="more-coming">{page.moreComingNote}</p>}
   </Section>
 
   <Section variant="soft">
     <h2 class="section-heading">{page.tiersHeading}</h2>
     <p class="tiers-intro">{page.tiersIntro}</p>
-    <div class="tier-grid">
-      {
-        tiers.map((tier) => (
-          <article class="card tier-card">
-            <h3>{tier.name}</h3>
-            <p>{tier.description}</p>
-            <p class="tier-availability">
-              {tier.available === 1 ? "1 slot available" : `${tier.available} slots available`}
-            </p>
-          </article>
-        ))
-      }
-    </div>
     <div class="sponsor-cta">
       {
         contactEmail ? (
@@ -66,9 +69,13 @@ const featuredExhibitors = exhibitors
     line-height: 1.15;
   }
 
+  .sponsor-group + .sponsor-group {
+    margin-top: 36px;
+  }
+
   .exhibitor-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
     gap: 16px;
   }
 
@@ -81,37 +88,7 @@ const featuredExhibitors = exhibitors
 
   .tiers-intro {
     margin: 0 0 18px;
-    max-width: 720px;
     color: var(--color-muted);
-  }
-
-  .tier-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-    gap: 16px;
-  }
-
-  .tier-card {
-    display: grid;
-    gap: 10px;
-  }
-
-  .tier-card h3 {
-    margin: 0;
-    color: var(--color-navy);
-    font-size: 1.15rem;
-  }
-
-  .tier-card p {
-    margin: 0;
-  }
-
-  .tier-availability {
-    color: var(--color-brand);
-    font-size: 0.82rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
   }
 
   .sponsor-cta {
@@ -119,8 +96,7 @@ const featuredExhibitors = exhibitors
   }
 
   @media (max-width: 820px) {
-    .exhibitor-grid,
-    .tier-grid {
+    .exhibitor-grid {
       grid-template-columns: 1fr;
     }
   }
