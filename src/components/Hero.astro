@@ -81,6 +81,16 @@ const heroDate = eventConfig.eventDateDisplay;
     box-shadow: 0 12px 32px rgb(0 0 0 / 22%);
   }
 
+  .hero-content :global(.display-title) {
+    max-width: 18em;
+    font-size: clamp(1.85rem, 4.2vw, 3.45rem);
+    line-height: 1.08;
+  }
+
+  .hero-content :global(.display-subtitle) {
+    max-width: 46rem;
+  }
+
   .hero-content :global(.stat-grid) {
     width: min(100%, 720px);
     margin-top: 8px;

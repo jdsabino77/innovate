@@ -2,9 +2,8 @@
   "page": {
     "eyebrow": "Exhibitors & Sponsors",
     "title": "Meet our 2027 partners",
-    "intro": "Hosted by YASA LASER and founded by Dr. Arjang Yazdani and Nadine Sabino, RN, Innovate advances medical aesthetics through innovation, science, and personalized patient care. Industry partners will be announced as they're confirmed.",
-    "exhibitorsHeading": "Confirmed partners",
-    "moreComingNote": "Additional partners may still be announced as the program is finalized.",
+    "intro": "INNOVATE 2027 is proud to partner with industry leaders who share our passion for advancing aesthetic medicine through groundbreaking science, cutting-edge technologies, and clinical excellence. Our sponsors and exhibitors play a vital role in bringing this conference to life, showcasing the latest advancements and connecting attendees with the technologies and expertise shaping our industry. We extend our sincere thanks for their support and commitment to moving aesthetic medicine forward. Stay tuned as we unveil our growing lineup of 2027 partners!",
+    "moreComingNote": "Stay tuned as we reveal more exciting sponsors and exhibitors joining the INNOVATE 2027 lineup!",
     "tiersHeading": "Sponsorship opportunities",
     "tiersIntro": "Interested in partnering with Innovate 2027? Email us to discuss sponsorship packages and how we can align with your goals.",
     "contactEmail": "events@yasalaser.com"
@@ -14,19 +13,52 @@
     "logo": "/images/sponsors/yasa-laser.svg",
     "logoAlt": "YASA LASER",
     "url": "https://yasalaser.com",
-    "label": "Presented by"
+    "label": "Hosted by"
   },
+  "groups": [
+    { "id": "platinum", "heading": "Platinum Sponsors" },
+    { "id": "gold", "heading": "Gold Sponsors" }
+  ],
   "exhibitors": [
+    {
+      "id": "cynosure",
+      "name": "Cynosure",
+      "logo": "/images/sponsors/cynosure.svg",
+      "logoAlt": "Cynosure",
+      "url": "https://www.cynosurecanada.com/",
+      "tier": "platinum",
+      "order": 1,
+      "featured": true
+    },
     {
       "id": "sciton",
       "name": "Sciton",
       "logo": "/images/sponsors/sciton.svg",
       "logoAlt": "Sciton",
-      "url": "https://sciton.com/",
-      "tier": "Confirmed partner",
-      "order": 1,
-      "featured": true,
-      "status": "soft-confirmed"
+      "url": "https://scitonlasers.ca/",
+      "tier": "platinum",
+      "order": 2,
+      "featured": true
+    },
+    {
+      "id": "skinbetter-science",
+      "name": "Skinbetter Science",
+      "logo": "/images/sponsors/skinbetter-science.png",
+      "logoAlt": "Skinbetter Science",
+      "url": "https://www.skinbetter.ca/",
+      "tier": "platinum",
+      "order": 3,
+      "featured": true
+    },
+    {
+      "id": "skinceuticals",
+      "name": "SkinCeuticals",
+      "logo": "/images/sponsors/skinceuticals.png",
+      "logoAlt": "SkinCeuticals",
+      "url": "https://www.skinceuticals.ca/",
+      "tier": "platinum",
+      "order": 4,
+      "featured": true
     },
     {
       "id": "co2-lift",
@@ -34,82 +66,19 @@
       "logo": "/images/sponsors/co2-lift.png",
       "logoAlt": "CO2 Lift",
       "url": "https://co2lift.com/",
-      "tier": "Confirmed partner",
+      "tier": "gold",
+      "order": 1,
+      "featured": true
+    },
+    {
+      "id": "hydrinity",
+      "name": "Hydrinity",
+      "logo": "",
+      "logoAlt": "Hydrinity",
+      "url": "https://hydrinitycanada.com/",
+      "tier": "gold",
       "order": 2,
-      "featured": true,
-      "status": "soft-confirmed"
-    },
-    {
-      "id": "alastin",
-      "name": "Alastin Skincare",
-      "logo": "/images/sponsors/alastin.svg",
-      "logoAlt": "Alastin Skincare",
-      "url": "https://alastin.com/",
-      "tier": "Confirmed partner",
-      "order": 3,
-      "featured": true,
-      "status": "soft-confirmed"
-    },
-    {
-      "id": "skinbetter-science",
-      "name": "Skinbetter Science",
-      "logo": "/images/sponsors/skinbetter-science.png",
-      "logoAlt": "Skinbetter Science",
-      "url": "https://www.skinbetter.com/",
-      "tier": "Confirmed partner",
-      "order": 4,
-      "featured": true,
-      "status": "soft-confirmed"
-    },
-    {
-      "id": "skinceuticals",
-      "name": "SkinCeuticals",
-      "logo": "/images/sponsors/skinceuticals.png",
-      "logoAlt": "SkinCeuticals",
-      "url": "https://www.skinceuticals.com/",
-      "tier": "Confirmed partner",
-      "order": 5,
-      "featured": true,
-      "status": "soft-confirmed"
-    },
-    {
-      "id": "cynosure",
-      "name": "Cynosure Lutronic",
-      "logo": "/images/sponsors/cynosure.svg",
-      "logoAlt": "Cynosure Lutronic",
-      "url": "https://www.cynosure.com/",
-      "tier": "Confirmed partner",
-      "order": 6,
-      "featured": true,
-      "status": "soft-confirmed"
-    },
-    {
-      "id": "allergan",
-      "name": "Allergan Aesthetics",
-      "logo": "/images/sponsors/allergan.svg",
-      "logoAlt": "Allergan Aesthetics",
-      "url": "https://www.allerganaesthetics.com/",
-      "tier": "Confirmed partner",
-      "order": 7,
-      "featured": true,
-      "status": "soft-confirmed"
-    }
-  ],
-  "tiers": [
-    {
-      "name": "Presenting partner",
-      "description": "Premier visibility across the program, stage, and attendee materials.",
-      "available": 1
-    },
-    {
-      "name": "Gold",
-      "description": "Prominent branding in session breaks and the sponsor showcase.",
-      "available": 2
-    },
-    {
-      "name": "Supporting",
-      "description": "Recognition across the venue and digital program guide.",
-      "available": 3
+      "featured": true
     }
   ]
 }

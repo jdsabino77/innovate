@@ -1,6 +1,6 @@
 ---
 import Button from "./Button.astro";
-import { eventConfig, venueDisplay } from "../lib/event-config";
+import { eventConfig } from "../lib/event-config";
 
 interface Props {
   registerHref?: string;
@@ -15,14 +15,17 @@ const {
 } = Astro.props;
 ---
 
-<div class="facts-bar">
+<div class:list={["facts-bar", !showRegisterAction && "facts-bar-balanced"]}>
   <div>
     <dt>Date</dt>
     <dd>{eventConfig.eventDateDisplay}</dd>
   </div>
   <div>
     <dt>Venue</dt>
-    <dd>{venueDisplay}</dd>
+    <dd>
+      <span class="facts-line">{eventConfig.venue}</span>
+      {eventConfig.venueAddress && <span class="facts-line">{eventConfig.venueAddress}</span>}
+    </dd>
   </div>
   <div>
     <dt>Host</dt>

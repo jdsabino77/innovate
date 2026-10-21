@@ -66,6 +66,20 @@ async function assertNotContains(relativePath, needle) {
   }
 }
 
+async function assertOrder(relativePath, needles) {
+  const fullPath = path.join(distDir, relativePath);
+  const contents = await readFile(fullPath, "utf8");
+  let cursor = -1;
+  for (const needle of needles) {
+    const index = contents.indexOf(needle, cursor + 1);
+    if (index === -1) {
+      failures.push(`Expected "${needle}" in order in ${relativePath}`);
+      return;
+    }
+    cursor = index;
+  }
+}
+
 for (const page of requiredPages) {
   await assertExists(page);
 }
@@ -85,11 +99,19 @@ await assertNotContains("sitemap.xml", `${siteUrl}/contact`);
 await assertContains("index.html", "Innovate");
 await assertContains("index.html", "More details coming soon");
 await assertContains("index.html", "hero-poster.webp");
+await assertContains("index.html", "Exploring the Breakthroughs, Technologies, and Techniques");
+await assertContains("index.html", "thought-provoking debate");
 await assertContains("index.html", "Founded by leaders");
+await assertContains("index.html", "Focused on innovation");
+await assertContains("index.html", "shared passion for scientific discovery");
 await assertContains("index.html", "nadine-with-dr-yazdani.jpg");
 await assertContains("index.html", "Stay in touch");
-await assertContains("index.html", "Presented by YASA Laser, Innovate is a conference");
 await assertContains("index.html", "The conference will:");
+await assertContains("index.html", "Register now");
+await assertContains(
+  "index.html",
+  "https://www.eventbrite.ca/e/innovate-whats-next-in-medical-aesthetics-tickets-2003619736568",
+);
 await assertContains("index.html", "Showcase the latest advancements and innovations");
 await assertContains("index.html", "100 Queens Quay East");
 await assertContains("index.html", "YASA Laser");
@@ -103,9 +125,10 @@ await assertNotContains("index.html", "Gala room");
 await assertNotContains("index.html", "Resources");
 await assertNotContains("index.html", "case-based learning");
 await assertNotContains("index.html", "Six confirmed industry partners");
-await assertContains("index.html", "Meet the faculty");
+await assertNotContains("index.html", "Meet the faculty");
+await assertNotContains("index.html", "View sponsors");
+await assertNotContains("index.html", "Presented by YASA Laser, Innovate is a conference");
 await assertContains("index.html", 'href="/speakers"');
-await assertContains("index.html", "View sponsors");
 await assertContains("index.html", 'href="/sponsors"');
 await assertNotContains("index.html", 'href="/schedule"');
 await assertNotContains("index.html", 'href="/register"');
@@ -116,22 +139,34 @@ await assertNotContains("index.html", "Explore the venue");
 await assertNotContains("index.html", "Contact the team");
 await assertNotContains("index.html", ">Registration<");
 await assertNotContains("sitemap.xml", `${siteUrl}/schedule`);
-await assertContains("register/index.html", "Registration opens soon");
+await assertNotContains("register/index.html", "Registration opens soon");
+await assertContains("register/index.html", "Register now");
+await assertContains(
+  "register/index.html",
+  "https://www.eventbrite.ca/e/innovate-whats-next-in-medical-aesthetics-tickets-2003619736568",
+);
 await assertContains("venue/index.html", "Inside The Quay Gala room");
-await assertContains("speakers/index.html", "Dr. Arjang Yazdani");
-await assertContains("speakers/index.html", "Nadine Sabino");
+await assertContains("speakers/index.html", "Dr. Arjang Yazdani, MD, FRCSC");
+await assertContains("speakers/index.html", "Nadine Sabino, RN, BScN");
 await assertContains("speakers/index.html", "Kimsy Kay");
 await assertContains("speakers/index.html", "Ario Khoshbin");
+await assertContains("speakers/index.html", "physicians, nurses, and industry leaders");
+await assertContains("speakers/index.html", "Plastic Surgeon | Co-Founder, INNOVATE Conference");
+await assertContains(
+  "speakers/index.html",
+  "Advanced Laser Specialist | Educator | Co-Founder, INNOVATE Conference",
+);
+await assertContains("speakers/index.html", "Royal College-certified plastic surgeon");
+await assertContains("speakers/index.html", "one of the leading aesthetic nurses");
+await assertContains(
+  "speakers/index.html",
+  "Stay tuned as we reveal more exciting speakers and industry-leading experts joining the INNOVATE 2027 lineup!",
+);
 await assertContains("speakers/index.html", "Empower Aesthetic Medicine Collaborative");
 await assertContains("speakers/index.html", "Prollenium Medical Technologies");
-await assertContains(
-  "speakers/index.html",
-  "From Bench to Bedside: Advancing Facial Aesthetic Innovation Through Evidence and Expertise",
-);
-await assertContains(
-  "speakers/index.html",
-  "Energy, Injectables, and the Next Wave: Translating Aesthetic Innovation into Practice",
-);
+await assertNotContains("speakers/index.html", "From Bench to Bedside");
+await assertNotContains("speakers/index.html", "Energy, Injectables, and the Next Wave");
+await assertNotContains("speakers/index.html", "yazdaniaesthetics.com");
 await assertContains(
   "speakers/index.html",
   "Beyond the Treatment: Clinical Preparedness in Modern Aesthetic Medicine",
@@ -140,18 +175,49 @@ await assertContains(
   "speakers/index.html",
   "Regenerative Aesthetics and the End of Symptomology",
 );
-await assertContains("sponsors/index.html", "Presented by");
-await assertContains("sponsors/index.html", "Confirmed partners");
+await assertOrder("speakers/index.html", [
+  "Dr. Arjang Yazdani, MD, FRCSC",
+  "Nadine Sabino, RN, BScN",
+  "Ario Khoshbin",
+  "Kimsy Kay",
+]);
+await assertContains("sponsors/index.html", "Hosted by");
+await assertNotContains("sponsors/index.html", "Presented by");
+await assertNotContains("sponsors/index.html", "Confirmed partner");
+await assertContains("sponsors/index.html", "Platinum Sponsors");
+await assertContains("sponsors/index.html", "Gold Sponsors");
 await assertContains("sponsors/index.html", "YASA LASER");
 await assertContains("sponsors/index.html", "Sciton");
 await assertContains("sponsors/index.html", "CO2 Lift");
-await assertContains("sponsors/index.html", "Alastin Skincare");
+await assertContains("sponsors/index.html", "Hydrinity");
+await assertNotContains("sponsors/index.html", "Alastin");
 await assertContains("sponsors/index.html", "Skinbetter Science");
 await assertContains("sponsors/index.html", "SkinCeuticals");
 await assertContains("sponsors/index.html", "skinbetter-science.png");
 await assertContains("sponsors/index.html", "skinceuticals.png");
-await assertContains("sponsors/index.html", "Cynosure Lutronic");
-await assertContains("sponsors/index.html", "Allergan Aesthetics");
+await assertContains("sponsors/index.html", "https://scitonlasers.ca/");
+await assertContains("sponsors/index.html", "https://www.cynosurecanada.com/");
+await assertContains("sponsors/index.html", "https://www.skinbetter.ca/");
+await assertContains("sponsors/index.html", "https://www.skinceuticals.ca/");
+await assertContains("sponsors/index.html", "https://hydrinitycanada.com/");
+await assertContains("sponsors/index.html", "https://co2lift.com/");
+await assertNotContains("sponsors/index.html", "Cynosure Lutronic");
+await assertNotContains("sponsors/index.html", "Allergan");
+await assertNotContains("sponsors/index.html", "slot available");
+await assertContains(
+  "sponsors/index.html",
+  "Stay tuned as we reveal more exciting sponsors and exhibitors joining the INNOVATE 2027 lineup!",
+);
+await assertOrder("sponsors/index.html", [
+  "Platinum Sponsors",
+  "Cynosure",
+  "Sciton",
+  "Skinbetter Science",
+  "SkinCeuticals",
+  "Gold Sponsors",
+  "CO2 Lift",
+  "Hydrinity",
+]);
 await assertContains("sponsors/index.html", "events@yasalaser.com");
 await assertContains("contact/index.html", "events@yasalaser.com");
 await assertContains("hotel-information/index.html", "Hotel information");
