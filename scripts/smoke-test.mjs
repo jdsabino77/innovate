@@ -26,6 +26,7 @@ const requiredPublicFiles = [
   "images/speakers/nadine-sabino.jpg",
   "images/speakers/kimsy-kay.jpg",
   "images/speakers/ario-khoshbin.jpg",
+  "images/speakers/michael-roskies.jpg",
   "images/sponsors/yasa-laser.svg",
   "images/sponsors/cynosure.svg",
   "images/sponsors/sciton.svg",
@@ -150,6 +151,7 @@ await assertContains("speakers/index.html", "Dr. Arjang Yazdani, MD, FRCSC");
 await assertContains("speakers/index.html", "Nadine Sabino, RN, BScN");
 await assertContains("speakers/index.html", "Kimsy Kay");
 await assertContains("speakers/index.html", "Ario Khoshbin");
+await assertContains("speakers/index.html", "Dr. Michael Roskies");
 await assertContains("speakers/index.html", "physicians, nurses, and industry leaders");
 await assertContains("speakers/index.html", "Plastic Surgeon | Co-Founder, INNOVATE Conference");
 await assertContains(
@@ -164,6 +166,8 @@ await assertContains(
 );
 await assertContains("speakers/index.html", "Empower Aesthetic Medicine Collaborative");
 await assertContains("speakers/index.html", "Prollenium Medical Technologies");
+await assertContains("speakers/index.html", "Yorkville Plastic Surgery Center");
+await assertContains("speakers/index.html", "double fellowship trained, double board certified");
 await assertNotContains("speakers/index.html", "From Bench to Bedside");
 await assertNotContains("speakers/index.html", "Energy, Injectables, and the Next Wave");
 await assertNotContains("speakers/index.html", "yazdaniaesthetics.com");
@@ -180,6 +184,7 @@ await assertOrder("speakers/index.html", [
   "Nadine Sabino, RN, BScN",
   "Ario Khoshbin",
   "Kimsy Kay",
+  "Dr. Michael Roskies",
 ]);
 await assertContains("sponsors/index.html", "Hosted by");
 await assertNotContains("sponsors/index.html", "Presented by");
