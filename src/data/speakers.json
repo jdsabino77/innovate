@@ -59,6 +59,19 @@
       "group": "faculty",
       "order": 4,
       "featured": true
+    },
+    {
+      "id": "michael-roskies",
+      "name": "Dr. Michael Roskies",
+      "credentials": "Yorkville Plastic Surgery Center",
+      "role": "Facial Plastic & Reconstructive Surgeon | Owner",
+      "bio": "Dr. Michael Roskies is a double fellowship trained, double board certified facial plastic and reconstructive surgeon and owner of Yorkville Plastic Surgery Center. He trained in microvascular reconstruction at the prestigious Cleveland Clinic, where he worked alongside the pioneers of face transplantation, and further refined his techniques in Facial Plastic Surgery at the University of Toronto. During five years of training at McGill University in General Surgery, Plastic Surgery and Otolaryngology-Head & Neck Surgery, he also obtained a Master’s degree in Tissue Engineering. His practice focuses exclusively on cosmetic surgery of the face, with over 15,000 hours spent operating on this body region throughout his career. An early adopter of preservation rhinoplasty and ultrasonic rhinoplasty, Dr. Roskies is one of the few surgeons to combine these innovations worldwide. He has also performed hundreds of hair transplants and is a leader in non-surgical rejuvenation. Recently selected as a “Leader of the Future” by industry pioneers, he is frequently invited to speak on injectable fillers, neurotoxins and facial anatomy.",
+      "photo": "/images/speakers/michael-roskies.jpg",
+      "photoAlt": "Dr. Michael Roskies",
+      "photoSource": "Speaker submission",
+      "group": "faculty",
+      "order": 5,
+      "featured": true
     }
   ]
 }
