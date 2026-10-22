@@ -66,7 +66,7 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
     {
       isLandingMode && registerUrl && (
         <div class="section-register">
-          <Button href={registerUrl} target="_blank" rel="noopener noreferrer">
+          <Button href={registerUrl} size="lg" target="_blank" rel="noopener noreferrer">
             Register now
           </Button>
         </div>
@@ -77,6 +77,7 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
   {
     isLandingMode ? (
       <Section
+        class="coming-soon-section"
         variant="soft"
         eyebrow={home.comingSoon.eyebrow}
         title={home.comingSoon.title}
@@ -93,7 +94,7 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
         {
           registerUrl && (
             <div class="section-register">
-              <Button href={registerUrl} target="_blank" rel="noopener noreferrer">
+              <Button href={registerUrl} size="lg" target="_blank" rel="noopener noreferrer">
                 Register now
               </Button>
             </div>
@@ -150,7 +151,7 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
           {
             registerUrl && (
               <div class="section-register">
-                <Button href={registerUrl} target="_blank" rel="noopener noreferrer">
+                <Button href={registerUrl} size="lg" target="_blank" rel="noopener noreferrer">
                   Register now
                 </Button>
               </div>
@@ -284,6 +285,14 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  .coming-soon-section :global(.section-heading) {
+    max-width: 42rem;
+  }
+
+  .coming-soon-section :global(.section-heading p:not(.eyebrow)) {
+    text-wrap: balance;
   }
 
   .coming-soon-card h3 {
