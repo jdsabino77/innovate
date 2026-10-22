@@ -1,17 +1,19 @@
 ---
 type Variant = "primary" | "secondary" | "inverse" | "outline-inverse";
+type Size = "md" | "lg";
 
 interface Props {
   href: string;
   variant?: Variant;
+  size?: Size;
   target?: string;
   rel?: string;
 }
 
-const { href, variant = "primary", target, rel } = Astro.props;
+const { href, variant = "primary", size = "md", target, rel } = Astro.props;
 ---
 
-<a class:list={["button", `button-${variant}`]} href={href} target={target} rel={rel}>
+<a class:list={["button", `button-${variant}`, size === "lg" && "button-lg"]} href={href} target={target} rel={rel}>
   <slot />
 </a>
 
@@ -30,6 +32,13 @@ const { href, variant = "primary", target, rel } = Astro.props;
       transform 160ms ease,
       box-shadow 160ms ease,
       background-color 160ms ease;
+  }
+
+  /* ~1.5× default for prominent CTAs (e.g. Register now) */
+  .button-lg {
+    min-height: 72px;
+    padding: 0 30px;
+    font-size: 1.5em;
   }
 
   .button:hover,
