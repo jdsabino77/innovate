@@ -14,7 +14,7 @@ Deploy flow: [`docs/deploy.md`](docs/deploy.md).
 - `/speakers` — faculty placeholders
 - `/sponsors` — sponsorship tiers
 - `/venue` — venue details
-- `/register` — conference pass sales (C$99 Eventbrite checkout when configured)
+- `/register` — conference pass sales (early bird C$99 through January 1, 2027, then C$125; Eventbrite checkout when configured)
 - `/contact` — conference inquiries
 
 ## Configuration

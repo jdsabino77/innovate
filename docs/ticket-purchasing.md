@@ -6,13 +6,15 @@ Online pass sales for **Innovate: What's New in Medical Aesthetics** (February 2
 
 We use **[Eventbrite Canada](https://www.eventbrite.ca/)** for checkout, QR code tickets, and door check-in. The Innovate site embeds Eventbrite checkout on [`/register`](../src/pages/register.astro) so attendees purchase passes without leaving the conference website.
 
-**Widget wiring** (provider switch, embed component) is tracked in GitHub issue #1. This document is the **product spec**: one C$99 pass, custom questions, confirmation email, and no-refund policy.
+**Widget wiring** (provider switch, embed component) is tracked in GitHub issue #1. This document is the **product spec**: one conference pass, early bird C$99 through January 1, 2027 then C$125, custom questions, confirmation email, and no-refund policy.
 
 **Alternative considered:** [Ticket Tailor](https://www.tickettailor.com/) — lower fees (see comparison below). Ticket Tailor remains historical comparison only.
 
 ---
 
-## Fee comparison (Canada, C$99 pass)
+## Fee comparison (Canada, early bird C$99 pass)
+
+The regular price after January 1, 2027 is C$125. The figures below are for the early bird price.
 
 Sources: [Eventbrite Canada fees](https://www.eventbrite.ca/help/en-ca/articles/755615/eventbrite-fees/), [Ticket Tailor pricing](https://www.tickettailor.com/pricing), [Stripe Canada](https://stripe.com/en-ca/pricing).
 
@@ -39,7 +41,9 @@ Fees can be passed to the buyer (default) or absorbed by the organizer.
 
 ## Pass offering
 
-**One ticket type:** Conference pass **C$99**.
+**One ticket type:** Conference pass.
+
+**Official pricing:** early bird **C$99** through January 1, 2027. **C$125** after that date. The C$99 price is available on January 1 and changes the following day. Match this cutoff on the Eventbrite ticket. Site copy lives in [`src/data/tickets.json`](../src/data/tickets.json).
 
 Includes:
 
@@ -76,7 +80,7 @@ Marketing copy on `/register` lives in [`src/data/tickets.json`](../src/data/tic
 
 ### Register page — [`src/pages/register.astro`](../src/pages/register.astro)
 
-- **Closed:** “Registration opens soon” + C$99 pass summary + contact CTA
+- **Closed:** “Registration opens soon” + early bird C$99 / C$125 pass summary + contact CTA
 - **Open:** Pass card + Eventbrite checkout (embed when #1 ships; checkout URL fallback)
 - Footnote: Eventbrite, no refunds or substitutions, optional sponsor sharing, `events@yasalaser.com`
 
@@ -86,7 +90,7 @@ Marketing copy on `/register` lives in [`src/data/tickets.json`](../src/data/tic
 
 1. **Create or confirm organizer account** on [eventbrite.ca](https://www.eventbrite.ca/) (organizer: YASA LASER)
 2. **Create event:** Innovate: What's New in Medical Aesthetics — Saturday, February 27, 2027, The Quay — Gala room, Toronto
-3. **Ticket type:** one Conference pass at **C$99** matching [`src/data/tickets.json`](../src/data/tickets.json)
+3. **Ticket type:** one Conference pass. Early bird **C$99** through January 1, 2027, then **C$125**, matching [`src/data/tickets.json`](../src/data/tickets.json)
 4. **Tax:** Enable HST (13% Ontario) if required — consult accountant
 5. **Refunds:** Disable refunds / state no refunds or substitutions on the event
 6. **Custom questions:** add every field in the list below

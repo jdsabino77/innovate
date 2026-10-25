@@ -8,6 +8,7 @@ import { eventConfig } from "../lib/event-config";
 import { venue, getVenuePhoto } from "../lib/venue";
 
 const heroPhoto = getVenuePhoto(venue.aboutFeatured);
+const { gettingThere } = venue;
 ---
 
 <BaseLayout
@@ -24,9 +25,7 @@ const heroPhoto = getVenuePhoto(venue.aboutFeatured);
   <Section>
     <div class="split">
       <div class="content">
-        <h2>Location & arrival</h2>
-        <p>{venue.directionsNote}</p>
-        <h3>On-site experience</h3>
+        <h2>On-site experience</h2>
         <ul>
           {venue.onSite.map((item) => <li>{item}</li>)}
         </ul>
@@ -43,6 +42,10 @@ const heroPhoto = getVenuePhoto(venue.aboutFeatured);
             <dd>{eventConfig.venue}</dd>
           </div>
           <div>
+            <dt>Address</dt>
+            <dd>{gettingThere.address}</dd>
+          </div>
+          <div>
             <dt>Host</dt>
             <dd>
               <a href={eventConfig.hostUrl} target="_blank" rel="noopener noreferrer">
@@ -51,26 +54,68 @@ const heroPhoto = getVenuePhoto(venue.aboutFeatured);
             </dd>
           </div>
         </dl>
-        <Button href="/register">Register</Button>
+        <div class="venue-actions">
+          <Button href="/register">Register</Button>
+          <Button href={gettingThere.directionsUrl} variant="secondary" target="_blank" rel="noopener noreferrer">
+            {gettingThere.directionsLabel}
+          </Button>
+        </div>
       </aside>
     </div>
   </Section>
 
-  <Section variant="soft" eyebrow="Gallery" title="Inside The Quay Gala room" intro="Photos from The Quay event space.">
+  <Section
+    id="getting-there"
+    variant="soft"
+    eyebrow={gettingThere.eyebrow}
+    title={gettingThere.title}
+    intro={gettingThere.intro}
+  >
+    <div class="grid grid-3">
+      <article class="card">
+        <h3>{gettingThere.arrival.title}</h3>
+        <ul>
+          {gettingThere.arrival.steps.map((step) => <li>{step}</li>)}
+        </ul>
+      </article>
+      <article class="card">
+        <h3>{gettingThere.parking.title}</h3>
+        <p class="lot-name">{gettingThere.parking.lot}</p>
+        <p>{gettingThere.parking.paidNote}</p>
+        <dl class="rate-list">
+          {
+            gettingThere.parking.rates.map((rate) => (
+              <div>
+                <dt>{rate.label}</dt>
+                <dd>{rate.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+        <ul>
+          {gettingThere.parking.notes.map((note) => <li>{note}</li>)}
+        </ul>
+      </article>
+      <article class="card">
+        <h3>{gettingThere.walking.title}</h3>
+        <p class="walk-duration">{gettingThere.walking.duration}</p>
+        <ol>
+          {gettingThere.walking.steps.map((step) => <li>{step}</li>)}
+        </ol>
+        <a
+          class="maps-link"
+          href={gettingThere.walking.directionsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {gettingThere.walking.directionsLabel}
+        </a>
+      </article>
+    </div>
+  </Section>
+
+  <Section eyebrow="Gallery" title="Inside The Quay Gala room" intro="Photos from The Quay event space.">
     <VenueGallery />
-    <p class="venue-credit">
-      Photos: The Quay. Source albums:
-      {
-        venue.sourceAlbums.map((album, index) => (
-          <>
-            {index > 0 && ", "}
-            <a href={album.url} target="_blank" rel="noopener noreferrer">
-              {album.label}
-            </a>
-          </>
-        ))
-      }
-    </p>
   </Section>
 </BaseLayout>
 
@@ -85,6 +130,61 @@ const heroPhoto = getVenuePhoto(venue.aboutFeatured);
     margin: 0;
     color: var(--color-navy);
     font-size: 1.35rem;
+  }
+
+  .venue-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .lot-name,
+  .walk-duration {
+    margin: 0 0 8px;
+    color: var(--color-brand);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .rate-list {
+    display: grid;
+    gap: 10px;
+    margin: 14px 0;
+  }
+
+  .rate-list div {
+    display: grid;
+    gap: 2px;
+  }
+
+  .rate-list dt {
+    color: var(--color-navy);
+    font-weight: 700;
+  }
+
+  .rate-list dd {
+    margin: 0;
+  }
+
+  .card ul,
+  .card ol {
+    display: grid;
+    gap: 8px;
+    margin-top: 12px;
+    padding-left: 1.15rem;
+  }
+
+  .maps-link {
+    display: inline-block;
+    margin-top: 14px;
+    color: var(--color-navy);
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: rgb(201 169 98 / 60%);
+    text-underline-offset: 3px;
   }
 
   .venue-details {
@@ -108,17 +208,6 @@ const heroPhoto = getVenuePhoto(venue.aboutFeatured);
 
   .venue-details dd {
     margin: 0;
-    color: var(--color-navy);
-    font-weight: 700;
-  }
-
-  .venue-credit {
-    margin: 24px 0 0;
-    color: var(--color-muted);
-    font-size: 0.92rem;
-  }
-
-  .venue-credit a {
     color: var(--color-navy);
     font-weight: 700;
   }

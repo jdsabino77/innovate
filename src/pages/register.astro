@@ -8,7 +8,7 @@ import TicketTailorWidget from "../components/TicketTailorWidget.astro";
 import ticketsData from "../data/tickets.json";
 import { eventConfig, isTicketingOpen } from "../lib/event-config";
 
-const { page, tiers } = ticketsData;
+const { page, tiers, pricing } = ticketsData;
 const { ticketing } = eventConfig;
 const registrationOpen = isTicketingOpen();
 const heroIntro = registrationOpen ? page.introOpen : page.introClosed;
@@ -38,7 +38,7 @@ const heroIntro = registrationOpen ? page.introOpen : page.introClosed;
             <TicketTailorWidget embedUrl={ticketing.embedUrl} />
           ) : (
             <div class="checkout-fallback">
-              <p>Select your pass and check out securely on Eventbrite.</p>
+              <p>{pricing.summary} Select your pass and check out securely on Eventbrite.</p>
               <Button href={ticketing.checkoutUrl} target="_blank" rel="noopener noreferrer">
                 Register now
               </Button>
@@ -50,8 +50,8 @@ const heroIntro = registrationOpen ? page.introOpen : page.introClosed;
         <div class="registration-placeholder surface">
           <h3>Registration opens soon</h3>
           <p>
-            Passes will be sold through Eventbrite with QR code check-in. The C$99 conference pass
-            includes sessions, meals, and an official swag bag.
+            Passes will be sold through Eventbrite with QR code check-in. {pricing.summary} The
+            pass includes sessions, meals, and an official swag bag.
           </p>
           <p class="registration-footnote">{page.footnote}</p>
           <div class="registration-actions">

@@ -8,16 +8,43 @@ export type VenuePhoto = {
   category: string;
 };
 
+export type VenueRate = {
+  label: string;
+  value: string;
+};
+
+export type VenueGettingThere = {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  address: string;
+  directionsUrl: string;
+  directionsLabel: string;
+  arrival: { title: string; steps: string[] };
+  parking: {
+    title: string;
+    lot: string;
+    paidNote: string;
+    rates: VenueRate[];
+    notes: string[];
+  };
+  walking: {
+    title: string;
+    duration: string;
+    steps: string[];
+    directionsUrl: string;
+    directionsLabel: string;
+  };
+};
+
 export type VenueData = {
   name: string;
   description: string;
-  directionsNote: string;
+  gettingThere: VenueGettingThere;
   onSite: string[];
   featured: string[];
   aboutFeatured: string;
-  sourceAlbums: { label: string; url: string }[];
   photos: VenuePhoto[];
-  categories: { id: string; label: string }[];
 };
 
 export const venue = venueData as VenueData;

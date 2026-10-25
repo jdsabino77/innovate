@@ -17,7 +17,10 @@ const { page, venueNote, hotels, tips } = hotelInfo;
   <PageHero eyebrow={page.eyebrow} title={page.title} intro={page.intro} />
   <Section>
     <div class="content hotel-content">
-      <p class="hotel-note">{venueNote}</p>
+      <p class="hotel-note">
+        {venueNote}{" "}
+        <a href="/venue#getting-there">See arrival, parking, and walking directions.</a>
+      </p>
       <h2>Suggested hotels</h2>
       <div class="hotel-grid">
         {
@@ -39,7 +42,7 @@ const { page, venueNote, hotels, tips } = hotelInfo;
       </ul>
       <div class="hotel-actions">
         <Button href="/register">Register Now</Button>
-        <Button href="/venue" variant="secondary">Venue details</Button>
+        <Button href="/venue#getting-there" variant="secondary">Getting there</Button>
       </div>
     </div>
   </Section>
@@ -54,6 +57,14 @@ const { page, venueNote, hotels, tips } = hotelInfo;
     margin: 0 0 22px;
     color: var(--color-muted);
     font-size: 1.05rem;
+  }
+
+  .hotel-note a {
+    color: var(--color-navy);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: rgb(201 169 98 / 60%);
+    text-underline-offset: 3px;
   }
 
   .hotel-grid {

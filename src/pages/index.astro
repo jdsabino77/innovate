@@ -8,12 +8,14 @@ import CtaBand from "../components/CtaBand.astro";
 import NewsletterSignup from "../components/NewsletterSignup.astro";
 import VenueCollage from "../components/VenueCollage.astro";
 import home from "../data/home.json";
+import tickets from "../data/tickets.json";
 import schedule from "../data/schedule.json";
 import { isLandingMode } from "../lib/launch";
 import { eventConfig, siteDescription } from "../lib/event-config";
 import { venue, getFeaturedPhotos, getVenuePhoto } from "../lib/venue";
 
 const registerUrl = eventConfig.ticketing.checkoutUrl;
+const pricingNote = tickets.pricing.summary;
 const aboutImage = home.about.image
   ? { src: home.about.image, alt: home.about.imageAlt }
   : getVenuePhoto(venue.aboutFeatured);
@@ -69,6 +71,7 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
           <Button href={registerUrl} size="lg" target="_blank" rel="noopener noreferrer">
             Register now
           </Button>
+          <p class="register-price">{pricingNote}</p>
         </div>
       )
     }
@@ -97,6 +100,7 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
               <Button href={registerUrl} size="lg" target="_blank" rel="noopener noreferrer">
                 Register now
               </Button>
+              <p class="register-price">{pricingNote}</p>
             </div>
           )
         }
@@ -148,15 +152,17 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
       isLandingMode ? (
         <>
           <VenueCollage photos={featuredVenuePhotos} showCaptions={false} equalSize />
-          {
-            registerUrl && (
-              <div class="section-register">
+          <div class="section-register">
+            {
+              registerUrl && (
                 <Button href={registerUrl} size="lg" target="_blank" rel="noopener noreferrer">
                   Register now
                 </Button>
-              </div>
-            )
-          }
+              )
+            }
+            <Button href="/venue#getting-there" variant="secondary" size="lg">Getting there</Button>
+            {registerUrl && <p class="register-price">{pricingNote}</p>}
+          </div>
         </>
       ) : (
         <div class="split venue-split">
@@ -268,8 +274,19 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
 
   .section-register {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 12px;
     margin-top: 36px;
+  }
+
+  .register-price {
+    flex-basis: 100%;
+    margin: 4px 0 0;
+    color: var(--color-muted);
+    font-size: 0.98rem;
+    font-weight: 700;
+    text-align: center;
   }
 
   .about-media {

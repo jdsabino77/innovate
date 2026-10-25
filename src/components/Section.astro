@@ -1,5 +1,6 @@
 ---
 interface Props {
+  id?: string;
   eyebrow?: string;
   title?: string;
   intro?: string;
@@ -8,11 +9,18 @@ interface Props {
   introWide?: boolean;
 }
 
-const { eyebrow, title, intro, class: className = "", variant = "default", introWide = false } =
-  Astro.props;
+const {
+  id,
+  eyebrow,
+  title,
+  intro,
+  class: className = "",
+  variant = "default",
+  introWide = false,
+} = Astro.props;
 ---
 
-<section class:list={["section", `section-${variant}`, className]}>
+<section id={id} class:list={["section", `section-${variant}`, id && "section-anchor", className]}>
   <div class="container">
     {(eyebrow || title || intro) && (
       <div class:list={["section-heading", introWide && "section-heading-wide"]}>
@@ -28,6 +36,10 @@ const { eyebrow, title, intro, class: className = "", variant = "default", intro
 <style>
   .section {
     padding: 72px 0;
+  }
+
+  .section-anchor {
+    scroll-margin-top: 96px;
   }
 
   .section-soft {
