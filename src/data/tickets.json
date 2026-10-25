@@ -1,7 +1,10 @@
 {
+  "pricing": {
+    "summary": "Early bird C$99 through January 1, 2027. C$125 after."
+  },
   "page": {
-    "introOpen": "Secure checkout is powered by Eventbrite — you'll receive a confirmation email with a QR code ticket for fast check-in at The Quay.",
-    "introClosed": "A C$99 conference pass will go on sale here soon — full program access, meals, and an official swag bag. Checkout will be powered by Eventbrite.",
+    "introOpen": "Early bird passes are C$99 through January 1, 2027, then C$125. Secure checkout is powered by Eventbrite — you'll receive a confirmation email with a QR code ticket for fast check-in at The Quay.",
+    "introClosed": "Early bird conference passes are C$99 through January 1, 2027, then C$125 — full program access, meals, and an official swag bag. Checkout will be powered by Eventbrite.",
     "footnote": "All sales are processed securely through Eventbrite. No refunds or substitutions. Your information will be used to manage your attendance and, if you opt in, to share limited details with sponsors and exhibitors. Questions? Email events@yasalaser.com."
   },
   "tiers": [
@@ -9,6 +12,8 @@
       "id": "conference-pass",
       "name": "Conference pass",
       "priceDisplay": "C$99",
+      "badge": "Early bird",
+      "priceNote": "C$125 after January 1, 2027",
       "description": "Admission to Innovate: What's New in Medical Aesthetics — one focused day of clinical education and networking at The Quay.",
       "includes": [
         "Full access to all keynote and breakout sessions",

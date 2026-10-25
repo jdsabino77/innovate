@@ -94,7 +94,7 @@ await assertContains("sitemap.xml", `${siteUrl}/`);
 await assertContains("sitemap.xml", `${siteUrl}/speakers`);
 await assertContains("sitemap.xml", `${siteUrl}/sponsors`);
 await assertNotContains("sitemap.xml", `${siteUrl}/register`);
-await assertNotContains("sitemap.xml", `${siteUrl}/venue`);
+await assertContains("sitemap.xml", `${siteUrl}/venue`);
 await assertNotContains("sitemap.xml", `${siteUrl}/hotel-information`);
 await assertNotContains("sitemap.xml", `${siteUrl}/contact`);
 await assertContains("index.html", "Innovate");
@@ -109,6 +109,7 @@ await assertContains("index.html", "nadine-with-dr-yazdani.jpg");
 await assertContains("index.html", "Stay in touch");
 await assertContains("index.html", "The conference will:");
 await assertContains("index.html", "Register now");
+await assertContains("index.html", "Early bird C$99 through January 1, 2027. C$125 after.");
 await assertContains(
   "index.html",
   "https://www.eventbrite.ca/e/innovate-whats-next-in-medical-aesthetics-tickets-2003619736568",
@@ -131,10 +132,13 @@ await assertNotContains("index.html", "View sponsors");
 await assertNotContains("index.html", "Presented by YASA Laser, Innovate is a conference");
 await assertContains("index.html", 'href="/speakers"');
 await assertContains("index.html", 'href="/sponsors"');
+await assertContains("index.html", ">Venue</a>");
 await assertNotContains("index.html", 'href="/schedule"');
 await assertNotContains("index.html", 'href="/register"');
 await assertNotContains("index.html", 'href="/contact"');
-await assertNotContains("index.html", 'href="/venue"');
+await assertContains("index.html", 'href="/venue#getting-there"');
+await assertContains("index.html", "Getting there");
+await assertContains("index.html", "paid underground parking");
 await assertNotContains("index.html", 'href="/hotel-information"');
 await assertNotContains("index.html", "Explore the venue");
 await assertNotContains("index.html", "Contact the team");
@@ -142,6 +146,8 @@ await assertNotContains("index.html", ">Registration<");
 await assertNotContains("sitemap.xml", `${siteUrl}/schedule`);
 await assertNotContains("register/index.html", "Registration opens soon");
 await assertContains("register/index.html", "Register now");
+await assertContains("register/index.html", "Early bird");
+await assertContains("register/index.html", "C$125 after January 1, 2027");
 await assertContains(
   "register/index.html",
   "https://www.eventbrite.ca/e/innovate-whats-next-in-medical-aesthetics-tickets-2003619736568",
@@ -230,6 +236,20 @@ await assertContains("hotel-information/index.html", "Suggested hotels");
 await assertNotContains("hotel-information/index.html", "Room blocks");
 await assertContains("schedule/index.html", "Cocktail hour");
 await assertContains("venue/index.html", "7:30 AM");
+await assertContains("venue/index.html", "Impark Lot #526");
+await assertContains("venue/index.html", "$10 per hour");
+await assertContains("venue/index.html", "$25 (6am–6pm)");
+await assertContains("venue/index.html", "$15 (6pm–6am)");
+await assertContains("venue/index.html", "Cooper Street");
+await assertContains("venue/index.html", "John M. Tinsley Street");
+await assertContains("venue/index.html", "to the right of the LCBO doors");
+await assertContains("venue/index.html", "About 10 minutes");
+await assertContains("venue/index.html", "travelmode=walking");
+await assertContains("venue/index.html", "not included with registration");
+await assertNotContains("venue/index.html", "will be shared with registered attendees");
+await assertNotContains("venue/index.html", "QQE@reefparking.com");
+await assertContains("hotel-information/index.html", 'href="/venue#getting-there"');
+await assertContains("hotel-information/index.html", "Underground parking is paid on site");
 
 if (failures.length > 0) {
   console.error("Smoke test failed:\n");
