@@ -79,6 +79,16 @@
       "tier": "gold",
       "order": 2,
       "featured": true
+    },
+    {
+      "id": "tap-by-yasa",
+      "name": "T.A.P by YASA Laser",
+      "logo": "/images/sponsors/tap-by-yasa.png",
+      "logoAlt": "T.A.P by YASA Laser",
+      "url": "https://tapbyyasa.com/",
+      "tier": "gold",
+      "order": 3,
+      "featured": true
     }
   ]
 }
