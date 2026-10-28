@@ -72,6 +72,19 @@
       "group": "faculty",
       "order": 5,
       "featured": true
+    },
+    {
+      "id": "jamil-ahmad",
+      "name": "Dr. Jamil Ahmad",
+      "credentials": "True Plastic Surgery",
+      "role": "Board-Certified Plastic Surgeon | President, The Aesthetic Society",
+      "bio": "Dr. Jamil Ahmad is a board-certified plastic surgeon and one of the most recognised figures in aesthetic surgery in North America. Trained at the University of Texas Southwestern Medical Center in Dallas — one of the world’s foremost plastic surgery programmes — he has been in practice in Mississauga since 2010, building a reputation defined by natural results, surgical precision, and an uncompromising standard of care. He holds an appointment as Assistant Professor at the University of Toronto’s Temerty Faculty of Medicine. Dr. Ahmad currently serves as President of The Aesthetic Society — the leading professional organisation for board-certified aesthetic plastic surgeons in North America — making him the first Canadian surgeon ever elected to this position in the society’s history. He is also Past President of both the Canadian Society for Aesthetic Plastic Surgery and the Rhinoplasty Society, the international organisation for surgeons specialising in rhinoplasty. A globally sought-after educator, he has delivered over 500 invited lectures worldwide and has authored more than 200 peer-reviewed articles and book chapters. He is co-editor of the 3rd and 4th editions of Dallas Rhinoplasty: Nasal Surgery by the Masters — the field’s definitive reference text, now in its fourth edition and recognised globally as the essential guide to rhinoplasty surgery — alongside companion volumes on secondary rhinoplasty and surgical dissection technique. His practice philosophy mirrors the standard he has helped set for the field: individualised care, evidence-based decisions, and results that are consistent, refined, and entirely natural. Through True Plastic Surgery, Dr. Ahmad brings fifteen years of practice and a lifetime of leadership in aesthetic surgery to every patient encounter.",
+      "photo": "/images/speakers/jamil-ahmad.jpg",
+      "photoAlt": "Dr. Jamil Ahmad",
+      "photoSource": "Speaker submission",
+      "group": "faculty",
+      "order": 6,
+      "featured": true
     }
   ]
 }
