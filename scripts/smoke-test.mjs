@@ -111,7 +111,11 @@ await assertContains("index.html", "nadine-with-dr-yazdani.jpg");
 await assertContains("index.html", "Stay in touch");
 await assertContains("index.html", "The conference will:");
 await assertContains("index.html", "Register now");
-await assertContains("index.html", "Early bird C$99 through January 1, 2027. C$125 after.");
+await assertContains("index.html", ">Register Early &amp; Save 20%!</strong>");
+await assertContains(
+  "index.html",
+  "Secure your spot for just $99 before December 31, 2026. Don&#39;t miss out—register now before prices jump to $125!",
+);
 await assertContains(
   "index.html",
   "https://www.eventbrite.ca/e/innovate-whats-next-in-medical-aesthetics-tickets-2003619736568",
@@ -148,8 +152,8 @@ await assertNotContains("index.html", ">Registration<");
 await assertNotContains("sitemap.xml", `${siteUrl}/schedule`);
 await assertNotContains("register/index.html", "Registration opens soon");
 await assertContains("register/index.html", "Register now");
-await assertContains("register/index.html", "Early bird");
-await assertContains("register/index.html", "C$125 after January 1, 2027");
+await assertContains("register/index.html", ">Register Early &amp; Save 20%!</strong>");
+await assertContains("register/index.html", "$125 after December 31, 2026");
 await assertContains(
   "register/index.html",
   "https://www.eventbrite.ca/e/innovate-whats-next-in-medical-aesthetics-tickets-2003619736568",
@@ -178,6 +182,8 @@ await assertContains("speakers/index.html", "Prollenium Medical Technologies");
 await assertContains("speakers/index.html", "Yorkville Plastic Surgery Center");
 await assertContains("speakers/index.html", "True Plastic Surgery");
 await assertContains("speakers/index.html", "President of The Aesthetic Society");
+await assertContains("speakers/index.html", "individualized care");
+await assertNotContains("speakers/index.html", "first Canadian surgeon");
 await assertContains("speakers/index.html", "double fellowship trained, double board certified");
 await assertNotContains("speakers/index.html", "From Bench to Bedside");
 await assertNotContains("speakers/index.html", "Energy, Injectables, and the Next Wave");

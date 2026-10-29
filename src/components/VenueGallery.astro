@@ -10,7 +10,6 @@ const { photos } = venue;
       photos.map((photo) => (
         <figure class="venue-gallery-item">
           <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" />
-          <figcaption>{photo.caption}</figcaption>
         </figure>
       ))
     }
@@ -37,13 +36,6 @@ const { photos } = venue;
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
-  }
-
-  .venue-gallery-item figcaption {
-    padding: 12px 14px;
-    color: var(--color-muted);
-    font-size: 0.92rem;
-    font-weight: 600;
   }
 
   @media (max-width: 820px) {

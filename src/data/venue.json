@@ -1,6 +1,6 @@
 {
   "name": "The Quay",
-  "description": "Innovate takes place at The Quay on Toronto's East waterfront—a contemporary event space with large windows, natural wood accents, and room for focused programming and networking.",
+  "description": "Innovate takes place at The Quay on Toronto's East waterfront, a contemporary event space with large windows, natural wood accents, and room for focused programming and networking.",
   "gettingThere": {
     "eyebrow": "Getting there",
     "title": "Arrival, parking, and walking",
@@ -71,48 +71,6 @@
       "src": "/images/venue/the-quay-03.jpg",
       "alt": "Wide view of The Quay event hall with contemporary lighting and table settings",
       "caption": "The Quay main hall",
-      "category": "foyer"
-    },
-    {
-      "id": "gala-foyer-01",
-      "src": "/images/venue/gala-foyer-01.jpg",
-      "alt": "The Quay foyer with warm lighting and wood accents",
-      "caption": "Gala room foyer",
-      "category": "foyer"
-    },
-    {
-      "id": "gala-foyer-02",
-      "src": "/images/venue/gala-foyer-02.jpg",
-      "alt": "Entry and lounge area at The Quay Gala room",
-      "caption": "Entry and lounge",
-      "category": "foyer"
-    },
-    {
-      "id": "gala-foyer-03",
-      "src": "/images/venue/gala-foyer-03.jpg",
-      "alt": "Wide view of The Quay Gala room entrance",
-      "caption": "Gala room entrance",
-      "category": "foyer"
-    },
-    {
-      "id": "foyer-food-01",
-      "src": "/images/venue/foyer-food-01.jpg",
-      "alt": "Gala foyer with food stations set up for an event",
-      "caption": "Foyer reception setup",
-      "category": "foyer"
-    },
-    {
-      "id": "gala-room-01",
-      "src": "/images/venue/gala-room-01.jpg",
-      "alt": "The Quay Gala room set for a conference or presentation",
-      "caption": "Gala room presentation setup",
-      "category": "foyer"
-    },
-    {
-      "id": "gala-room-02",
-      "src": "/images/venue/gala-room-02.jpg",
-      "alt": "Spacious Gala room interior at The Quay",
-      "caption": "Gala room interior",
       "category": "foyer"
     }
   ]
