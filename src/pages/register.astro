@@ -38,7 +38,8 @@ const heroIntro = registrationOpen ? page.introOpen : page.introClosed;
             <TicketTailorWidget embedUrl={ticketing.embedUrl} />
           ) : (
             <div class="checkout-fallback">
-              <p>{pricing.summary} Select your pass and check out securely on Eventbrite.</p>
+              <p class="early-bird-note"><strong>{pricing.lead}</strong> {pricing.summary}</p>
+              <p>Select your pass and check out securely on Eventbrite.</p>
               <Button href={ticketing.checkoutUrl} target="_blank" rel="noopener noreferrer">
                 Register now
               </Button>
@@ -49,9 +50,10 @@ const heroIntro = registrationOpen ? page.introOpen : page.introClosed;
       ) : (
         <div class="registration-placeholder surface">
           <h3>Registration opens soon</h3>
+          <p class="early-bird-note"><strong>{pricing.lead}</strong> {pricing.summary}</p>
           <p>
-            Passes will be sold through Eventbrite with QR code check-in. {pricing.summary} The
-            pass includes sessions, meals, and an official swag bag.
+            Passes will be sold through Eventbrite with QR code check-in. The pass includes
+            sessions, meals, and an official swag bag.
           </p>
           <p class="registration-footnote">{page.footnote}</p>
           <div class="registration-actions">
@@ -104,6 +106,17 @@ const heroIntro = registrationOpen ? page.introOpen : page.introClosed;
     margin: 0;
     color: var(--color-muted);
     max-width: 640px;
+  }
+
+  .registration-placeholder .early-bird-note {
+    margin-bottom: 12px;
+  }
+
+  .early-bird-note strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--color-navy);
+    font-weight: 700;
   }
 
   .registration-footnote {

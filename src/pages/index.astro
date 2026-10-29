@@ -15,6 +15,7 @@ import { eventConfig, siteDescription } from "../lib/event-config";
 import { venue, getFeaturedPhotos, getVenuePhoto } from "../lib/venue";
 
 const registerUrl = eventConfig.ticketing.checkoutUrl;
+const pricingLead = tickets.pricing.lead;
 const pricingNote = tickets.pricing.summary;
 const aboutImage = home.about.image
   ? { src: home.about.image, alt: home.about.imageAlt }
@@ -71,7 +72,7 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
           <Button href={registerUrl} size="lg" target="_blank" rel="noopener noreferrer">
             Register now
           </Button>
-          <p class="register-price">{pricingNote}</p>
+          <p class="register-price"><strong>{pricingLead}</strong> <span>{pricingNote}</span></p>
         </div>
       )
     }
@@ -100,7 +101,7 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
               <Button href={registerUrl} size="lg" target="_blank" rel="noopener noreferrer">
                 Register now
               </Button>
-              <p class="register-price">{pricingNote}</p>
+              <p class="register-price"><strong>{pricingLead}</strong> <span>{pricingNote}</span></p>
             </div>
           )
         }
@@ -161,7 +162,7 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
               )
             }
             <Button href="/venue#getting-there" variant="secondary" size="lg">Getting there</Button>
-            {registerUrl && <p class="register-price">{pricingNote}</p>}
+            {registerUrl && <p class="register-price"><strong>{pricingLead}</strong> <span>{pricingNote}</span></p>}
           </div>
         </>
       ) : (
@@ -281,12 +282,30 @@ const cta = isLandingMode ? home.cta : home.ctaFull;
   }
 
   .register-price {
-    flex-basis: 100%;
+    flex: 0 0 100%;
+    width: 100%;
     margin: 4px 0 0;
     color: var(--color-muted);
     font-size: 0.98rem;
-    font-weight: 700;
+    font-weight: 400;
+    line-height: 1.45;
     text-align: center;
+  }
+
+  .register-price strong,
+  .register-price span {
+    display: block;
+  }
+
+  .register-price strong {
+    margin-bottom: 4px;
+    color: var(--color-navy);
+    font-weight: 700;
+  }
+
+  .register-price span {
+    max-width: 34rem;
+    margin: 0 auto;
   }
 
   .about-media {
