@@ -13,6 +13,10 @@ interface Props {
 
 const { name, credentials, role, bio, talkTitle, talkDescription, photo, photoAlt, sourceUrl } =
   Astro.props;
+const bioParagraphs = bio
+  .split(/\n\s*\n/)
+  .map((paragraph) => paragraph.trim())
+  .filter(Boolean);
 ---
 
 <article class="card speaker-card">
@@ -23,7 +27,9 @@ const { name, credentials, role, bio, talkTitle, talkDescription, photo, photoAl
     <h3>{name}</h3>
     {credentials && <p class="speaker-credentials">{credentials}</p>}
     <p class="speaker-role">{role}</p>
-    <p class="speaker-bio">{bio}</p>
+    <div class="speaker-bio">
+      {bioParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
     {
       talkTitle && (
         <div class="speaker-talk">
@@ -102,8 +108,14 @@ const { name, credentials, role, bio, talkTitle, talkDescription, photo, photoAl
   }
 
   .speaker-bio {
+    display: grid;
+    gap: 0.85em;
     margin: 0;
     line-height: 1.55;
+  }
+
+  .speaker-bio p {
+    margin: 0;
   }
 
   .speaker-talk {
