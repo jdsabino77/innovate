@@ -37,6 +37,7 @@ const requiredPublicFiles = [
   "images/sponsors/skinbetter-science.png",
   "images/sponsors/skinceuticals.png",
   "images/sponsors/tap-by-yasa.png",
+  "images/sponsors/ifinance.svg",
   "images/home/about-innovate.png",
   "video/hero.mp4",
   "video/hero-poster.webp",
@@ -214,6 +215,7 @@ await assertContains("sponsors/index.html", "Sciton");
 await assertContains("sponsors/index.html", "CO2 Lift");
 await assertContains("sponsors/index.html", "Hydrinity");
 await assertContains("sponsors/index.html", "T.A.P by YASA Laser");
+await assertContains("sponsors/index.html", "iFinance");
 await assertNotContains("sponsors/index.html", "Alastin");
 await assertContains("sponsors/index.html", "Skinbetter Science");
 await assertContains("sponsors/index.html", "SkinCeuticals");
@@ -227,6 +229,8 @@ await assertContains("sponsors/index.html", "https://hydrinitycanada.com/");
 await assertContains("sponsors/index.html", "https://co2lift.com/");
 await assertContains("sponsors/index.html", "https://tapbyyasa.com/");
 await assertContains("sponsors/index.html", "tap-by-yasa.png");
+await assertContains("sponsors/index.html", "https://ifinancecanada.com/");
+await assertContains("sponsors/index.html", "ifinance.svg");
 await assertNotContains("sponsors/index.html", "Cynosure Lutronic");
 await assertNotContains("sponsors/index.html", "Allergan");
 await assertNotContains("sponsors/index.html", "slot available");
@@ -243,6 +247,7 @@ await assertOrder("sponsors/index.html", [
   "Gold Sponsors",
   "CO2 Lift",
   "Hydrinity",
+  "iFinance",
   "T.A.P by YASA Laser",
 ]);
 await assertContains("sponsors/index.html", "events@yasalaser.com");
