@@ -89,6 +89,16 @@
       "tier": "gold",
       "order": 3,
       "featured": true
+    },
+    {
+      "id": "ifinance",
+      "name": "iFinance",
+      "logo": "/images/sponsors/ifinance.svg",
+      "logoAlt": "iFinance",
+      "url": "https://ifinancecanada.com/",
+      "tier": "gold",
+      "order": 4,
+      "featured": true
     }
   ]
 }
