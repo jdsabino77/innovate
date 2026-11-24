@@ -85,6 +85,19 @@
       "group": "faculty",
       "order": 6,
       "featured": true
+    },
+    {
+      "id": "michelle-khan",
+      "name": "Dr. Michelle Khan",
+      "credentials": "University of Toronto | Trillium Health Partners",
+      "role": "Ophthalmologist | Oculoplastic Surgeon",
+      "bio": "Dr. Michelle Khan is an ophthalmologist specializing in oculoplastic surgery and advanced facial aesthetics.\n\nShe completed her ophthalmology residency training at the University of Toronto before pursuing fellowship training in oculoplastics and adnexal surgery at Moorfields Eye Hospital in London. She subsequently completed a second fellowship in aesthetic oculoplastic surgery on Harley Street, under the mentorship of Mr. Daniel Ezra.\n\nDr. Khan has extensive experience in oculoplastic and aesthetic surgery, having practised in both Toronto and London, United Kingdom. An artist by nature, she has a particular interest in the aesthetic aspects of oculoplastic surgery. Her areas of expertise include upper and lower eyelid blepharoplasty, ptosis repair, and lower eyelid repositioning.\n\nThroughout her career, Dr. Khan has received numerous honours and distinctions, including the Loran Scholarship and the Award of Excellence in Ophthalmology to the top graduate at Queen's University School of Medicine. She has also been recognized for her surgical skills and contributions to medical research. In recognition of her service to the medical profession, she was appointed a Senior Fellow at Massey College, the distinguished postgraduate academic community at the University of Toronto.\n\nBeyond her clinical practice, Dr. Khan is deeply committed to humanitarian medicine and has been actively involved in international medical outreach, providing ophthalmic care to underserved communities in conflict-affected regions of the world.\n\nDr. Khan currently practices in both Toronto, Canada, and London, England, on Harley Street. She is affiliated with the University of Toronto and Trillium Health Partners.",
+      "photo": "/images/speakers/michelle-khan.jpg",
+      "photoAlt": "Dr. Michelle Khan",
+      "photoSource": "Speaker submission",
+      "group": "faculty",
+      "order": 7,
+      "featured": true
     }
   ]
 }

@@ -28,6 +28,7 @@ const requiredPublicFiles = [
   "images/speakers/ario-khoshbin.jpg",
   "images/speakers/michael-roskies.jpg",
   "images/speakers/jamil-ahmad.jpg",
+  "images/speakers/michelle-khan.jpg",
   "images/sponsors/yasa-laser.svg",
   "images/sponsors/cynosure.svg",
   "images/sponsors/sciton.svg",
@@ -166,6 +167,7 @@ await assertContains("speakers/index.html", "Kimsy Kay");
 await assertContains("speakers/index.html", "Ario Khoshbin");
 await assertContains("speakers/index.html", "Dr. Michael Roskies");
 await assertContains("speakers/index.html", "Dr. Jamil Ahmad");
+await assertContains("speakers/index.html", "Dr. Michelle Khan");
 await assertContains("speakers/index.html", "physicians, nurses, and industry leaders");
 await assertContains("speakers/index.html", "Plastic Surgeon | Co-Founder, INNOVATE Conference");
 await assertContains(
@@ -182,6 +184,9 @@ await assertContains("speakers/index.html", "Empower Aesthetic Medicine Collabor
 await assertContains("speakers/index.html", "Prollenium Medical Technologies");
 await assertContains("speakers/index.html", "Yorkville Plastic Surgery Center");
 await assertContains("speakers/index.html", "True Plastic Surgery");
+await assertContains("speakers/index.html", "Trillium Health Partners");
+await assertContains("speakers/index.html", "Moorfields Eye Hospital");
+await assertContains("speakers/index.html", "Ophthalmologist | Oculoplastic Surgeon");
 await assertContains("speakers/index.html", "President of The Aesthetic Society");
 await assertContains("speakers/index.html", "individualized care");
 await assertNotContains("speakers/index.html", "first Canadian surgeon");
@@ -204,6 +209,7 @@ await assertOrder("speakers/index.html", [
   "Kimsy Kay",
   "Dr. Michael Roskies",
   "Dr. Jamil Ahmad",
+  "Dr. Michelle Khan",
 ]);
 await assertContains("sponsors/index.html", "Hosted by");
 await assertNotContains("sponsors/index.html", "Presented by");
